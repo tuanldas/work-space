@@ -3,9 +3,10 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {Button, Card, Col, Container, Form, FormFeedback, Input, Label, Row} from 'reactstrap';
 import withRouter from '../../Components/Common/withRouter';
-import {changeLayoutTheme} from '../../slices/layouts/thunk';
+import {changeLayoutTheme} from '../../slices/layouts/actions';
 import {LAYOUT_THEME} from '../../Components/constants/layout';
 import {useAppDispatch} from '../../slices/hooks';
+import {loginAction} from '../../slices/Login/actions';
 
 const Login = () => {
     document.title = "SignIn | Work Space";
@@ -21,15 +22,19 @@ const Login = () => {
         enableReinitialize: true,
 
         initialValues: {
-            userName: '',
-            password: '',
+            username: 'admin@tuanldas.me',
+            password: '123456',
         },
         validationSchema: Yup.object({
-            userName: Yup.string().required("Please Enter Your Username"),
+            username: Yup.string().required("Please Enter Your Username"),
             password: Yup.string().required("Please Enter Your Password"),
         }),
-        onSubmit: (values) => {
+        onSubmit: (values: { username: string, password: string }) => {
             console.log("values", values)
+            dispatch(loginAction({
+                email: values.username,
+                password: values.password
+            }));
         }
     });
 
@@ -61,16 +66,16 @@ const Login = () => {
                                                         <div className="mb-3">
                                                             <Label htmlFor="username" className="form-label">Tài khoản</Label>
                                                             <Input type="text" className="form-control" id="username" placeholder=""
-                                                                   name="userName"
+                                                                   name="username"
                                                                    onChange={validation.handleChange}
                                                                    onBlur={validation.handleBlur}
-                                                                   value={validation.values.userName || ""}
+                                                                   value={validation.values.username || ""}
                                                                    invalid={
-                                                                       !!(validation.touched.userName && validation.errors.userName)
+                                                                       !!(validation.touched.username && validation.errors.username)
                                                                    }
                                                             />
-                                                            {validation.touched.userName && validation.errors.userName ? (
-                                                                <FormFeedback type="invalid">{validation.errors.userName}</FormFeedback>
+                                                            {validation.touched.username && validation.errors.username ? (
+                                                                <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
                                                             ) : null}
                                                         </div>
 

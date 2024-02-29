@@ -7,25 +7,19 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 
-//import actions
-import {
-    changeLayout,
-    changeLayoutMode,
-    changeLayoutPosition,
-    changeLayoutTheme,
-    changeLayoutThemeColor,
-    changeLayoutWidth,
-    changeLeftsidebarSizeType,
-    changeLeftsidebarViewType,
-    changeSidebarImageType,
-    changeSidebarTheme,
-    changeSidebarVisibility,
-    changeTopbarTheme
-} from '../slices/thunks';
 
 //redux
 import {useDispatch, useSelector} from 'react-redux';
 import {createSelector} from 'reselect';
+import {
+    changeLayout,
+    changeLayoutMode, changeLayoutPosition,
+    changeLayoutTheme,
+    changeLayoutThemeColor, changeLayoutWidth,
+    changeLeftsidebarSizeType,
+    changeLeftsidebarViewType, changeSidebarImageType,
+    changeSidebarTheme, changeSidebarVisibility, changeTopbarTheme
+} from '../slices/layouts/actions';
 
 const Layout = (props : any) => {
     const [headerClass, setHeaderClass] = useState("");

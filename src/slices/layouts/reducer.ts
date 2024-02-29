@@ -49,7 +49,7 @@ export const initialState: LayoutState = {
   sidebarVisibilitytype: SIDEBAR_VISIBILITY_TYPES.SHOW
 };
 
-const LayoutSlice = createSlice({
+export const LayoutSlice = createSlice({
   name: 'LayoutSlice',
   initialState,
   reducers: {
@@ -110,5 +110,3 @@ export const {
   changePreLoaderAction,
   changeSidebarVisibilityAction
 } = LayoutSlice.actions;
-
-export default LayoutSlice.reducer;
