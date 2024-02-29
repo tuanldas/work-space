@@ -1,11 +1,10 @@
 import {combineReducers} from 'redux';
-
-// Front
 import LayoutReducer from './layouts/reducer';
+import {configureStore} from '@reduxjs/toolkit';
 
 
 const rootReducer = combineReducers({
     Layout: LayoutReducer,
 });
 
-export default rootReducer;
+export const store = configureStore({reducer: rootReducer, devTools: true});

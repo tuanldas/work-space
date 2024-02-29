@@ -1,13 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {Button, Card, Col, Container, Form, FormFeedback, Input, Label, Row} from 'reactstrap';
 import withRouter from '../../Components/Common/withRouter';
+import {changeLayoutTheme} from '../../slices/layouts/thunk';
+import {LAYOUT_THEME} from '../../Components/constants/layout';
+import {useAppDispatch} from '../../slices/hooks';
 
 const Login = () => {
-    document.title = "Cover SignIn | Velzon - React Admin & Dashboard Template";
+    document.title = "SignIn | Work Space";
 
+    const dispatch = useAppDispatch();
     const [passwordShow, setPasswordShow] = useState<boolean>(false);
+
+    useEffect(() => {
+        dispatch(changeLayoutTheme(LAYOUT_THEME.DEFAULT))
+    }, []);
 
     const validation: any = useFormik({
         enableReinitialize: true,
