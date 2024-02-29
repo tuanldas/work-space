@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Col, Row } from 'reactstrap';
+import {Link} from 'react-router-dom';
+import {Col, Row} from 'reactstrap';
 
 interface BreadCrumbProps {
     title: string;
-    pageTitle : string;
+    pageTitle: string;
 }
 
-const BreadCrumb = ({ title, pageTitle } : BreadCrumbProps) => {
+const BreadCrumb = ({title, pageTitle}: BreadCrumbProps) => {
     return (
         <React.Fragment>
             <Row>

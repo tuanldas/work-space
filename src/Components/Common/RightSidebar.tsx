@@ -1,59 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import {
-    Offcanvas,
-    OffcanvasHeader,
-    OffcanvasBody,
-    Collapse,
-} from "reactstrap";
+import React, {useEffect, useState} from 'react';
+import {Collapse, Offcanvas, OffcanvasBody, OffcanvasHeader,} from 'reactstrap';
 import withRouter from './withRouter';
 
 //redux
 import {
     changeLayout,
-    changeSidebarTheme,
     changeLayoutMode,
-    changeLayoutWidth,
     changeLayoutPosition,
-    changeTopbarTheme,
+    changeLayoutTheme,
+    changeLayoutThemeColor,
+    changeLayoutWidth,
     changeLeftsidebarSizeType,
     changeLeftsidebarViewType,
-    changeSidebarImageType,
     changePreLoader,
+    changeSidebarImageType,
+    changeSidebarTheme,
     changeSidebarVisibility,
-    changeLayoutTheme,
-    changeLayoutThemeColor
-    // resetValue
-} from "../../slices/thunks";
+    changeTopbarTheme
+} from '../../slices/thunks';
 
-import { useSelector, useDispatch } from "react-redux";
+import {useDispatch, useSelector} from 'react-redux';
 
 //import Constant
 import {
-    LAYOUT_THEME,
-    LAYOUT_TYPES,
-    LAYOUT_SIDEBAR_TYPES,
     LAYOUT_MODE_TYPES,
-    LAYOUT_WIDTH_TYPES,
     LAYOUT_POSITION_TYPES,
+    LAYOUT_SIDEBAR_TYPES,
+    LAYOUT_THEME,
+    LAYOUT_THEME_COLOR,
     LAYOUT_TOPBAR_THEME_TYPES,
+    LAYOUT_TYPES,
+    LAYOUT_WIDTH_TYPES,
+    LEFT_SIDEBAR_IMAGE_TYPES,
     LEFT_SIDEBAR_SIZE_TYPES,
     LEFT_SIDEBAR_VIEW_TYPES,
-    LEFT_SIDEBAR_IMAGE_TYPES,
     PERLOADER_TYPES,
-    SIDEBAR_VISIBILITY_TYPES,
-    LAYOUT_THEME_COLOR
-} from "../constants/layout";
+    SIDEBAR_VISIBILITY_TYPES
+} from '../constants/layout';
 
 //SimpleBar
-import SimpleBar from "simplebar-react";
-import classnames from "classnames";
+import SimpleBar from 'simplebar-react';
+import classnames from 'classnames';
 
 //import Images
-import img01 from "../../assets/images/sidebar/img-1.jpg";
-import img02 from "../../assets/images/sidebar/img-2.jpg";
-import img03 from "../../assets/images/sidebar/img-3.jpg";
-import img04 from "../../assets/images/sidebar/img-4.jpg";
-import { createSelector } from 'reselect';
+import img01 from '../../assets/images/sidebar/img-1.jpg';
+import img02 from '../../assets/images/sidebar/img-2.jpg';
+import img03 from '../../assets/images/sidebar/img-3.jpg';
+import img04 from '../../assets/images/sidebar/img-4.jpg';
+import {createSelector} from 'reselect';
 
 const RightSidebar = (props: any) => {
     const dispatch: any = useDispatch();

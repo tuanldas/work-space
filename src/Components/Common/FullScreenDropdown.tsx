@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 const FullScreenDropdown: React.FC = () => {
     const [isFullScreenMode, setIsFullScreenMode] = useState<boolean>(true);

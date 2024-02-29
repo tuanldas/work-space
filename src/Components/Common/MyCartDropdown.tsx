@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { Col, Dropdown, DropdownMenu, DropdownToggle, Row } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Col, Dropdown, DropdownMenu, DropdownToggle, Row} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 //SimpleBar
-import SimpleBar from "simplebar-react";
+import SimpleBar from 'simplebar-react';
 
 //import images
-import image1 from "../../assets/images/products/img-1.png";
-import image2 from "../../assets/images/products/img-2.png";
-import image3 from "../../assets/images/products/img-3.png";
-import image6 from "../../assets/images/products/img-6.png";
-import image5 from "../../assets/images/products/img-5.png";
+import image1 from '../../assets/images/products/img-1.png';
+import image2 from '../../assets/images/products/img-2.png';
+import image3 from '../../assets/images/products/img-3.png';
+import image6 from '../../assets/images/products/img-6.png';
+import image5 from '../../assets/images/products/img-5.png';
 
 const MyCartDropdown = () => {
 
@@ -35,28 +35,28 @@ const MyCartDropdown = () => {
         if (ele) {
             const priceElement = ele.closest(".dropdown-item-cart")?.querySelector('.cart-item-price');
             const subTotalElement = document.getElementById('cart-item-total');
-    
+
             if (priceElement && subTotalElement) {
                 const price = parseFloat(priceElement.innerHTML);
                 const subTotal = parseFloat(subTotalElement.innerHTML);
                 const newTotal = subTotal - price;
-    
+
                 subTotalElement.innerHTML = newTotal.toFixed(2);
             }
-    
+
             ele.closest(".dropdown-item-cart")?.remove();
-    
+
             const element = document.querySelectorAll(".dropdown-item-cart").length;
             const ecart = document.getElementById("empty-cart");
-    
+
             if (ecart) {
                 ecart.style.display = element === 0 ? 'block' : 'none';
             }
-    
+
             setCartItem(element);
         }
     };
-    
+
 
     return (
         <React.Fragment>

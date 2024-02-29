@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Col, Dropdown, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink, Row, TabContent, TabPane } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Col, Dropdown, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink, Row, TabContent, TabPane} from 'reactstrap';
+import {Link} from 'react-router-dom';
 import classnames from 'classnames';
 
 //import images
-import avatar2 from "../../assets/images/users/avatar-2.jpg";
-import avatar8 from "../../assets/images/users/avatar-8.jpg";
-import avatar3 from "../../assets/images/users/avatar-3.jpg";
-import avatar6 from "../../assets/images/users/avatar-6.jpg";
-import bell from "../../assets/images/svg/bell.svg";
+import avatar2 from '../../assets/images/users/avatar-2.jpg';
+import avatar8 from '../../assets/images/users/avatar-8.jpg';
+import avatar3 from '../../assets/images/users/avatar-3.jpg';
+import avatar6 from '../../assets/images/users/avatar-6.jpg';
+import bell from '../../assets/images/svg/bell.svg';
 
 //SimpleBar
-import SimpleBar from "simplebar-react";
+import SimpleBar from 'simplebar-react';
 
 const NotificationDropdown = () => {
     //Dropdown Toggle
@@ -20,7 +20,7 @@ const NotificationDropdown = () => {
         setIsNotificationDropdown(!isNotificationDropdown);
     };
 
-    //Tab 
+    //Tab
     const [activeTab, setActiveTab] = useState('1');
     const toggleTab = (tab : any) => {
         if (activeTab !== tab) {

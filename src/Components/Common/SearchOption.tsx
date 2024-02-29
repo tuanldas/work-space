@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Input } from 'reactstrap';
+import React, {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
+import {Input} from 'reactstrap';
 import Navdata from 'Layouts/LayoutMenuData';
 
 //SimpleBar
-import SimpleBar from "simplebar-react";
+import SimpleBar from 'simplebar-react';
 
 //import images
-import image2 from "../../assets/images/users/avatar-2.jpg";
-import image3 from "../../assets/images/users/avatar-3.jpg";
-import image5 from "../../assets/images/users/avatar-5.jpg";
+import image2 from '../../assets/images/users/avatar-2.jpg';
+import image3 from '../../assets/images/users/avatar-3.jpg';
+import image5 from '../../assets/images/users/avatar-5.jpg';
 
 const SearchOption = () => {
 
     const navData = Navdata().props.children;
     const [searchTerm, setSearchTerm] = useState('');
     const [filterData, setFilterData] = useState([]);
-    
+
     useEffect(() => {
       const searchOptions = document.getElementById("search-close-options") as HTMLElement;
       const dropdown = document.getElementById("search-dropdown") as HTMLElement;
       const searchInput = document.getElementById("search-options") as HTMLInputElement;
-    
+
       const handleSearchInput = () => {
         const inputLength = searchInput.value.length;
         if (inputLength > 0) {
@@ -32,16 +32,16 @@ const SearchOption = () => {
           searchOptions.classList.add("d-none");
         }
       };
-    
+
       searchInput.addEventListener("focus", handleSearchInput);
       searchInput.addEventListener("keyup", handleSearchInput);
-    
+
       searchOptions.addEventListener("click", () => {
         searchInput.value = "";
         dropdown.classList.remove("show");
         searchOptions.classList.add("d-none");
       });
-    
+
       document.body.addEventListener("click", (e: any) => {
         if (e.target.getAttribute('id') !== "search-options") {
           dropdown.classList.remove("show");
@@ -49,7 +49,7 @@ const SearchOption = () => {
         }
       });
     }, [searchTerm]);
-    
+
     const onKeyDownPress = (e : any) => {
         const  { key} = e;
         if(key === "Enter"){
@@ -61,42 +61,42 @@ const SearchOption = () => {
         event.preventDefault();
         setSearchTerm(event.target.value);
     };
-    
+
     // Filter routes based on search term
     useEffect(() => {
       const filteredMenuItems = navData.reduce((result: any, menuItem: any) => {
         const lowercaseLabel = menuItem.label ? menuItem.label.toLowerCase() : '';
         const lowercaseLink = menuItem.link ? menuItem.link.toLowerCase() : '';
-    
+
         if (
           lowercaseLabel.includes(searchTerm.toLowerCase()) ||
           lowercaseLink.includes(searchTerm.toLowerCase())
         ) {
           result.push(menuItem);
         }
-    
+
         const filteredSubItems = (menuItem.subItems || []).filter((subItem: any) => {
           const lowercaseSubItemLabel = subItem.label ? subItem.label.toLowerCase() : '';
           const lowercaseSubItemLink = subItem.link ? subItem.link.toLowerCase() : '';
-    
+
           return (
             lowercaseSubItemLabel.includes(searchTerm.toLowerCase()) ||
             lowercaseSubItemLink.includes(searchTerm.toLowerCase())
           );
         });
-    
+
         if (filteredSubItems.length > 0) {
           const menuItemWithSubItems = { ...menuItem, subItems: filteredSubItems };
           result.push(menuItemWithSubItems);
         }
-    
+
         return result;
       }, []);
-    
+
       setFilterData(filteredMenuItems);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchTerm]);
-      
+
     return (
         <React.Fragment>
             <form className="app-search d-none d-md-block">
