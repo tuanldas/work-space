@@ -82,7 +82,7 @@ const Login = () => {
                                                         <div className="mb-3">
                                                             <Label className="form-label" htmlFor="password-input">Mật khẩu</Label>
                                                             <div className="position-relative auth-pass-inputgroup mb-3">
-                                                                <Input type={passwordShow ? "text" : "password"} className="form-control pe-5 password-input"id="password-input"
+                                                                <Input type={passwordShow ? "text" : "password"} className="form-control pe-5 password-input" id="password-input"
                                                                        name="password"
                                                                        value={validation.values.password || ""}
                                                                        onChange={validation.handleChange}
