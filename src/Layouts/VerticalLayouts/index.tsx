@@ -1,14 +1,14 @@
-import React, { useEffect, useCallback } from 'react';
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { Collapse } from 'reactstrap';
+import React, {useCallback, useEffect} from 'react';
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
+import {Collapse} from 'reactstrap';
 // Import Data
-import navdata from "../LayoutMenuData";
+import navdata from '../../Data/LayoutMenuData';
 //i18n
-import { withTranslation } from "react-i18next";
-import withRouter from "../../Components/Common/withRouter";
-import { useSelector } from "react-redux";
-import { createSelector } from 'reselect';
+import {withTranslation} from 'react-i18next';
+import withRouter from '../../Components/Common/withRouter';
+import {useSelector} from 'react-redux';
+import {createSelector} from 'reselect';
 
 const VerticalLayout = (props : any) => {
     const navData = navdata().props.children;

@@ -1,18 +1,18 @@
-import { changeHTMLAttribute } from './utils';
+import {changeHTMLAttribute} from './utils';
 import {
     changeLayoutAction,
+    changeLayoutModeAction,
+    changeLayoutPositionAction,
     changeLayoutThemeAction,
     changeLayoutThemeColorAction,
-    changeLayoutModeAction,
-    changeSidebarThemeAction,
     changeLayoutWidthAction,
-    changeLayoutPositionAction,
-    changeTopbarThemeAction,
     changeLeftsidebarSizeTypeAction,
     changeLeftsidebarViewTypeAction,
-    changeSidebarImageTypeAction,
     changePreLoaderAction,
-    changeSidebarVisibilityAction
+    changeSidebarImageTypeAction,
+    changeSidebarThemeAction,
+    changeSidebarVisibilityAction,
+    changeTopbarThemeAction
 } from './reducer';
 
 /**

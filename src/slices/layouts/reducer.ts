@@ -1,20 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from '@reduxjs/toolkit';
 //constants
 import {
-  LAYOUT_TYPES,
+  LAYOUT_MODE_TYPES,
+  LAYOUT_POSITION_TYPES,
+  LAYOUT_SIDEBAR_TYPES,
   LAYOUT_THEME,
   LAYOUT_THEME_COLOR,
-  LAYOUT_MODE_TYPES,
-  LAYOUT_SIDEBAR_TYPES,
-  LAYOUT_WIDTH_TYPES,
-  LAYOUT_POSITION_TYPES,
   LAYOUT_TOPBAR_THEME_TYPES,
+  LAYOUT_TYPES,
+  LAYOUT_WIDTH_TYPES,
+  LEFT_SIDEBAR_IMAGE_TYPES,
   LEFT_SIDEBAR_SIZE_TYPES,
   LEFT_SIDEBAR_VIEW_TYPES,
-  LEFT_SIDEBAR_IMAGE_TYPES,
   PERLOADER_TYPES,
   SIDEBAR_VISIBILITY_TYPES
-} from "../../Components/constants/layout"
+} from '../../Components/constants/layout';
 
 
 export interface LayoutState {
@@ -35,17 +35,17 @@ export interface LayoutState {
 
 export const initialState: LayoutState = {
   layoutType: LAYOUT_TYPES.VERTICAL,
-  layoutThemeType: LAYOUT_THEME.DEFAULT,
+  layoutThemeType: LAYOUT_THEME.CORPORATE,
   layoutThemeColorType: LAYOUT_THEME_COLOR.DEFAULT,
   layoutModeType: LAYOUT_MODE_TYPES.LIGHTMODE,
-  leftSidebarType: LAYOUT_SIDEBAR_TYPES.DARK,
+  leftSidebarType: LAYOUT_SIDEBAR_TYPES.LIGHT,
   layoutWidthType: LAYOUT_WIDTH_TYPES.FLUID,
   layoutPositionType: LAYOUT_POSITION_TYPES.FIXED,
   topbarThemeType: LAYOUT_TOPBAR_THEME_TYPES.LIGHT,
   leftsidbarSizeType: LEFT_SIDEBAR_SIZE_TYPES.DEFAULT,
   leftSidebarViewType: LEFT_SIDEBAR_VIEW_TYPES.DEFAULT,
-  leftSidebarImageType: LEFT_SIDEBAR_IMAGE_TYPES.NONE,
-  preloader: PERLOADER_TYPES.DISABLE,
+  leftSidebarImageType: LEFT_SIDEBAR_IMAGE_TYPES.IMG3,
+  preloader: PERLOADER_TYPES.ENABLE,
   sidebarVisibilitytype: SIDEBAR_VISIBILITY_TYPES.SHOW
 };
 

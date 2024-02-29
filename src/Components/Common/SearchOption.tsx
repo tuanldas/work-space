@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Input} from 'reactstrap';
-import Navdata from 'Layouts/LayoutMenuData';
+import NavData from 'Data/LayoutMenuData';
 
 //SimpleBar
 import SimpleBar from 'simplebar-react';
@@ -13,7 +13,7 @@ import image5 from '../../assets/images/users/avatar-5.jpg';
 
 const SearchOption = () => {
 
-    const navData = Navdata().props.children;
+    const navData = NavData().props.children;
     const [searchTerm, setSearchTerm] = useState('');
     const [filterData, setFilterData] = useState([]);
 

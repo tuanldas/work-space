@@ -1,6 +1,6 @@
-import React from "react";
-import { Container } from "reactstrap";
-import BreadCrumb from "Components/Common/BreadCrumb";
+import React from 'react';
+import {Container} from 'reactstrap';
+import BreadCrumb from 'Components/Common/BreadCrumb';
 
 const DashboardEcommerce = () => {
   document.title = "Dashboard | Velzon - React Admin & Dashboard Template";

@@ -1,13 +1,13 @@
 import React from 'react';
-import { Routes, Route } from "react-router-dom";
+import {Route, Routes} from 'react-router-dom';
 
 //Layouts
-import NonAuthLayout from "../Layouts/NonAuthLayout";
-import VerticalLayout from "../Layouts/index";
+import NonAuthLayout from '../Layouts/NonAuthLayout';
+import VerticalLayout from '../Layouts/index';
 
 //routes
-import { authProtectedRoutes, publicRoutes } from "./allRoutes";
-import AuthProtected  from './AuthProtected';
+import {authProtectedRoutes, publicRoutes} from './allRoutes';
+import AuthProtected from './AuthProtected';
 
 const Index = () => {
     return (

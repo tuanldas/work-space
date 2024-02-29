@@ -1,32 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from "prop-types";
+import React, {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import withRouter from '../Components/Common/withRouter';
 
 //import Components
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
-import RightSidebar from '../Components/Common/RightSidebar';
 
 //import actions
 import {
     changeLayout,
-    changeSidebarTheme,
     changeLayoutMode,
-    changeLayoutThemeColor,
-    changeLayoutTheme,
-    changeLayoutWidth,
     changeLayoutPosition,
-    changeTopbarTheme,
+    changeLayoutTheme,
+    changeLayoutThemeColor,
+    changeLayoutWidth,
     changeLeftsidebarSizeType,
     changeLeftsidebarViewType,
     changeSidebarImageType,
-    changeSidebarVisibility
-} from "../slices/thunks";
+    changeSidebarTheme,
+    changeSidebarVisibility,
+    changeTopbarTheme
+} from '../slices/thunks';
 
 //redux
-import { useSelector, useDispatch } from "react-redux";
-import { createSelector } from 'reselect';
+import {useDispatch, useSelector} from 'react-redux';
+import {createSelector} from 'reselect';
 
 const Layout = (props : any) => {
     const [headerClass, setHeaderClass] = useState("");
@@ -121,7 +120,7 @@ const Layout = (props : any) => {
         }
     };
 
-    // class add remove in header 
+    // class add remove in header
     useEffect(() => {
         window.addEventListener("scroll", scrollNavigation, true);
     });
@@ -159,7 +158,6 @@ const Layout = (props : any) => {
                     <Footer />
                 </div>
             </div>
-            <RightSidebar />
         </React.Fragment>
 
     );

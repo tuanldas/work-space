@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
+import React, {useEffect} from 'react';
+import {useSelector} from 'react-redux';
+import {createSelector} from 'reselect';
+
 const NonAuthLayout = ({ children }: any) => {
     const selectLayoutState = (state: any) => state.Layout;
     const selectLayoutProperties = createSelector(

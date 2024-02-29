@@ -1,19 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from "prop-types";
-import { Collapse, Container } from 'reactstrap';
+import React, {useCallback, useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {Collapse, Container} from 'reactstrap';
 import withRouter from '../../Components/Common/withRouter';
 
-import logoSm from "../../assets/images/logo-sm.png";
+import logoSm from '../../assets/images/logo-sm.png';
 //i18n
-import { withTranslation } from "react-i18next";
+import {withTranslation} from 'react-i18next';
 
 // Import Data
-import navdata from "../LayoutMenuData";
-import VerticalLayout from "../VerticalLayouts";
+import navdata from '../../Data/LayoutMenuData';
+import VerticalLayout from '../VerticalLayouts';
 
 //SimpleBar
-import SimpleBar from "simplebar-react";
+import SimpleBar from 'simplebar-react';
 
 const TwoColumnLayout = (props : any) => {
     const navData = navdata().props.children;

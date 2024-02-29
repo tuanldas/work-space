@@ -1,25 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Dropdown, DropdownMenu, DropdownToggle, Form } from 'reactstrap';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+import {Dropdown, DropdownMenu, DropdownToggle, Form} from 'reactstrap';
 
 //import images
-import logoSm from "../assets/images/logo-sm.png";
-import logoDark from "../assets/images/logo-dark.png";
-import logoLight from "../assets/images/logo-light.png";
+import logoSm from '../assets/images/logo-sm.png';
+import logoDark from '../assets/images/logo-dark.png';
+import logoLight from '../assets/images/logo-light.png';
 
 //import Components
 import SearchOption from '../Components/Common/SearchOption';
-import LanguageDropdown from '../Components/Common/LanguageDropdown';
-import WebAppsDropdown from '../Components/Common/WebAppsDropdown';
-import MyCartDropdown from '../Components/Common/MyCartDropdown';
 import FullScreenDropdown from '../Components/Common/FullScreenDropdown';
-import NotificationDropdown from '../Components/Common/NotificationDropdown';
 import ProfileDropdown from '../Components/Common/ProfileDropdown';
 import LightDark from '../Components/Common/LightDark';
 
-import { changeSidebarVisibility } from '../slices/thunks';
-import { useSelector, useDispatch } from "react-redux";
-import { createSelector } from 'reselect';
+import {changeSidebarVisibility} from '../slices/thunks';
+import {useDispatch, useSelector} from 'react-redux';
+import {createSelector} from 'reselect';
 
 const Header = ({ onChangeLayoutMode, layoutModeType, headerClass } : any) => {
     const dispatch : any = useDispatch();
@@ -31,7 +27,7 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass } : any) => {
       );
     // Inside your component
     const sidebarVisibilitytype = useSelector(selectDashboardData);
-    
+
 
     const [search, setSearch] = useState<boolean>(false);
     const toogleSearch = () => {
@@ -135,15 +131,6 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass } : any) => {
                                 </DropdownMenu>
                             </Dropdown>
 
-                            {/* LanguageDropdown */}
-                            <LanguageDropdown />
-
-                            {/* WebAppsDropdown */}
-                            <WebAppsDropdown />
-
-                            {/* MyCartDropdwon */}
-                            <MyCartDropdown />
-
                             {/* FullScreenDropdown */}
                             <FullScreenDropdown />
 
@@ -152,9 +139,6 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass } : any) => {
                                 layoutMode={layoutModeType}
                                 onChangeLayoutMode={onChangeLayoutMode}
                             />
-
-                            {/* NotificationDropdown */}
-                            <NotificationDropdown />
 
                             {/* ProfileDropdown */}
                             <ProfileDropdown />
