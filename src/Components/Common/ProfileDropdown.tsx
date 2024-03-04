@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
+import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
 
 //import images
 import avatar1 from '../../assets/images/users/avatar-1.jpg';
+import {useAppDispatch} from '../../slices/hooks';
+import {logoutAction} from '../../slices/Auth/actions';
 
 const ProfileDropdown = () => {
+    const dispatch = useAppDispatch();
     const [userName, setUserName] = useState('Admin');
 
     useEffect(() => {
@@ -20,6 +23,11 @@ const ProfileDropdown = () => {
     const toggleProfileDropdown = () => {
         setIsProfileDropdown(!isProfileDropdown);
     };
+
+    const logout = () => {
+        dispatch(logoutAction())
+    }
+
     return (
         <React.Fragment>
             <Dropdown isOpen={isProfileDropdown} toggle={toggleProfileDropdown}
@@ -37,11 +45,11 @@ const ProfileDropdown = () => {
                 <DropdownMenu className="dropdown-menu-end">
                     <h6 className="dropdown-header">Welcome {userName}!</h6>
                     <DropdownItem className="p-0">
-                        <Link to="/logout" className="dropdown-item">
+                        <Button to="/logout" className="dropdown-item" onClick={logout}>
                             <i
                                 className="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
                             className="align-middle" data-key="t-logout">Logout</span>
-                        </Link>
+                        </Button>
                     </DropdownItem>
                 </DropdownMenu>
             </Dropdown>

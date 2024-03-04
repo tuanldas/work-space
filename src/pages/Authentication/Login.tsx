@@ -1,17 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-import {Button, Card, Col, Container, Form, FormFeedback, Input, Label, Row} from 'reactstrap';
+import {Alert, Button, Card, Col, Container, Form, FormFeedback, Input, Label, Row} from 'reactstrap';
 import withRouter from '../../Components/Common/withRouter';
 import {changeLayoutTheme} from '../../slices/layouts/actions';
 import {LAYOUT_THEME} from '../../Components/constants/layout';
-import {useAppDispatch} from '../../slices/hooks';
-import {loginAction} from '../../slices/Login/actions';
+import {useAppDispatch, useAppSelector} from '../../slices/hooks';
+import {loginAction} from '../../slices/Auth/actions';
+import {selectAuthState} from '../../slices/Auth/selector';
+import {useNavigate} from 'react-router-dom';
+import {toast, ToastContainer} from 'react-toastify';
 
 const Login = () => {
     document.title = "SignIn | Work Space";
 
     const dispatch = useAppDispatch();
+    const authSlice = useAppSelector(selectAuthState);
+    const navigate = useNavigate();
     const [passwordShow, setPasswordShow] = useState<boolean>(false);
 
     useEffect(() => {
@@ -30,7 +35,6 @@ const Login = () => {
             password: Yup.string().required("Please Enter Your Password"),
         }),
         onSubmit: (values: { username: string, password: string }) => {
-            console.log("values", values)
             dispatch(loginAction({
                 email: values.username,
                 password: values.password
@@ -38,8 +42,15 @@ const Login = () => {
         }
     });
 
+    useEffect(() => {
+        if (authSlice.access_token && authSlice.expires_at) {
+            navigate('/dashboard');
+        }
+    }, [authSlice]);
+
     return (
         <React.Fragment>
+
             <div className="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
                 <div className="bg-overlay"></div>
                 <div className="auth-page-content overflow-hidden pt-lg-5">
@@ -53,7 +64,8 @@ const Login = () => {
                                                 <div>
                                                     <h5 className="text-primary">Chào mừng quay trở lại!</h5>
                                                 </div>
-
+                                                {authSlice.login.errorMessage ? (<Alert
+                                                    color="danger"> {authSlice.login.errorMessage} </Alert>) : null}
                                                 <div className="mt-4">
                                                     <Form
                                                         onSubmit={(e) => {
