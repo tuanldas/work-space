@@ -1,13 +1,12 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {loginActionError, loginActionSuccess, STATE_NAME} from './AuthSlice';
+import {loginActionError, loginActionSuccess, logoutActionSuccess, STATE_NAME} from './AuthSlice';
 import {callApiLogin} from '../../ApiCaller/AuthApi';
 import {AxiosError} from 'axios';
 
 export const logoutAction = createAsyncThunk(
     `${STATE_NAME}/logoutAction`,
-    async (_param) => {
-        // const response = await callApiLogin(param.email, param.password);
-        // console.log(response);
+    async (_param, {dispatch}) => {
+        dispatch(logoutActionSuccess());
     }
 );
 

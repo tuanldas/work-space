@@ -32,6 +32,15 @@ export const AuthSlice = createSlice({
         loginActionError(state, action) {
             state.login.isPending = false;
             state.login.errorMessage = action.payload;
+        },
+        logoutActionSuccess(state)  {
+            state.access_token = null;
+            state.token_type = 'Bearer';
+            state.expires_at = null;
+            state.user_information = {
+                uuid: null,
+                name: null
+            };
         }
     },
     extraReducers: (builder) => {
@@ -45,5 +54,6 @@ export const AuthSlice = createSlice({
 
 export const {
     loginActionSuccess,
-    loginActionError
+    loginActionError,
+    logoutActionSuccess
 } = AuthSlice.actions;
