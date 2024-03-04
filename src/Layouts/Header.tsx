@@ -13,9 +13,9 @@ import FullScreenDropdown from '../Components/Common/FullScreenDropdown';
 import ProfileDropdown from '../Components/Common/ProfileDropdown';
 import LightDark from '../Components/Common/LightDark';
 
-import {changeSidebarVisibility} from '../slices/thunks';
 import {useDispatch, useSelector} from 'react-redux';
 import {createSelector} from 'reselect';
+import {changeSidebarVisibility} from '../slices/layouts/actions';
 
 const Header = ({ onChangeLayoutMode, layoutModeType, headerClass } : any) => {
     const dispatch : any = useDispatch();
