@@ -16,13 +16,14 @@ import LightDark from '../Components/Common/LightDark';
 import {useDispatch, useSelector} from 'react-redux';
 import {createSelector} from 'reselect';
 import {changeSidebarVisibility} from '../slices/layouts/actions';
+import {RootState} from '../slices/hooks';
 
 const Header = ({ onChangeLayoutMode, layoutModeType, headerClass } : any) => {
     const dispatch : any = useDispatch();
 
 
     const selectDashboardData = createSelector(
-        (state) => state.Layout,
+        (state: RootState) => state.Layout,
         (sidebarVisibilitytype) => sidebarVisibilitytype.sidebarVisibilitytype
       );
     // Inside your component
