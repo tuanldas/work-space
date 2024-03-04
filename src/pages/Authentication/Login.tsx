@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-import {Alert, Button, Card, Col, Container, Form, FormFeedback, Input, Label, Row} from 'reactstrap';
+import {Alert, Button, Card, Col, Container, Form, FormFeedback, Input, Label, Row, Spinner} from 'reactstrap';
 import withRouter from '../../Components/Common/withRouter';
 import {changeLayoutTheme} from '../../slices/layouts/actions';
 import {LAYOUT_THEME} from '../../Components/constants/layout';
@@ -9,7 +9,6 @@ import {useAppDispatch, useAppSelector} from '../../slices/hooks';
 import {loginAction} from '../../slices/Auth/actions';
 import {selectAuthState} from '../../slices/Auth/selector';
 import {useNavigate} from 'react-router-dom';
-import {toast, ToastContainer} from 'react-toastify';
 
 const Login = () => {
     document.title = "SignIn | Work Space";
@@ -111,7 +110,15 @@ const Login = () => {
                                                         </div>
 
                                                         <div className="mt-4">
-                                                            <Button color="success" className="w-100" type="submit">Sign In</Button>
+                                                            <Button color="success" className="w-100" type="submit">
+                                                                {
+                                                                    authSlice.login.isPending ?
+                                                                        <Spinner size="sm"
+                                                                                 className="flex-shrink-0"> Loading... </Spinner>
+                                                                        : null
+                                                                }
+                                                                <span className="flex-grow-1 ms-2">Sign In</span>
+                                                            </Button>
                                                         </div>
                                                     </Form>
                                                 </div>

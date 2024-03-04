@@ -39,11 +39,6 @@ export const AuthSlice = createSlice({
             state.login.isPending = true;
             state.login.successMessage = '';
             state.login.errorMessage = '';
-            state.login = {
-                isPending: false,
-                successMessage: '',
-                errorMessage: ''
-            };
         });
     }
 });

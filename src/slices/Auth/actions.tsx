@@ -6,7 +6,6 @@ import {AxiosError} from 'axios';
 export const logoutAction = createAsyncThunk(
     `${STATE_NAME}/logoutAction`,
     async (_param) => {
-        console.log(1);
         // const response = await callApiLogin(param.email, param.password);
         // console.log(response);
     }
