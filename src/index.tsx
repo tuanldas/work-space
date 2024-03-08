@@ -4,7 +4,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import {store} from './slices';
+import {persist, store} from './slices';
+import { PersistGate } from 'redux-persist/integration/react'
 import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(
@@ -12,11 +13,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
+      <PersistGate loading={null} persistor={persist}>
     <React.Fragment>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <App />
       </BrowserRouter>
     </React.Fragment>
+      </PersistGate>
   </Provider>
 );
 

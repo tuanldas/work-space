@@ -15,7 +15,13 @@ const NavData = () => {
             id: "dashboard",
             label: "Dashboards",
             icon: "ri-dashboard-2-line",
-
+            link: "/dashboard",
+        },
+        {
+            id: "calendar",
+            label: "Calendar",
+            icon: " ri-calendar-2-line",
+            link: "/calendar",
         },
     ];
     return <React.Fragment>{menuItems}</React.Fragment>;

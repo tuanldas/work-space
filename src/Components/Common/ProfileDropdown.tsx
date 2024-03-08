@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
+import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
 
 //import images
 import avatar1 from '../../assets/images/users/avatar-1.jpg';
@@ -43,12 +43,12 @@ const ProfileDropdown = () => {
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-menu-end">
                     <h6 className="dropdown-header">Welcome {userName}!</h6>
-                    <DropdownItem className="p-0">
-                        <Button to="/logout" className="dropdown-item" onClick={logout}>
+                    <DropdownItem className="p-0" onClick={logout}>
+                        <div className={'dropdown-item'}>
                             <i
                                 className="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
                             className="align-middle" data-key="t-logout">Logout</span>
-                        </Button>
+                        </div>
                     </DropdownItem>
                 </DropdownMenu>
             </Dropdown>

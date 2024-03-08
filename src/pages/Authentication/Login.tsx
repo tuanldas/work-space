@@ -19,7 +19,7 @@ const Login = () => {
     const [passwordShow, setPasswordShow] = useState<boolean>(false);
 
     useEffect(() => {
-        dispatch(changeLayoutTheme(LAYOUT_THEME.DEFAULT))
+        // dispatch(changeLayoutTheme(LAYOUT_THEME.DEFAULT))
     }, []);
 
     const validation: any = useFormik({

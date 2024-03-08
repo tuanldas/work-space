@@ -1,17 +1,14 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import {Route, Routes} from 'react-router-dom';
-
-//Layouts
 import NonAuthLayout from '../Layouts/NonAuthLayout';
 import VerticalLayout from '../Layouts/index';
-
-//routes
 import {authProtectedRoutes, publicRoutes} from './allRoutes';
 import AuthProtected from './AuthProtected';
 
 const Index = () => {
     return (
         <React.Fragment>
+            <Suspense fallback="Loading...">
             <Routes>
                 <Route>
                     {publicRoutes.map((route: any, idx: any) => (
@@ -40,6 +37,7 @@ const Index = () => {
                     ))}
                 </Route>
             </Routes>
+            </Suspense>
         </React.Fragment>
     );
 };

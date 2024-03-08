@@ -36,7 +36,7 @@ export interface LayoutState {
 export const initialState: LayoutState = {
   layoutType: LAYOUT_TYPES.VERTICAL,
   layoutThemeType: LAYOUT_THEME.CORPORATE,
-  layoutThemeColorType: LAYOUT_THEME_COLOR.DEFAULT,
+  layoutThemeColorType: LAYOUT_THEME_COLOR.BLUE,
   layoutModeType: LAYOUT_MODE_TYPES.LIGHTMODE,
   leftSidebarType: LAYOUT_SIDEBAR_TYPES.LIGHT,
   layoutWidthType: LAYOUT_WIDTH_TYPES.FLUID,
@@ -45,7 +45,7 @@ export const initialState: LayoutState = {
   leftsidbarSizeType: LEFT_SIDEBAR_SIZE_TYPES.DEFAULT,
   leftSidebarViewType: LEFT_SIDEBAR_VIEW_TYPES.DEFAULT,
   leftSidebarImageType: LEFT_SIDEBAR_IMAGE_TYPES.IMG3,
-  preloader: PERLOADER_TYPES.ENABLE,
+  preloader: PERLOADER_TYPES.DISABLE,
   sidebarVisibilitytype: SIDEBAR_VISIBILITY_TYPES.SHOW
 };
 

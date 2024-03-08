@@ -1,14 +1,13 @@
-import React from 'react';
+import React, {lazy} from 'react';
 import {Navigate} from 'react-router-dom';
-
-//Dashboard
 import DashboardEcommerce from '../pages/DashboardEcommerce';
 
-//login
-import Login from '../pages/Authentication/Login';
+const Login = lazy(() => import('../pages/Authentication/Login'));
+const Calendar = lazy(() => import('../pages/Calendar'));
 
 const authProtectedRoutes = [
   { path: "/dashboard", component: <DashboardEcommerce /> },
+  {path: '/calendar', component: <Calendar/>},
 
   {
     path: "/",

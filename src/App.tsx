@@ -11,15 +11,14 @@ function App() {
 
     useEffect(() => {
         if (authSlice.access_token !== null && authSlice.expires_at !== null) {
-            console.log(1);
-            toast('Welcome Back! This is a Toast Notification', {
+            toast('Đăng nhập thành công.', {
                 position: 'top-right',
                 hideProgressBar: true,
                 className: 'bg-success text-white'
             });
         }
     }, [authSlice]);
-    
+
   return (
     <React.Fragment>
         <ToastContainer/>

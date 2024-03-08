@@ -22,7 +22,7 @@ const AuthProtected = (props: any) => {
         <Navigate to={{pathname: '/login'}}/>
     );
   }
-
+  // dispatch(changeLayoutTheme(LAYOUT_THEME.CORPORATE));
   return <>{props.children}</>;
 };
 

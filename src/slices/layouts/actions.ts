@@ -7,8 +7,11 @@ import {
     changeLayoutThemeColorAction,
     changeLayoutWidthAction,
     changeLeftsidebarSizeTypeAction,
-    changeLeftsidebarViewTypeAction, changeSidebarImageTypeAction,
-    changeSidebarThemeAction, changeSidebarVisibilityAction,
+    changeLeftsidebarViewTypeAction,
+    changePreLoaderAction,
+    changeSidebarImageTypeAction,
+    changeSidebarThemeAction,
+    changeSidebarVisibilityAction,
     changeTopbarThemeAction
 } from './reducer';
 
@@ -141,4 +144,13 @@ export const changeSidebarVisibility = (sidebarVisibilitytype: any) => async (di
         changeHTMLAttribute("data-sidebar-visibility", sidebarVisibilitytype);
         dispatch(changeSidebarVisibilityAction(sidebarVisibilitytype));
     } catch (error) { }
+};
+
+export const changePreLoader = (preloaderTypes: any) => async (dispatch: any) => {
+    try {
+        changeHTMLAttribute('data-preloader', preloaderTypes);
+        dispatch(changePreLoaderAction(preloaderTypes));
+    } catch (error) {
+        // console.log(error);
+    }
 };
