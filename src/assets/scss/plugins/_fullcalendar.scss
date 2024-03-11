@@ -1,6 +1,6 @@
-// 
+//
 // _fullcalendar.scss
-// 
+//
 
 :root {
     --fc-border-color:       var(--#{$prefix}border-color);
@@ -56,7 +56,7 @@
         padding: 8px 4px;
         color: var(--#{$prefix}body-color);
     }
-    
+
     .fc-daygrid-day-number {
         width: 24px;
         height: 24px;
@@ -74,7 +74,7 @@
     .fc-daygrid-day {
         &.fc-day-today {
             background-color: rgba($primary, 0.1);
-    
+
             .fc-daygrid-day-number {
                 background-color: $primary;
                 color: $white;
@@ -87,7 +87,7 @@
             background-color: rgba($primary, 0.1);
         }
     }
-    
+
     .fc-timegrid-col {
         &.fc-day-today {
             background-color: rgba($primary, 0.1);
@@ -234,12 +234,16 @@
     display: none;
 }
 
-.fc-event-time {
-    display: none;
-}
-
 .fc-event .fc-content {
     color: $white;
+}
+
+.fc-event .fc-event-title-container {
+    flex-grow: 0;
+}
+
+.fc-event .fc-event-main-frame {
+    display: flex;
 }
 
 #external-events {
@@ -313,7 +317,7 @@
 }
 
 .fc {
-    .fc-button-primary:not(:disabled).fc-button-active, 
+    .fc-button-primary:not(:disabled).fc-button-active,
     .fc-button-primary:not(:disabled):active{
         background-color: $secondary !important;
         border-color: $secondary !important;
