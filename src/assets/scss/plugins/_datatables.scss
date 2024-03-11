@@ -54,7 +54,7 @@ table {
                         >td {
                             &.dtr-control {
                                 &::before {
-                                    background-color: var(--#{$prefix}primary);
+                                    background-color: $primary;
                                     border-color: var(--#{$prefix}secondary-bg);
                                 }
                             }
@@ -65,7 +65,7 @@ table {
                                 >th {
                                     &.dtr-control {
                                         &::before {
-                                            background-color: var(--#{$prefix}danger);
+                                            background-color: $danger;
                                         }
                                     }
                                 }
@@ -74,7 +74,7 @@ table {
                             >td {
                                 &.dtr-control {
                                     &::before {
-                                        background-color: var(--#{$prefix}danger);
+                                        background-color: $danger;
                                     }
                                 }
                             }

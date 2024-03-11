@@ -133,7 +133,6 @@
     white-space: nowrap;
     z-index: 12;
     transition: .15s ease all;
-    font-family: $font-family-base !important;
 
     &.apexcharts-active {
         opacity: 1;
@@ -161,11 +160,10 @@
     }
 
     * {
-        font-family: inherit !important;
+        font-family: inherit;
     }
 
     .apexcharts-tooltip-title {
-        font-family: $font-family-base !important;
         padding: 6px;
         font-size: 15px;
         margin-bottom: 4px;
@@ -871,11 +869,5 @@
         path {
             clip-path: polygon(50% 2%, 100% 0, 100% 100%, 0 100%, 0 0);
         }
-    }
-}
-
-.apexcharts-grid-borders {
-    line {
-        stroke: var(--#{$prefix}border-color);
     }
 }

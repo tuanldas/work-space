@@ -173,7 +173,7 @@ pre[class*="language-"] {
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: rgba(var(--#{$prefix}body-color-rgb), .1);
+        background-color: rgba(var(--#{$prefix}dark-rgb), .1);
         border-radius: 10px;
         border: 2px solid var(--#{$prefix}light)
     }

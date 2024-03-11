@@ -81,7 +81,7 @@
                     }   
                     .icon-dual {
                         color: var(--#{$prefix}topnav-item-active-color);
-                        fill: rgba(var(--#{$prefix}primary-rgb), 0.10);
+                        fill: rgba($primary, 0.10);
                     }
                 }
 
@@ -90,7 +90,7 @@
 
                     .icon-dual {
                         color: var(--#{$prefix}topnav-item-active-color);
-                        fill: rgba(var(--#{$prefix}primary-rgb), 0.10);
+                        fill: rgba($primary, 0.10);
                     }
 
                     &:after {
@@ -101,7 +101,7 @@
                 &:hover {
                     .icon-dual {
                         color: var(--#{$prefix}topnav-item-active-color);
-                        fill: rgba(var(--#{$prefix}primary-rgb), 0.10);
+                        fill: rgba($primary, 0.10);
                     }
                 }
             }
@@ -146,7 +146,7 @@
 
                     .icon-dual {
                         color: var(--#{$prefix}topnav-item-active-color);
-                        fill: rgba(var(--#{$prefix}primary-rgb), 0.10);
+                        fill: rgba($primary, 0.10);
                     }
 
                     &:after {

@@ -1,21 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import {Col, Collapse, Row} from 'reactstrap';
+import React, { useEffect, useState } from 'react';
+import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
+import { Col, Collapse, Row } from 'reactstrap';
 import withRouter from '../../Components/Common/withRouter';
 
 // Import Data
-import navdata from '../../Data/LayoutMenuData';
+import navdata from "../LayoutMenuData";
 //i18n
-import {withTranslation} from 'react-i18next';
+import { withTranslation } from "react-i18next";
 
-const HorizontalLayout = (props : any) => {
+const HorizontalLayout = (props: any) => {
     const [isMoreMenu, setIsMoreMenu] = useState<boolean>(false);
     const navData = navdata().props.children;
     let menuItems = [];
     let splitMenuItems : Array<any> = [];
     let menuSplitContainer = 6;
-    navData.forEach(function (value : any, key : number) {
+    navData.forEach(function (value : any, key : any) {
         if (value['isHeader']) {
             menuSplitContainer++;
         }
@@ -29,7 +29,7 @@ const HorizontalLayout = (props : any) => {
             menuItems.push(value);
         }
     });
-    menuItems.push({ id: 'more', label: 'More', icon: 'ri-briefcase-2-line', link: "/#", stateVariables: isMoreMenu, subItems: splitMenuItems, click: function (e : any) { e.preventDefault(); setIsMoreMenu(!isMoreMenu); }, });
+    menuItems.push({ id: 'more', label: 'More', icon: 'ri-briefcase-2-line', link: "/#", stateVariables: isMoreMenu, subItems: splitMenuItems, click: function (e:any) { e.preventDefault(); setIsMoreMenu(!isMoreMenu); }, });
 
     const path = props.router.location.pathname;
 
@@ -38,7 +38,7 @@ const HorizontalLayout = (props : any) => {
         const initMenu = () => {
             const pathName = process.env.PUBLIC_URL + path;
             const ul = document.getElementById("navbar-nav") as HTMLElement;
-            const items : any = ul.getElementsByTagName("a");
+            const items : any= ul.getElementsByTagName("a");
             let itemsArray = [...items]; // converts NodeList to Array
             removeActivation(itemsArray);
             let matchingMenuItem = itemsArray.find((x) => {
@@ -102,7 +102,7 @@ const HorizontalLayout = (props : any) => {
 
     return (
         <React.Fragment>
-            {(menuItems || []).map((item  :any, key : number) => {
+            {(menuItems || []).map((item : any, key : number) => {
                 return (
                     <React.Fragment key={key}>
                         {/* Main Header */}
@@ -152,7 +152,7 @@ const HorizontalLayout = (props : any) => {
                                             </React.Fragment>
                                         ) : (
                                             <ul className="nav nav-sm flex-column test">
-                                                {item.subItems && ((item.subItems || []).map((subItem  : any, key : number) => (
+                                                {item.subItems && ((item.subItems || []).map((subItem : any, key : number) => (
                                                     <React.Fragment key={key}>
                                                         {!subItem.isChildItem ? (
                                                             <li className="nav-item">
@@ -176,7 +176,7 @@ const HorizontalLayout = (props : any) => {
                                                                     <ul className="nav nav-sm flex-column">
                                                                         {/* child subItms  */}
                                                                         {subItem.childItems && (
-                                                                            (subItem.childItems || []).map((subChildItem : any, key : number) => (
+                                                                            (subItem.childItems || []).map((subChildItem : any, key : any) => (
                                                                                 <React.Fragment key={key}>
                                                                                     {!subChildItem.isChildItem ? (
                                                                                         <li className="nav-item">

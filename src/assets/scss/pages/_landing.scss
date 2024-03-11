@@ -34,7 +34,7 @@
         position: absolute;
         width: 24px;
         height: 24px;
-        background-color: rgba(var(--#{$prefix}success-rgb), 0.2);
+        background-color: rgba($success, 0.2);
         border-radius: 50%;
         bottom: 0;
         left: 0;
@@ -58,7 +58,7 @@
                 font-size: 16px;
                 font-weight: $font-weight-medium;
                 transition: all 0.4s;
-                font-family: var(--#{$prefix}font-family-secondary);
+                font-family: $font-family-secondary;
                 color: var(--#{$prefix}body-color);
                 padding: 14px;
 
@@ -69,7 +69,7 @@
                 &:hover,
                 &.active,
                 &:focus {
-                    color: var(--#{$prefix}success) !important;
+                    color: $success !important;
                 }
             }
         }
@@ -224,7 +224,7 @@
 
         &:hover {
             color: $white;
-            background-color: var(--#{$prefix}primary);
+            background-color: $primary;
         }
     }
 }

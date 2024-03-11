@@ -20,7 +20,7 @@
             &.active,
             &:hover,
             &[aria-expanded="true"]{
-                color: var(--#{$prefix}success);
+                color: $success;
             }
         }
 

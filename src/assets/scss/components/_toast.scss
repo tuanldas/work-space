@@ -4,17 +4,21 @@
 
 
 // toast
-.toast {
+.toast { 
     &:not(:last-child) {
-        margin-bottom: $toast-padding-x;
+      margin-bottom: $toast-padding-x;
     }
 }
 
-@each $state in map-keys($theme-colors) {
-    .toast-border-#{$state} {
-        .toast-body {
-            color: var(--#{$prefix}#{$state});
-            border-bottom: 3px solid var(--#{$prefix}#{$state});
-        }
+@mixin toast-border-variant($bg) {
+    .toast-body{
+        color: $bg;
+        border-bottom: 3px solid $bg;
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .toast-border-#{$color} {
+        @include toast-border-variant($value);
     }
 }

@@ -11,7 +11,7 @@
         &:hover,
         &.active {
             border-color: transparent;
-            color: var(--#{$prefix}danger);
+            color: $danger;
         }
     }
 }
@@ -33,7 +33,7 @@
             left: 0;
             top: 0;
             bottom: 0;
-            background-color: rgba(var(--#{$prefix}dark-rgb), 0.4);
+            background-color: rgba($dark, 0.4);
             opacity: 0;
             transition: all 0.5s ease;
         }

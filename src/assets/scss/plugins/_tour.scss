@@ -41,7 +41,7 @@
 
 .shepherd-button{
     &.btn-success:not(:disabled):hover{
-        background: var(--#{$prefix}success-text-emphasis);
+        background: darken($success, 2.5%);
         color: $white;
     }
 
@@ -51,7 +51,7 @@
     }
 
     &.btn-primary:not(:disabled):hover{
-        background: var(--#{$prefix}primary-text-emphasis);
+        background: darken($primary, 2.5%);
         color: $white;
     }
 }

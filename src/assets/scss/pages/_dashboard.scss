@@ -53,16 +53,16 @@
         .flatpickr-day{
             &.today{
                 color: $white !important;
-                background-color: var(--#{$prefix}success);
-                border-color: var(--#{$prefix}success) !important;
+                background-color: $success;
+                border-color: $success !important;
                 &:hover{
-                    color: var(--#{$prefix}success) !important;
-                    background-color: rgba(var(--#{$prefix}success-rgb), 0.2) !important;
+                    color: $success !important;
+                    background-color: rgba($success, 0.2) !important;
                 }
             }
             &.selected{
-                background-color: var(--#{$prefix}success) !important;
-                border-color: var(--#{$prefix}success) !important;
+                background-color: $success !important;
+                border-color: $success !important;
                 color: $white;
             }
         }
@@ -139,14 +139,6 @@
     }
 }
 
-[data-layout-width="boxed"] {
-    .dash-countdown {
-        .countdownlist {
-            flex-wrap: wrap;
-        }
-    }
-}
-
 .marketplace-icon {
     position: absolute;
     float: right;
@@ -160,8 +152,8 @@
         top: 34px;
         width: 28px;
         height: 28px;
-        background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
-        color: var(--#{$prefix}primary);
+        background-color: rgba($primary, 0.1);
+        color: $primary;
         border-radius: .3rem;
         right: 16px !important;
     }
@@ -192,12 +184,4 @@
     height: 32px;
     display: inline-block;
     vertical-align: middle;
-}
-
-#portfolio_donut_charts {
-    .apexcharts-pie {
-        text {
-            fill: var(--#{$prefix}body-color);
-        }
-    }
 }

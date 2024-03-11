@@ -127,8 +127,8 @@ a.ck {
 .ck{
     &.ck-tooltip{
         .ck-tooltip__text {
-            background: var(--#{$prefix}dark) !important;
-            color: var(--#{$prefix}light) !important;
+            background: $dark !important;
+            color: $light !important;
         }
     }
 

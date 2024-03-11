@@ -1,19 +1,19 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
-import {Collapse, Container} from 'reactstrap';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { Collapse, Container } from 'reactstrap';
 import withRouter from '../../Components/Common/withRouter';
 
-import logoSm from '../../assets/images/logo-sm.png';
+import logoSm from "../../assets/images/logo-sm.png";
 //i18n
-import {withTranslation} from 'react-i18next';
+import { withTranslation } from "react-i18next";
 
 // Import Data
-import navdata from '../../Data/LayoutMenuData';
-import VerticalLayout from '../VerticalLayouts';
+import navdata from "../LayoutMenuData";
+import VerticalLayout from "../VerticalLayouts";
 
 //SimpleBar
-import SimpleBar from 'simplebar-react';
+import SimpleBar from "simplebar-react";
 
 const TwoColumnLayout = (props : any) => {
     const navData = navdata().props.children;
@@ -71,7 +71,7 @@ const TwoColumnLayout = (props : any) => {
         initMenu();
     }, [path, initMenu]);
 
-    function activateIconSidebarActive(id  :any) {
+    function activateIconSidebarActive(id : any) {
         var menu = document.querySelector("#two-column-menu .simplebar-content-wrapper a[sub-items='" + id + "'].nav-icon");
         if (menu !== null) {
             menu.classList.add("active");
@@ -79,7 +79,7 @@ const TwoColumnLayout = (props : any) => {
     }
 
     const removeActivation = (items : any) => {
-        let activeItems = items.filter((x : any) => x.classList.contains("active"));
+        let activeItems = items.filter((x :any) => x.classList.contains("active"));
         activeItems.forEach((item : any) => {
             if (item.classList.contains("menu-link")) {
                 if (!item.classList.contains("active")) {
@@ -97,10 +97,10 @@ const TwoColumnLayout = (props : any) => {
         });
 
         const ul = document.getElementById("two-column-menu") as HTMLElement;
-        const iconItems : any = ul.getElementsByTagName("a");
+        const iconItems : any= ul.getElementsByTagName("a");
         let itemsArray = [...iconItems];
         let activeIconItems = itemsArray.filter((x) => x.classList.contains("active"));
-        activeIconItems.forEach((item) => {
+        activeIconItems.forEach((item : any) => {
             item.classList.remove("active");
             var id = item.getAttribute("sub-items");
             var getId = document.getElementById(id) as HTMLElement;

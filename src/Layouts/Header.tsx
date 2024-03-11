@@ -15,19 +15,18 @@ import LightDark from '../Components/Common/LightDark';
 import {useDispatch, useSelector} from 'react-redux';
 import {createSelector} from 'reselect';
 import {changeSidebarVisibility} from '../slices/layouts/actions';
-import {RootState} from '../slices/hooks';
 
-const Header = ({ onChangeLayoutMode, layoutModeType, headerClass } : any) => {
-    const dispatch : any = useDispatch();
-
+const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }: any) => {
+    const dispatch: any = useDispatch();
 
     const selectDashboardData = createSelector(
-        (state: RootState) => state.Layout,
-        (sidebarVisibilitytype) => sidebarVisibilitytype.sidebarVisibilitytype
-      );
+        (state: any) => state.Layout,
+        (state) => ({
+            sidebarVisibilitytype: state.sidebarVisibilitytype,
+        })
+    );
     // Inside your component
-    const sidebarVisibilitytype = useSelector(selectDashboardData);
-
+    const { sidebarVisibilitytype } = useSelector(selectDashboardData);
 
     const [search, setSearch] = useState<boolean>(false);
     const toogleSearch = () => {
@@ -47,7 +46,7 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass } : any) => {
             document.body.classList.contains("menu") ? document.body.classList.remove("menu") : document.body.classList.add("menu");
         }
 
-        //For collapse vertical and semibox menu
+        //For collapse vertical menu
         if (sidebarVisibilitytype === "show" && (document.documentElement.getAttribute('data-layout') === "vertical" || document.documentElement.getAttribute('data-layout') === "semibox")) {
             if (windowSize < 1025 && windowSize > 767) {
                 document.body.classList.remove('vertical-sidebar-enable');
@@ -61,13 +60,11 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass } : any) => {
             }
         }
 
-
         //Two column menu
         if (document.documentElement.getAttribute('data-layout') === "twocolumn") {
             document.body.classList.contains('twocolumn-panel') ? document.body.classList.remove('twocolumn-panel') : document.body.classList.add('twocolumn-panel');
         }
     };
-
     return (
         <React.Fragment>
             <header id="page-topbar" className={headerClass}>
@@ -106,6 +103,7 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass } : any) => {
                                     <span></span>
                                 </span>
                             </button>
+
                         </div>
 
                         <div className="d-flex align-items-center">

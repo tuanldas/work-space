@@ -37,7 +37,7 @@
 
             &::after {
                 content: "";
-                background: var(--#{$prefix}primary);
+                background: $primary;
                 height: 1px;
                 position: absolute;
                 width: 100%;
@@ -48,7 +48,7 @@
             }
 
             &.active {
-                color: var(--#{$prefix}primary);
+                color: $primary;
 
                 &:after {
                     transform: scale(1);
@@ -112,7 +112,7 @@
 
             &.active {
                 &:before {
-                    border-top-color: var(--#{$prefix}primary);
+                    border-top-color: $primary;
                 }
             }
         }
@@ -197,7 +197,7 @@
 
             &.active {
                 &::before {
-                    border-left-color: var(--#{$prefix}primary);
+                    border-left-color: $primary;
                 }
             }
         }
@@ -229,7 +229,7 @@
                 right: 0;
                 height: 100%;
                 transition: width 0.4s cubic-bezier(0.51, 0.18, 0, 0.88) 0.1s;
-                background-color: var(--#{$prefix}primary);
+                background-color: $primary;
                 z-index: -1;
             }
 
@@ -252,13 +252,25 @@
         border-top: 3px solid transparent;
 
         &.active {
-            border-top-color: var(--#{$prefix}primary);
+            border-top-color: $primary;
+        }
+    }
+}
+
+@each $color,
+$value in $theme-colors {
+    .nav-border-top-#{$color} {
+        .nav-link {
+            &.active {
+                color: $value;
+                border-top-color: $value;
+            }
         }
     }
 }
 
 .nav-custom {
-    background-color: var(--#{$prefix}primary);
+    background-color: $primary;
     border-radius: $card-border-radius;
 
     .nav-item {
@@ -278,16 +290,77 @@
                 color: rgba(var(--#{$prefix}body-rgb), 0.75);
 
                 &.active {
-                    color: var(--#{$prefix}light);
-                    background-color: var(--#{$prefix}primary);
+                    color: $light;
+                    background-color: $primary;
                 }
             }
         }
     }
 }
 
+@each $color,
+$value in $theme-colors {
+    .nav-custom-#{$color} {
+        background-color: $value;
+    }
+}
+
 .nav-custom-light {
     background-color: var(--#{$prefix}light);
+}
+
+@each $color,
+$value in $theme-colors {
+    .nav-#{$color} {
+        .nav-link {
+            &.active {
+                color: $white;
+                background-color: $value;
+            }
+        }
+
+        &.nav-tabs {
+            .nav-link {
+                &.active {
+                    color: $value;
+                    background-color: var(--#{$prefix}secondary-bg);
+                }
+            }
+        }
+
+        &.nav-tabs-custom {
+            .nav-link {
+                &.active {
+                    color: $value;
+                    background-color: var(--#{$prefix}secondary-bg);
+
+                    &::after {
+                        background-color: $value;
+                    }
+                }
+            }
+        }
+
+        &.arrow-navtabs {
+            .nav-link {
+                &.active {
+                    &::before {
+                        border-top-color: $value;
+                    }
+                }
+            }
+        }
+
+        &.custom-verti-nav-pills {
+            .nav-link {
+                &.active {
+                    &::before {
+                        border-left-color: $value;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // progress nav
@@ -319,7 +392,7 @@
 
             &.active,
             &.done {
-                background-color: var(--#{$prefix}primary);
+                background-color: $primary;
                 color: $white;
             }
         }
@@ -347,8 +420,8 @@
             }
 
             &.done {
-                background-color: rgba(var(--#{$prefix}primary-rgb), 0.05);
-                color: var(--#{$prefix}primary);
+                background-color: rgba($primary, 0.05);
+                color: $primary;
 
                 &::before {
                     border-left-color: transparent;
@@ -356,12 +429,12 @@
             }
 
             &.active {
-                background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
-                color: var(--#{$prefix}primary);
+                background-color: rgba($primary, 0.1);
+                color: $primary;
                 box-shadow: none;
 
                 &::before {
-                    border-left-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
+                    border-left-color: rgba($primary, 0.1);
                 }
             }
         }
@@ -394,7 +467,7 @@
             }
 
             .step-icon {
-                color: var(--#{$prefix}danger);
+                color: $danger;
                 vertical-align: middle;
                 font-weight: $font-weight-medium;
                 float: left;
@@ -403,7 +476,7 @@
             &.active,
             &.done {
                 .step-icon {
-                    color: var(--#{$prefix}success);
+                    color: $success;
 
                     &:before {
                         content: "\eb80";
@@ -412,11 +485,11 @@
             }
 
             &.active {
-                border-color: var(--#{$prefix}primary);
+                border-color: $primary;
             }
 
             &.done {
-                border-color: var(--#{$prefix}success);
+                border-color: $success;
             }
         }
     }
@@ -430,9 +503,23 @@
             border-bottom: 2px solid transparent;
 
             &.active {
-                border-color: var(--#{$prefix}primary);
+                border-color: $primary;
                 background-color: transparent;
-                color: var(--#{$prefix}primary);
+                color: $primary;
+            }
+        }
+    }
+}
+
+@each $color,
+$value in $theme-colors {
+    .nav-#{$color} {
+        &.nav-custom-outline {
+            .nav-link {
+                &.active {
+                    color: $value;
+                    border-color: $value;
+                }
             }
         }
     }
@@ -479,87 +566,12 @@
             &.active,
             &.active:before,
             &.active:after {
-                background-color: var(--#{$prefix}primary);
+                background-color: $primary;
                 color: $white;
             }
 
             &.active {
                 z-index: 1;
-            }
-        }
-    }
-}
-
-@each $state in map-keys($theme-colors) {
-    .nav-border-top-#{$state} {
-        .nav-link {
-            &.active {
-                color: var(--#{$prefix}#{$state});
-                border-top-color: var(--#{$prefix}#{$state});
-            }
-        }
-    }
-
-    .nav-custom-#{$state} {
-        background-color: var(--#{$prefix}#{$state});
-    }
-
-    .nav-#{$state} {
-        .nav-link {
-            &.active {
-                color: $white;
-                background-color: var(--#{$prefix}#{$state});
-            }
-        }
-
-        &.nav-tabs {
-            .nav-link {
-                &.active {
-                    color: var(--#{$prefix}#{$state});
-                    background-color: var(--#{$prefix}secondary-bg);
-                }
-            }
-        }
-
-        &.nav-tabs-custom {
-            .nav-link {
-                &.active {
-                    color: var(--#{$prefix}#{$state});
-                    background-color: var(--#{$prefix}secondary-bg);
-
-                    &::after {
-                        background-color: var(--#{$prefix}#{$state});
-                    }
-                }
-            }
-        }
-
-        &.arrow-navtabs {
-            .nav-link {
-                &.active {
-                    &::before {
-                        border-top-color: var(--#{$prefix}#{$state});
-                    }
-                }
-            }
-        }
-
-        &.custom-verti-nav-pills {
-            .nav-link {
-                &.active {
-                    &::before {
-                        border-left-color: var(--#{$prefix}#{$state});
-                    }
-                }
-            }
-        }
-
-        &.nav-custom-outline {
-            .nav-link {
-                &.active {
-                    color: var(--#{$prefix}#{$state});
-                    border-color: var(--#{$prefix}#{$state});
-                }
             }
         }
     }

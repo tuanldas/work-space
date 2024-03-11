@@ -30,13 +30,13 @@
     bottom: -15px;
     border-left: 16px solid transparent;
     border-right: 16px solid transparent;
-    border-top: 16px solid var(--#{$prefix}primary);
+    border-top: 16px solid $primary;
   }
   &.below {
     top: -15px;
     border-left: 16px solid transparent;
     border-right: 16px solid transparent;
-    border-bottom: 16px solid var(--#{$prefix}primary);
+    border-bottom: 16px solid $primary;
   }
   
 }

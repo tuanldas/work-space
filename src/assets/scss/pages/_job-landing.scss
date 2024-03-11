@@ -173,7 +173,7 @@
     top: 0px;
     left: -2%;
     border-radius: 50%;
-    background: repeating-linear-gradient(-55deg, rgba($white, 0) 0.8px, var(--#{$prefix}success) 1.6px, var(--#{$prefix}success) 2px, rgba($white, 0) 3.8px, rgba($white, 0) 5px);
+    background: repeating-linear-gradient(-55deg, rgba($white, 0) 0.8px, $success 1.6px, $success 2px, rgba($white, 0) 3.8px, rgba($white, 0) 5px);
     z-index: 0;
     opacity: 0.20;
 
@@ -193,7 +193,7 @@
         right: -20px;
         top: -20px;
         bottom: 20px;
-        border: 1px solid var(--#{$prefix}info);
+        border: 1px solid $info;
         z-index: 0;
         border-radius: $border-radius;
 

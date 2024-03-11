@@ -7,7 +7,7 @@
 
     .ribbon {
         padding: 5px 12px;
-        box-shadow: 2px 5px 10px rgba(var(--#{$prefix}dark-rgb), 0.15);
+        box-shadow: 2px 5px 10px rgba($dark, 0.15);
         color: $white;
         font-size: $font-size-base;
         font-weight: $font-weight-semibold;
@@ -57,9 +57,10 @@
     }
 
     // ribbon fill
+
     &.ribbon-fill {
         overflow: hidden;
-
+            
         .ribbon {
             transform: rotate(-45deg);
             width: 93px;
@@ -70,7 +71,6 @@
             justify-content: center;
             align-items: flex-end;
         }
-
         &.ribbon-sm {
             .ribbon {
                 padding: 2px 12px;
@@ -144,6 +144,48 @@
         clear: both;
     }
 
+    @each $color,
+    $value in $theme-colors {
+        .ribbon-#{$color} {
+            background: ($value);
+
+            &:before {
+                border-color: darken(($value), 10%) transparent transparent;
+            }
+
+            &.ribbon-shape {
+                &::before {
+                    border-left-color: ($value);
+                    border-top-color: ($value);
+                }
+
+                &::after {
+                    border-left-color: ($value);
+                    border-bottom-color: ($value);
+                }
+            }
+        }
+
+        &.right {
+            .ribbon-#{$color} {
+                background: ($value);
+
+                &.ribbon-shape {
+                    &::before {
+                        border-right-color: ($value);
+                        border-top-color: ($value);
+                    }
+
+                    &::after {
+                        border-right-color: ($value);
+                        border-bottom-color: ($value);
+                    }
+                }
+            }
+        }
+    }
+
+
     // Icon ribbon
 
     .icon-ribbon {
@@ -201,6 +243,27 @@
             }
         }
     }
+
+    @each $color,
+    $value in $theme-colors {
+        .ribbon-two-#{$color} {
+
+            span {
+                background: ($value);
+
+                &:before {
+                    border-left: 3px solid darken(($value), 15%);
+                    border-top: 3px solid darken(($value), 15%);
+                }
+
+                &:after {
+                    border-right: 3px solid darken(($value), 15%);
+                    border-top: 3px solid darken(($value), 15%);
+                }
+            }
+        }
+    }
+
 }
 
 
@@ -264,6 +327,28 @@
     }
 }
 
+@each $color,
+$value in $theme-colors {
+    .ribbon-three-#{$color} {
+
+        span {
+            background: ($value);
+
+            &:before {
+                background: ($value);
+            }
+
+            &:after {
+                background: darken($value, 10%);
+            }
+        }
+
+        &::after {
+            border-top-color: ($value);
+        }
+    }
+}
+
 //Ribbon Hover
 .ribbon-box {
     .trending-ribbon {
@@ -285,106 +370,25 @@
             }
         }
     }
-
     &.right {
         .trending-ribbon {
             transform: translateX(50px);
             transition: all 0.5s ease;
-
+    
             .trending-ribbon-text {
                 transition: all 0.5s ease;
                 opacity: 0;
             }
         }
-
+    
         &:hover {
             .trending-ribbon {
                 transform: translateX(0);
-
+    
                 .trending-ribbon-text {
                     opacity: 1;
                 }
             }
         }
     }
-}
-
-
-//loop
-@each $state in map-keys($theme-colors) {
-
-    .ribbon-three-#{$state} {
-        span {
-            background: var(--#{$prefix}#{$state});
-
-            &:before {
-                background: var(--#{$prefix}#{$state});
-            }
-
-            &:after {
-                background: var(--#{$prefix}#{$state}-text-emphasis);
-            }
-        }
-
-        &::after {
-            border-top-color: var(--#{$prefix}#{$state});
-        }
-    }
-
-    .ribbon-box {
-        .ribbon-#{$state} {
-            background: var(--#{$prefix}#{$state});
-
-            &:before {
-                border-color: var(--#{$prefix}#{$state}-text-emphasis) transparent transparent;
-            }
-
-            &.ribbon-shape {
-                &::before {
-                    border-left-color: var(--#{$prefix}#{$state});
-                    border-top-color: var(--#{$prefix}#{$state});
-                }
-
-                &::after {
-                    border-left-color: var(--#{$prefix}#{$state});
-                    border-bottom-color: var(--#{$prefix}#{$state});
-                }
-            }
-        }
-
-        &.right {
-            .ribbon-#{$state} {
-                background: var(--#{$prefix}#{$state});
-
-                &.ribbon-shape {
-                    &::before {
-                        border-right-color: var(--#{$prefix}#{$state});
-                        border-top-color: var(--#{$prefix}#{$state});
-                    }
-
-                    &::after {
-                        border-right-color: var(--#{$prefix}#{$state});
-                        border-bottom-color: var(--#{$prefix}#{$state});
-                    }
-                }
-            }
-        }
-    }
-
-    .ribbon-two-#{$state} {
-        span {
-            background: var(--#{$prefix}#{$state});
-
-            &:before {
-                border-left: 3px solid var(--#{$prefix}#{$state}-text-emphasis);
-                border-top: 3px solid var(--#{$prefix}#{$state}-text-emphasis);
-            }
-
-            &:after {
-                border-right: 3px solid var(--#{$prefix}#{$state}-text-emphasis);
-                border-top: 3px solid var(--#{$prefix}#{$state}-text-emphasis);
-            }
-        }
-    }
-
 }

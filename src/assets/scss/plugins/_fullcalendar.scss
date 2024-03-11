@@ -73,10 +73,10 @@
 
     .fc-daygrid-day {
         &.fc-day-today {
-            background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
+            background-color: rgba($primary, 0.1);
     
             .fc-daygrid-day-number {
-                background-color: var(--#{$prefix}primary);
+                background-color: $primary;
                 color: $white;
             }
         }
@@ -84,13 +84,13 @@
 
     .fc-daygrid-day {
         &.fc-day-today {
-            background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
+            background-color: rgba($primary, 0.1);
         }
     }
     
     .fc-timegrid-col {
         &.fc-day-today {
-            background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
+            background-color: rgba($primary, 0.1);
         }
     }
 
@@ -177,18 +177,19 @@
 }
 
 .fc .fc-multimonth-multicol .fc-daygrid-more-link {
-    border: 1px solid var(--#{$prefix}primary);
+    color: $primary;
+    border: 1px solid $primary;
     display: block;
     float: none;
     padding: 1px;
     font-weight: $font-weight-medium;
-    font-family: var(--#{$prefix}font-family-primary);
+    font-family: $font-family-primary;
 }
 
 .fc-state-down,
 .fc-state-active,
 .fc-state-disabled {
-    background-color: var(--#{$prefix}primary);
+    background-color: $primary;
     color: $white;
     text-shadow: none;
 }
@@ -213,12 +214,12 @@
 
 .fc-event,
 .fc-event-dot {
-    background-color: var(--#{$prefix}primary);
+    background-color: $primary;
 }
 
 .fc-daygrid-dot-event.fc-event-mirror,
 .fc-daygrid-dot-event:hover {
-    background-color: var(--#{$prefix}primary);
+    background-color: $primary;
 }
 
 .fc-event-title,
@@ -252,49 +253,71 @@
 
 .fc-day-grid-event.fc-h-event.fc-event.fc-start.fc-end.bg-dark {
     .fc-content {
-        color: var(--#{$prefix}light);
+        color: $light;
     }
 }
 
 .fc-prev-button,
 .fc-next-button {
     position: relative;
-    padding: 6px 8px!important;
+    height: 37.5px;
+    width: 37.5px;
+
+    &::before {
+        position: absolute;
+        font-family: remixicon !important;
+        font-size: 20px;
+        top: 0;
+        bottom: 0px;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
+.fc-prev-button {
+    &::before {
+        content: "\ea64";
+    }
+}
+
+.fc-next-button {
+    &::before {
+        content: "\ea6e";
+    }
+}
 
 .fc-toolbar-chunk {
-    .fc-button-group {
+    .btn-group {
         box-shadow: $element-shadow;
-        .fc-button {
-            color: var(--#{$prefix}secondary);
-            background-color: rgba(var(--#{$prefix}secondary-rgb), 0.15);
+        .btn {
+            color: $secondary;
+            background-color: rgba($secondary, 0.15);
             border: none;
             box-shadow: none;
 
             &:hover,
             &.active {
                 color: $white;
-                background-color: var(--#{$prefix}secondary);
+                background-color: $secondary;
             }
         }
     }
 
     .fc-today-button {
-        background-color: var(--#{$prefix}secondary) !important;
-        border: var(--#{$prefix}secondary);
+        background-color: $secondary !important;
+        border: $secondary;
     }
 }
 
 .fc {
     .fc-button-primary:not(:disabled).fc-button-active, 
     .fc-button-primary:not(:disabled):active{
-        background-color: var(--#{$prefix}secondary) !important;
-        border-color: var(--#{$prefix}secondary) !important;
+        background-color: $secondary !important;
+        border-color: $secondary !important;
         color: $white !important;
-    }
-    .fc-button-primary {
-        text-transform: capitalize;
     }
 }
 
@@ -359,45 +382,48 @@
     border-color: var(--#{$prefix}border-color);
 }
 
-@each $state in map-keys($theme-colors) {
+@each $color,
+$value in $theme-colors {
     .fc-daygrid-event-harness {
         .fc-daygrid-event {
-            &.bg-#{$state}-subtle {
-    
+            &.bg-#{$color}-subtle {
+
                 .fc-event-title,
                 .fc-event-main {
-                    color: var(--#{$prefix}#{$state}) !important;
+                    color: $value !important;
                 }
             }
         }
     }
+
     .fc-timegrid-event-harness {
         .fc-timegrid-event {
-            &.bg-#{$state}-subtle {
+            &.bg-#{$color}-subtle {
                 .fc-event-title {
-                    color: var(--#{$prefix}#{$state}) !important;
+                    color: $value !important;
                 }
             }
         }
     }
+
     .fc-list-table {
         .fc-list-event {
-            &.bg-#{$state}-subtle {
-                color: var(--#{$prefix}#{$state}) !important;
-    
+            &.bg-#{$color}-subtle {
+                color: $value !important;
+
                 .fc-list-event-title {
                     >a {
-                        color: var(--#{$prefix}#{$state}) !important;
+                        color: $value !important;
                     }
                 }
-    
+
                 .fc-list-event-dot {
-                    border-color: var(--#{$prefix}#{$state});
+                    border-color: $value;
                 }
             }
         }
     }
- }
+}
 
 .fc-daygrid-event-harness .fc-daygrid-event.bg-dark-subtle{
     .fc-event-main, .fc-event-title {

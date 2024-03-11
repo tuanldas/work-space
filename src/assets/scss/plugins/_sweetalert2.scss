@@ -37,21 +37,21 @@
 
 .swal2-icon{
   &.swal2-question{
-    border-color: var(--#{$prefix}info);
-    color: var(--#{$prefix}info);
+    border-color: $info;
+    color: $info;
   }
   &.swal2-success {
     [class^=swal2-success-line]{
-      background-color: var(--#{$prefix}success);
+      background-color: $success;
     }
 
     .swal2-success-ring{
-      border-color: rgba(var(--#{$prefix}success-rgb), 0.3);
+      border-color: rgba($success, 0.3);
     }
   }
   &.swal2-warning{
-    border-color: var(--#{$prefix}warning);
-    color: var(--#{$prefix}warning);
+    border-color: $warning;
+    color: $warning;
   }
 }
 
@@ -62,32 +62,32 @@
 }
 
 .swal2-loader{
-  border-color: var(--#{$prefix}primary) transparent var(--#{$prefix}primary) transparent;
+  border-color: $primary transparent $primary transparent;
 }
 
 .swal2-timer-progress-bar{
-  background-color: rgba(var(--#{$prefix}success-rgb), 0.4);
+  background-color: rgba($success, 0.4);
 }
 
 .swal2-progress-steps {
   .swal2-progress-step{
-    background: var(--#{$prefix}primary);
+    background: $primary;
     &.swal2-active-progress-step{
-      background: var(--#{$prefix}primary);
+      background: $primary;
       &~.swal2-progress-step, &~.swal2-progress-step-line{
-        background: rgba(var(--#{$prefix}primary-rgb), 0.3);
+        background: rgba($primary, 0.3);
       }
     }
   }
   .swal2-progress-step-line{
-    background: var(--#{$prefix}primary);
+    background: $primary;
   }
 }
 
 .swal2-actions.swal2-loading{
   .swal2-styled.swal2-confirm{
-    border-left-color: var(--#{$prefix}primary) !important;
-    border-right-color: var(--#{$prefix}primary) !important;
+    border-left-color: $primary !important;
+    border-right-color: $primary !important;
   }
 }
 
@@ -122,7 +122,7 @@
   }
 
   &:hover{
-    color: var(--#{$prefix}primary);
+    color: $primary;
   }
 }
 

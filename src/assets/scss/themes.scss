@@ -1,10 +1,7 @@
 @import "../scss/icons.scss";
-// @import "../scss/config/default/bootstrap.scss";
-@import "../scss/bootstrap.scss";
-// @import "../scss/config/default/app.scss";
-@import "../scss/app.scss";
-// @import "../scss/config/default/custom.scss";
-@import "../scss/custom.scss";
+@import "../scss/config/corporate/bootstrap.scss";
+@import "../scss/config/corporate/app.scss";
+@import "../scss/config/corporate/custom.scss";
 @import"./shepherd.css";
 @import "./mermaid.min.css";
 
@@ -129,7 +126,7 @@ body {
 $value in $theme-colors {
   .simplebar-track-#{$color} {
     .simplebar-scrollbar:before {
-      background: $value !important;
+      background: $value  !important;
     }
   }
 }
@@ -147,7 +144,7 @@ $value in $theme-colors {
   height: 250px !important;
 }
 
-[data-layout="horizontal"] .chat-conversation {
+[data-layout="horizontal"] .chat-conversation{
   &.chatwidgets {
     height: 250px !important;
   }
@@ -168,6 +165,7 @@ $value in $theme-colors {
 }
 
 // Emoji Picker
+
 aside.EmojiPickerReact.epr-main {
   position: absolute !important;
   bottom: 0;
@@ -179,7 +177,6 @@ aside.EmojiPickerReact.epr-main {
   right: 23px !important;
   left: unset !important;
 }
-
 
 .Toastify {
   .Toastify__toast {
@@ -197,101 +194,91 @@ aside.EmojiPickerReact.epr-main {
 
 // Tranfer List
 
-.rdl-filter,
-.rdl-control {
+.rdl-filter, .rdl-control{
   background-color: $input-bg;
   border: 1px solid $input-border-color !important;
   color: $input-color !important;
 }
 
-.rdl-move {
+.rdl-move{
   background: var(--#{$prefix}light) !important;
   border: 1px solid var(--#{$prefix}light) !important;
   color: var(--#{$prefix}body-color) !important;
 }
 
 .react-dual-listbox {
-
-  input:disabled,
-  select:disabled {
+  input:disabled, select:disabled{
     background-color: $input-disabled-bg !important;
     border: 1px solid $input-border-color !important;
   }
 }
 
-.css-26l3qy-menu {
+.css-26l3qy-menu{
   background-color: var(--#{$prefix}gray-200) !important;
   border-color: var(--#{$prefix}border-color) !important;
 }
 
-.css-1n7v3ny-option {
+.css-1n7v3ny-option{
   background-color: var(--#{$prefix}gray-300) !important;
   border-color: var(--#{$prefix}border-color) !important;
 }
 
 //react select
-.css-b62m3t-container {
+.css-b62m3t-container{
   .css-13cymwt-control {
-    background-color: var(--#{$prefix}secondary-bg);
-    color: var(--#{$prefix}body-color);
-    border-color: var(--#{$prefix}border-color);
-
-    &:hover,
-    &:focus {
-      border-color: var(--#{$prefix}primary);
-    }
-
-    .css-1p3m7a8-multiValue {
-      color: var(--#{$prefix}white);
-      background-color: var(--#{$prefix}primary);
-
-      .css-wsp0cs-MultiValueGeneric {
-        color: var(--#{$prefix}white);
+      background-color: var(--#{$prefix}secondary-bg);
+      color: var(--#{$prefix}body-color);
+      border-color: var(--#{$prefix}border-color);
+      &:hover, &:focus {
+          border-color: var(--#{$prefix}primary);
       }
+      
+      .css-1p3m7a8-multiValue {
+          color: var(--#{$prefix}white);
+          background-color: var(--#{$prefix}primary);
+          .css-wsp0cs-MultiValueGeneric{
+              color: var(--#{$prefix}white);
+          }
 
-      .css-1u9des2-indicatorSeparator {
-        border-color: var(--#{$prefix}border-color);
+          .css-1u9des2-indicatorSeparator{
+              border-color: var(--#{$prefix}border-color);
+          }
       }
-    }
   }
 
   :is(.css-qbdosj-Input, .css-1dimb5e-singleValue) {
-    color: var(--#{$prefix}body-color);
+      color: var(--vz-input-bg-custom);
   }
 
-  .css-t3ipsp-control {
-    background-color: var(--#{$prefix}secondary-bg);
-    color: var(--#{$prefix}body-color);
-    border-color: var(--#{$prefix}border-color);
+  .css-t3ipsp-control{
+      background-color: var(--#{$prefix}secondary-bg);
+      color: var(--#{$prefix}body-color);
+      border-color: var(--#{$prefix}border-color);
 
-    .css-1p3m7a8-multiValue {
-      color: var(--#{$prefix}white);
-      background-color: var(--#{$prefix}primary);
+      .css-1p3m7a8-multiValue {
+          color: var(--#{$prefix}white);
+          background-color: var(--#{$prefix}primary);
+          .css-wsp0cs-MultiValueGeneric{
+              color: var(--#{$prefix}white);
+          }
 
-      .css-wsp0cs-MultiValueGeneric {
-        color: var(--#{$prefix}white);
+          .css-1u9des2-indicatorSeparator{
+              border-color: var(--#{$prefix}border-color);
+          }
       }
-
-      .css-1u9des2-indicatorSeparator {
-        border-color: var(--#{$prefix}border-color);
-      }
-    }
   }
 
-  .css-1nmdiq5-menu {
-    background-color: var(--#{$prefix}secondary-bg);
-    color: var(--#{$prefix}body-color);
-    border-color: var(--#{$prefix}border-color);
-
-    .css-d7l1ni-option {
-      color: $white;
-      background-color: var(--#{$prefix}primary);
-
-      &:hover,
-      &:active,
-      &:focus {
-        background-color: var(--#{$prefix}primary);
+  .css-1nmdiq5-menu{
+      background-color: var(--#{$prefix}secondary-bg);
+      color: var(--#{$prefix}body-color);
+      border-color: var(--#{$prefix}border-color);
+      .css-d7l1ni-option {
+          color:  var(--#{$prefix}body-color);
+          background-color: var(--#{$prefix}light);
+          &:hover, &:active, &:focus {
+              background-color: var(--#{$prefix}light);
+          }
       }
-    }
   }
 }
+

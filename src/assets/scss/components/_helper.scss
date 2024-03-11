@@ -35,11 +35,11 @@ $border-style-mixing: double, dashed, groove, outset, ridge, dotted, inset;
 // Font Family
 
 .ff-base {
-    font-family: var(--#{$prefix}font-family-primary);
+    font-family: $font-family-base;
 }
 
 .ff-secondary {
-    font-family: var(--#{$prefix}font-family-secondary);
+    font-family: $font-family-secondary;
 }
 
 // Background pattern
@@ -105,10 +105,11 @@ $border-style-mixing: double, dashed, groove, outset, ridge, dotted, inset;
     fill: rgba($gray-500,0.16);
 }
 
-@each $state in map-keys($theme-colors) {
-    .icon-dual-#{$state} {
-        color: var(--#{$prefix}#{$state});
-        fill: rgba(var(--#{$prefix}#{$state}-rgb), 0.16);
+@each $color,
+$value in $theme-colors {
+    .icon-dual-#{$color} {
+        color: $value;
+        fill: rgba($value, 0.16);
     }
 }
 
@@ -161,7 +162,7 @@ code {
 
 .layout-rightside {
     width: 280px;
-    margin-right: calc(#{$grid-gutter-width} * -0.9);
+    margin-right: calc(#{$grid-gutter-width} * -1);
     margin-top: calc(1px - #{$grid-gutter-width} * 1.1);
     height: calc(100% + #{$grid-gutter-width} * 1.1);
 }
@@ -232,7 +233,7 @@ code {
     &.active{
         border-color: transparent;
         .ri-star-fill{
-            color: var(--#{$prefix}warning);
+            color: $warning;
             
             &:before{
                 content: "\f186";

@@ -44,11 +44,11 @@
     .fg-emoji-picker-categories{
         background-color: $light !important;
         li.active{
-            background-color: rgba(var(--#{$prefix}primary-rgb), 0.2);
+            background-color: rgba(var(--bs-primary-rgb), 0.2);
         }
         a{
             &:hover{
-                background-color: rgba(var(--#{$prefix}primary-rgb), 0.2);
+                background-color: rgba(var(--bs-primary-rgb), 0.2);
             }
         }
         
@@ -56,7 +56,7 @@
 }
 
 .fg-emoji-picker-grid > li:hover{
-    background-color: rgba(var(--#{$prefix}primary-rgb), 0.2) !important;
+    background-color: rgba(var(--bs-primary-rgb), 0.2) !important;
 }
 
 a.fg-emoji-picker-close-button{

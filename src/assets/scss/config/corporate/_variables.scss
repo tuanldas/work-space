@@ -4,23 +4,16 @@
 // custom-variables
 //
 
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap');
+
 // Prefix for :root CSS variables
 
 $variable-prefix:             vz-; // Deprecated in v5.2.0 for the shorter `$prefix`
 $prefix:                      $variable-prefix;
 
-// All Themes root Quickly modify global styling by enabling or disabling optional features
-$theme-default:                                   true;
-$theme-corporate:                                 true;
-$theme-minimal:                                   true;
-$theme-creative:                                  true;
-$theme-galaxy:                                    true;
-$theme-interactive:                               true;
-$theme-material:                                  true;
-$theme-modern:                                    true;
-$theme-saas:                                      true;
-$theme-classic:                                   true;
-$theme-vintage:                                   true;
+// Font Family
+$font-family-primary:                             'Public Sans', sans-serif;
+$font-family-secondary:                           'Public Sans', sans-serif;
 
 //custom variables managed by
 //light mode
@@ -32,18 +25,6 @@ $sidebar-img:                                     true;
 $topbar-dark-mode:                                true;
 $sidebar-dark-mode:                               true;
 $sidebar-gradient-dark-mode:                      false;
-
-
-// Chat
-$chat-primary-bg:                                 var(--#{$prefix}chat-primary-bg);
-$chat-secondary-bg:                               var(--#{$prefix}chat-secondary-bg);
-$chat-secondary-color:                            var(--#{$prefix}chat-secondary-color);
-
-// Timeline
-$timeline-color:                                  var(--#{$prefix}timeline-color);
-
-//auth pages
-$auth-bg-cover:                                   linear-gradient(-45deg, var(--#{$prefix}primary) 50%, var(--#{$prefix}success));
 
 // Variables
 //
@@ -62,7 +43,7 @@ $gray-500: #adb5bd;
 $gray-600: #878a99;
 $gray-700: #495057;
 $gray-800: #343a40;
-$gray-900: #212529;
+$gray-900: #272a3a;
 $black:    #000;
 
 // fusv-disable
@@ -84,14 +65,14 @@ $grays: (
 // scss-docs-start color-variables
 $blue:       #3577f1;
 $indigo:     #405189;
-$purple:     #6559cc;
+$purple:     #687cfe;
 $pink:       #f672a7;
-$red:        #f06548;
-$orange:     #f1963b;
-$yellow:     #f7b84b;
-$green:      #0ab39c;
+$red:        #f7666e;
+$orange:     #ff7f5d;
+$yellow:     #efae4e;
+$green:      #3cd188;
 $teal:       #02a8b5;
-$cyan:       #299cdb;
+$cyan:       #0ac7fb;
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
@@ -343,14 +324,17 @@ $cyans: (
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$primary:       $indigo;
-$secondary:     $blue;
+$primary:       $purple;
+$secondary:     $orange;
 $success:       $green;
 $info:          $cyan;
 $warning:       $yellow;
 $danger:        $red;
 $light:         $gray-100;
 $dark:          $gray-900;
+
+
+
 
 // scss-docs-end theme-color-variables
 
@@ -476,7 +460,7 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   #f3f3f9;
+$body-bg:                   #fbf7f4;
 $body-color:                $gray-900;
 $body-text-align:           null;
 
@@ -559,12 +543,12 @@ $container-max-widths: (
 // Set the number of columns and specify the width of the gutters.
 
 $grid-columns:                12;
-$grid-gutter-width:           var(--#{$prefix}grid-gutter-width);
+$grid-gutter-width:           1.5rem;
 $grid-row-columns:            6;
 
 // Container padding
 
-$container-padding-x: calc(#{$grid-gutter-width} * 1);
+$container-padding-x: $grid-gutter-width * 1;
 
 
 // Components
@@ -598,15 +582,15 @@ $border-radius-2xl:           $border-radius-xxl; // Deprecated in v5.3.0
 // fusv-enable
 
 // scss-docs-start box-shadow-variables
-$box-shadow:                  0 1px 2px rgba(56,65,74,0.15);
+$box-shadow:                  rgba(100, 98, 92, 0.06) 0 0 15px 4px;
 $box-shadow-sm:               0 .125rem .25rem rgba($black, .075);
 $box-shadow-lg:               0 5px 10px rgba(30, 32, 37, 0.12);
 $box-shadow-inset:            inset 0 1px 2px rgba($black, .075);
-$element-shadow:              var(--#{$prefix}element-shadow);
+$element-shadow:              none;
 // scss-docs-end box-shadow-variables
 
 $component-active-color:      $white;
-$component-active-bg:         var(--#{$prefix}primary);
+$component-active-bg:         $primary;
 
 // scss-docs-start focus-ring-variables
 $focus-ring-width:      0.25rem;
@@ -646,7 +630,7 @@ $aspect-ratios: (
 
 // scss-docs-start font-variables
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      var(--#{$prefix}font-family-secondary);
+$font-family-sans-serif:      $font-family-primary;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 // stylelint-enable value-keyword-case
 $font-family-base:            var(--#{$prefix}font-sans-serif);
@@ -655,16 +639,16 @@ $font-family-code:            var(--#{$prefix}font-monospace);
 // $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins
 // $font-size-base affects the font size of the body text
 $font-size-root:              null;
-$font-size-base:              var(--#{$prefix}font-base); // Assumes the browser default, typically `16px`
-$font-size-sm:                calc(#{$font-size-base} * .875);
-$font-size-lg:                calc(#{$font-size-base} * 1.25);
+$font-size-base:              0.875rem; // Assumes the browser default, typically `16px`
+$font-size-sm:                $font-size-base * .875;
+$font-size-lg:                $font-size-base * 1.25;
 
 $font-weight-lighter:         lighter;
-$font-weight-light:           var(--#{$prefix}font-weight-light);
-$font-weight-normal:          var(--#{$prefix}font-weight-normal);
-$font-weight-medium:          var(--#{$prefix}font-weight-medium);
-$font-weight-semibold:        var(--#{$prefix}font-weight-semibold);
-$font-weight-bold:            var(--#{$prefix}font-weight-bold);
+$font-weight-light:           300;
+$font-weight-normal:          400;
+$font-weight-medium:          500;
+$font-weight-semibold:        600;
+$font-weight-bold:            700;
 $font-weight-bolder:          bolder;
 
 $font-weight-base:            $font-weight-normal;
@@ -673,11 +657,11 @@ $line-height-base:            1.5;
 $line-height-sm:              1.25;
 $line-height-lg:              2;
 
-$h1-font-size:                calc(#{$font-size-base} * 2.5);
-$h2-font-size:                calc(#{$font-size-base} * 2);
-$h3-font-size:                calc(#{$font-size-base} * 1.75);
-$h4-font-size:                calc(#{$font-size-base} * 1.5);
-$h5-font-size:                calc(#{$font-size-base} * 1.25);
+$h1-font-size:                $font-size-base * 2.5;
+$h2-font-size:                $font-size-base * 2;
+$h3-font-size:                $font-size-base * 1.75;
+$h4-font-size:                $font-size-base * 1.5;
+$h5-font-size:                $font-size-base * 1.25;
 $h6-font-size:                $font-size-base;
 // scss-docs-end font-variables
 
@@ -694,9 +678,9 @@ $font-sizes: (
 
 // scss-docs-start headings-variables
 $headings-margin-bottom:      $spacer * .5;
-$headings-font-family:        var(--#{$prefix}headings-font-family);
+$headings-font-family:        $font-family-primary;
 $headings-font-style:         null;
-$headings-font-weight:        var(--#{$prefix}headings-font-weight);
+$headings-font-weight:        $font-weight-semibold;
 $headings-line-height:        1.2;
 $headings-color:              $gray-700;
 // scss-docs-end headings-variables
@@ -719,27 +703,27 @@ $display-line-height: $headings-line-height;
 
 //Font size custom
 $font-size-custom: (
-  10: var(--#{$prefix}font-10),
-  11: var(--#{$prefix}font-11),
-  12: var(--#{$prefix}font-12),
-  13: var(--#{$prefix}font-13),
-  14: var(--#{$prefix}font-14),
-  15: var(--#{$prefix}font-15),
-  16: var(--#{$prefix}font-16),
-  17: var(--#{$prefix}font-17),
-  18: var(--#{$prefix}font-18),
-  19: var(--#{$prefix}font-19),
-  20: var(--#{$prefix}font-20),
-  21: var(--#{$prefix}font-21),
-  22: var(--#{$prefix}font-22),
-  23: var(--#{$prefix}font-23),
-  24: var(--#{$prefix}font-24),
-  36: var(--#{$prefix}font-36),
-  48: var(--#{$prefix}font-48)
+  10: 10px,
+  11: 11px,
+  12: 12px,
+  13: 13px,
+  14: 14px,
+  15: 15px,
+  16: 16px,
+  17: 17px,
+  18: 18px,
+  19: 19px,
+  20: 20px,
+  21: 21px,
+  22: 22px,
+  23: 23px,
+  24: 24px,
+  36: 36px,
+  48: 48px
 );
 
 // scss-docs-start type-variables
-$lead-font-size:              calc(#{$font-size-base} * 1.25);
+$lead-font-size:              $font-size-base * 1.25;
 $lead-font-weight:            300;
 
 $small-font-size:             .875em;
@@ -753,7 +737,7 @@ $text-muted:                  var(--#{$prefix}secondary-color); // Deprecated in
 $initialism-font-size:        $small-font-size;
 
 $blockquote-margin-y:         $spacer;
-$blockquote-font-size:        calc(#{$font-size-base} * 1.1);
+$blockquote-font-size:        $font-size-base * 1.1;
 $blockquote-footer-color:     $gray-600;
 $blockquote-footer-font-size: $small-font-size;
 
@@ -891,7 +875,7 @@ $btn-font-size-lg:            $input-btn-font-size-lg;
 
 $btn-border-width:            $input-btn-border-width;
 
-$btn-font-weight:             var(--#{$prefix}btn-font-weight-custom);
+$btn-font-weight:             $font-weight-normal;
 $btn-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075);
 $btn-focus-width:             $input-btn-focus-width;
 $btn-focus-box-shadow:        $input-btn-focus-box-shadow;
@@ -955,13 +939,13 @@ $input-padding-y-lg:                    $input-btn-padding-y-lg;
 $input-padding-x-lg:                    $input-btn-padding-x-lg;
 $input-font-size-lg:                    $input-btn-font-size-lg;
 
-$input-bg:                              var(--#{$prefix}input-bg-custom);
+$input-bg:                              var(--#{$prefix}secondary-bg);
 $input-disabled-color:                  null;
 $input-disabled-bg:                     var(--#{$prefix}tertiary-bg);
 $input-disabled-border-color:           null;
 
 $input-color:                           var(--#{$prefix}body-color);
-$input-border-color:                    var(--#{$prefix}input-border-custom);
+$input-border-color:                    var(--#{$prefix}border-color-translucent);
 $input-border-width:                    $input-btn-border-width;
 $input-box-shadow:                      $box-shadow-inset;
 
@@ -989,13 +973,12 @@ $input-height-sm:                       add($input-line-height * 1em, add($input
 $input-height-lg:                       add($input-line-height * 1em, add($input-padding-y-lg * 2, $input-height-border, false));
 
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-
 $form-color-width:                      3rem;
 // scss-docs-end form-input-variables
 
 // scss-docs-start form-check-variables
 $form-check-input-width:                  1.1em;
-$form-check-min-height:                   calc(#{$font-size-base} * $line-height-base);
+$form-check-min-height:                   $font-size-base * $line-height-base;
 $form-check-padding-start:                $form-check-input-width + .5em;
 $form-check-margin-bottom:                .125rem;
 $form-check-label-color:                  null;
@@ -1012,7 +995,7 @@ $form-check-input-focus-border:           $input-focus-border-color;
 $form-check-input-focus-box-shadow:       $focus-ring-box-shadow;
 
 $form-check-input-checked-color:          $component-active-color;
-$form-check-input-checked-bg-color:       var(--#{$prefix}primary);
+$form-check-input-checked-bg-color:       $component-active-bg;
 $form-check-input-checked-border-color:   $form-check-input-checked-bg-color;
 $form-check-input-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>");
 $form-check-radio-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$form-check-input-checked-color}'/></svg>");
@@ -1030,14 +1013,14 @@ $form-check-inline-margin-end:    1rem;
 // scss-docs-end form-check-variables
 
 // scss-docs-start form-switch-variables
-$form-switch-color:               rgba($gray-600, 0.55);
+$form-switch-color:               rgba($black, .25);
 $form-switch-width:               2em;
 $form-switch-padding-start:       $form-switch-width + .5em;
 $form-switch-bg-image:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color}'/></svg>");
 $form-switch-border-radius:       $form-switch-width;
 $form-switch-transition:          background-position .15s ease-in-out;
 
-$form-switch-focus-color:         $form-switch-color;
+$form-switch-focus-color:         $input-focus-border-color;
 $form-switch-focus-bg-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color}'/></svg>");
 
 $form-switch-checked-color:       $component-active-color;
@@ -1114,7 +1097,7 @@ $form-range-thumb-border-radius:           1rem;
 $form-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1);
 $form-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow;
 $form-range-thumb-focus-box-shadow-width:  $input-focus-width; // For focus box shadow issue in Edge
-$form-range-thumb-active-bg:               $component-active-bg;
+$form-range-thumb-active-bg:               tint-color($component-active-bg, 70%);
 $form-range-thumb-disabled-bg:             var(--#{$prefix}secondary-color);
 $form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 // scss-docs-end form-range-variables
@@ -1169,7 +1152,7 @@ $form-validation-states: (
     "tooltip-color": #fff,
     "tooltip-bg-color": var(--#{$prefix}success),
     "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--#{$prefix}success-rgb), $input-btn-focus-color-opacity),
-    "border-color": var(--#{$prefix}form-valid-border-color),
+    // "border-color": var(--#{$prefix}form-valid-border-color),
   ),
   "invalid": (
     "color": var(--#{$prefix}form-invalid-color),
@@ -1177,7 +1160,7 @@ $form-validation-states: (
     "tooltip-color": #fff,
     "tooltip-bg-color": var(--#{$prefix}danger),
     "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--#{$prefix}danger-rgb), $input-btn-focus-color-opacity),
-    "border-color": var(--#{$prefix}form-invalid-border-color),
+    // "border-color": var(--#{$prefix}form-invalid-border-color),
   )
 );
 // scss-docs-end form-validation-states
@@ -1252,9 +1235,9 @@ $navbar-nav-link-padding-x:         .5rem;
 
 $navbar-brand-font-size:            $font-size-lg;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
-$nav-link-height:                   calc(#{$font-size-base} * $line-height-base + $nav-link-padding-y * 2);
-$navbar-brand-height:               calc($navbar-brand-font-size * $line-height-base);
-$navbar-brand-padding-y:            calc(($nav-link-height - $navbar-brand-height) * .5);
+$nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2;
+$navbar-brand-height:               $navbar-brand-font-size * $line-height-base;
+$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) * .5;
 $navbar-brand-margin-end:           1rem;
 
 $navbar-toggler-padding-y:          .25rem;
@@ -1317,8 +1300,8 @@ $dropdown-link-active-bg:           var(--#{$prefix}tertiary-bg);
 
 $dropdown-link-disabled-color:      var(--#{$prefix}tertiary-color);
 
-$dropdown-item-padding-y:           0.35rem;
-$dropdown-item-padding-x:           1.2rem;
+$dropdown-item-padding-y:           $spacer * .25;
+$dropdown-item-padding-x:           $spacer;
 
 $dropdown-header-color:             $gray-600;
 $dropdown-header-padding-x:         $dropdown-item-padding-x;
@@ -1400,12 +1383,12 @@ $placeholder-opacity-min:           .2;
 $card-spacer-y:                     $spacer;
 $card-spacer-x:                     $spacer;
 $card-title-spacer-y:               $spacer * .5;
-$card-title-color:                  var(--#{$prefix}heading-color);
+$card-title-color:                  null;
 $card-subtitle-color:               null;
-$card-border-width:                 var(--#{$prefix}card-border-width-custom);
+$card-border-width:                 0;
 $card-border-color:                 var(--#{$prefix}border-color);
 $card-border-radius:                var(--#{$prefix}border-radius);
-$card-box-shadow:                   var(--#{$prefix}card-shadow);
+$card-box-shadow:                   $box-shadow;
 $card-inner-border-radius:          $card-border-radius;
 $card-cap-padding-y:                $card-spacer-y;
 $card-cap-padding-x:                $card-spacer-x;
@@ -1493,7 +1476,7 @@ $popover-bg:                        var(--#{$prefix}secondary-bg);
 $popover-max-width:                 276px;
 $popover-border-width:              var(--#{$prefix}border-width);
 $popover-border-color:              var(--#{$prefix}border-color);
-$popover-border-radius:             var(--#{$prefix}border-radius);
+$popover-border-radius:             var(--#{$prefix}border-radius-lg);
 $popover-inner-border-radius:       calc(#{$popover-border-radius} - #{$popover-border-width}); // stylelint-disable-line function-disallowed-list
 $popover-box-shadow:                $box-shadow-lg;
 
@@ -1516,7 +1499,6 @@ $popover-arrow-height:              .5rem;
 $popover-arrow-color:               $popover-bg;
 $popover-arrow-outer-color:         var(--#{$prefix}border-color-translucent);
 // fusv-enable
-
 
 // Toasts
 
@@ -1621,7 +1603,7 @@ $alert-color-scale:             25%; // Deprecated in v5.2.0, to be removed in v
 
 // scss-docs-start progress-variables
 $progress-height:                   0.625rem;
-$progress-font-size:                calc(#{$font-size-base} * .75);
+$progress-font-size:                $font-size-base * .75;
 $progress-bg:                       var(--#{$prefix}tertiary-bg);
 $progress-border-radius:            var(--#{$prefix}border-radius);
 $progress-box-shadow:               var(--#{$prefix}box-shadow-inset);

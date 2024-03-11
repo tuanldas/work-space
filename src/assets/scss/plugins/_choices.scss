@@ -205,8 +205,8 @@
         margin-right: 3.75px;
         margin-bottom: 3.75px;
         margin-top: 2px;
-        background-color: var(--#{$prefix}primary);
-        border: 1px solid var(--#{$prefix}primary);
+        background-color: $primary;
+        border: 1px solid $primary;
         word-break: break-all;
         box-sizing: border-box;
         color: $white;
@@ -216,8 +216,8 @@
         }
 
         &.is-highlighted {
-            background-color: var(--#{$prefix}primary);
-            border: 1px solid var(--#{$prefix}primary);
+            background-color: $primary;
+            border: 1px solid $primary;
         }
     }
 }
@@ -226,8 +226,8 @@
 .is-disabled {
     .choices__list--multiple {
         .choices__item {
-            background-color: var(--#{$prefix}secondary);
-            border: 1px solid var(--#{$prefix}secondary)
+            background-color: $secondary;
+            border: 1px solid $secondary
         }
     }
 }

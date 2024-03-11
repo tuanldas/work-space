@@ -75,12 +75,12 @@
     }
 }
 
-// loop
-@each $state in map-keys($theme-colors) {
+@each $color,
+$value in $theme-colors {
     .input-step {
-        &.step-#{$state} {
+        &.step-#{$color} {
             button {
-                background-color: var(--#{$prefix}#{$state});
+                background-color: $value;
                 color: $white;
             }
         }

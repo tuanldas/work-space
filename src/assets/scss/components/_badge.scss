@@ -6,11 +6,12 @@
     line-height: 0.95;
 }
 
-@each $state in map-keys($theme-colors) { 
+@each $color, $value in $theme-colors {
+   
     .badge-label {
-        &.bg-#{$state} {
+        &.bg-#{$color} {
             &:before {
-                border-right-color: var(--#{$prefix}#{$state});
+                border-right-color: $value;
             }
         }
     }
@@ -29,7 +30,7 @@
         content: "";
         position: absolute;
         border: 8px solid transparent;
-        border-right-color: var(--#{$prefix}primary);
+        border-right-color: $primary;
         left: -14px;
         top: 0;
     }
@@ -37,13 +38,13 @@
 
 //Badge Gradient Style
 $gradients: ();
-$gradients: map-merge((primary: linear-gradient(135deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}success) 100%),
-        secondary: linear-gradient(135deg, var(--#{$prefix}secondary) 0%, var(--#{$prefix}info) 100%),
-        success: linear-gradient(135deg, var(--#{$prefix}success) 0%, $warning 100%),
-        danger: linear-gradient(135deg, var(--#{$prefix}danger) 0%, var(--#{$prefix}secondary) 100%),
+$gradients: map-merge((primary: linear-gradient(135deg, $primary 0%, $success 100%),
+        secondary: linear-gradient(135deg, $secondary 0%, $info 100%),
+        success: linear-gradient(135deg, $success 0%, $warning 100%),
+        danger: linear-gradient(135deg, $danger 0%, $secondary 100%),
         warning: linear-gradient(135deg, $warning 0%, darken($warning, 15%) 100%),
-        info: linear-gradient(135deg, var(--#{$prefix}info) 0%, var(--#{$prefix}success) 100%),
-        dark: linear-gradient(135deg, $dark 0%, var(--#{$prefix}primary) 100%)),
+        info: linear-gradient(135deg, $info 0%, $success 100%),
+        dark: linear-gradient(135deg, $dark 0%, $primary 100%)),
     $gradients);
 
 @mixin badge-gradient($parent, $gradient) {

@@ -112,7 +112,7 @@
 // Custom Dropdown with Tabs
 .dropdown-head{
     .nav-tabs-custom{
-        border: 0;
+        border: 0 !important;
         .nav-link  {
             &::after {
                 display: none;

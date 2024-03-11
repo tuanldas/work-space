@@ -7,38 +7,27 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 
-
 //redux
 import {useDispatch, useSelector} from 'react-redux';
 import {createSelector} from 'reselect';
 import {
     changeLayout,
-    changeLayoutMode,
-    changeLayoutPosition,
-    changeLayoutTheme,
-    changeLayoutThemeColor,
-    changeLayoutWidth,
+    changeLayoutMode, changeLayoutPosition, changeLayoutWidth,
     changeLeftsidebarSizeType,
-    changeLeftsidebarViewType,
-    changeSidebarImageType,
-    changeSidebarTheme,
-    changeSidebarVisibility,
-    changeTopbarTheme
+    changeLeftsidebarViewType, changeSidebarImageType,
+    changeSidebarTheme, changeSidebarVisibility, changeTopbarTheme
 } from '../slices/layouts/actions';
 
 const Layout = (props : any) => {
-    const [headerClass, setHeaderClass] = useState("");
+    const [headerClass, setHeaderClass] = useState<any>("");
     const dispatch : any = useDispatch();
 
-    const selectLayoutState = (state : any) => state.Layout;
     const selectLayoutProperties = createSelector(
-        selectLayoutState,
+        (state : any) => state.Layout,
         (layout) => ({
             layoutType: layout.layoutType,
             leftSidebarType: layout.leftSidebarType,
             layoutModeType: layout.layoutModeType,
-            layoutThemeColorType: layout.layoutThemeColorType,
-            layoutThemeType : layout.layoutThemeType,
             layoutWidthType: layout.layoutWidthType,
             layoutPositionType: layout.layoutPositionType,
             topbarThemeType: layout.topbarThemeType,
@@ -54,8 +43,6 @@ const Layout = (props : any) => {
         layoutType,
         leftSidebarType,
         layoutModeType,
-        layoutThemeColorType,
-        layoutThemeType,
         layoutWidthType,
         layoutPositionType,
         topbarThemeType,
@@ -73,8 +60,6 @@ const Layout = (props : any) => {
             layoutType ||
             leftSidebarType ||
             layoutModeType ||
-            layoutThemeType ||
-            layoutThemeColorType ||
             layoutWidthType ||
             layoutPositionType ||
             topbarThemeType ||
@@ -87,8 +72,6 @@ const Layout = (props : any) => {
             dispatch(changeLeftsidebarViewType(leftSidebarViewType));
             dispatch(changeLeftsidebarSizeType(leftsidbarSizeType));
             dispatch(changeSidebarTheme(leftSidebarType));
-            dispatch(changeLayoutThemeColor(layoutThemeColorType));
-            dispatch(changeLayoutTheme(layoutThemeType));
             dispatch(changeLayoutMode(layoutModeType));
             dispatch(changeLayoutWidth(layoutWidthType));
             dispatch(changeLayoutPosition(layoutPositionType));
@@ -100,8 +83,6 @@ const Layout = (props : any) => {
     }, [layoutType,
         leftSidebarType,
         layoutModeType,
-        layoutThemeType,
-        layoutThemeColorType,
         layoutWidthType,
         layoutPositionType,
         topbarThemeType,
@@ -157,7 +138,6 @@ const Layout = (props : any) => {
                     <Footer />
                 </div>
             </div>
-
         </React.Fragment>
 
     );

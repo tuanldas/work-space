@@ -218,10 +218,10 @@
   height: 100%;
 }
 
-@each $state in map-keys($theme-colors) { 
-  [data-simplebar-track="#{$state}"]{
+@each $color, $value in $theme-colors {
+  [data-simplebar-track="#{$color}"]{
     .simplebar-scrollbar:before{
-      background: var(--#{$prefix}#{$state});
+      background: $value;
     }
   }
 }

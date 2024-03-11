@@ -3,7 +3,7 @@
 //
 
 .error-text {
-    text-shadow: 4px 4px rgba(var(--#{$prefix}success-rgb), 0.4);
+    text-shadow: 4px 4px rgba($success, 0.4);
 
     @media (min-width: 1200px) {
         font-size: 10rem;
@@ -31,8 +31,8 @@
         top: 0;
         bottom: 0;
         opacity: 0.9;
-        background: var(--#{$prefix}primary);
-        background: linear-gradient(to top, var(--#{$prefix}primary-text-emphasis), var(--#{$prefix}primary));
+        background: $primary;
+        background: linear-gradient(to top, darken($primary, 25%), $primary);
 
     }
 
@@ -60,10 +60,11 @@
     border-left: 3px solid var(--#{$prefix}border-color);
 }
 
-@each $state in map-keys($theme-colors) { 
+@each $color,
+$value in $theme-colors {
     .profile-project-card {
-        &.profile-project-#{$state} {
-            border-left-color: var(--#{$prefix}#{$state});
+        &.profile-project-#{$color} {
+            border-left-color: $value;
         }
     }
 }

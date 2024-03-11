@@ -57,11 +57,6 @@
         height: 42px;
         width: 42px;
         color: var(--#{$prefix}header-item-sub-color);
-        transition: all 0.5s ease;
-
-        &:hover, &:focus, &:active, &.active {
-            background-color: var(--#{$prefix}header-item-bg);
-        }
 
         @media (max-width: 360px) {
             height: 36px;

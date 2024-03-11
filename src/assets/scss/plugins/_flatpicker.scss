@@ -152,10 +152,10 @@
         bottom: 100%;
     }
     &.arrowTop::before {
-        border-bottom-color: var(--#{$prefix}primary);
+        border-bottom-color: $primary;
     }
     &.arrowTop::after {
-        border-bottom-color: var(--#{$prefix}primary);
+        border-bottom-color: $primary;
     }
 
     &.arrowBottom::before,
@@ -163,10 +163,10 @@
         top: 100%;
     }
     &.arrowBottom::before {
-        border-top-color: var(--#{$prefix}primary);
+        border-top-color: $primary;
     }
     &.arrowBottom::after {
-        border-top-color: var(--#{$prefix}primary);
+        border-top-color: $primary;
     }
     &:focus {
         outline: 0;
@@ -180,7 +180,7 @@
 
 .flatpickr-months {
     display: flex;
-    background-color: var(--#{$prefix}primary);
+    background-color: $primary;
     border-radius: 5px 5px 0px 0px;
 
     .flatpickr-month {
@@ -473,7 +473,7 @@
 
 
 .flatpickr-weekdays {
-    background-color: var(--#{$prefix}primary);
+    background-color: $primary;
     text-align: center;
     overflow: hidden;
     width: 100%;
@@ -490,7 +490,7 @@
 span.flatpickr-weekday {
     cursor: default;
     font-size: 90%;
-    background: var(--#{$prefix}primary);
+    background: $primary;
     color: $white;
     line-height: 1;
     margin: 0;
@@ -577,14 +577,14 @@ span.flatpickr-weekday {
     }
 
     &.today {
-        border-color: var(--#{$prefix}primary);
-        background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
+        border-color: $primary;
+        background-color: rgba($primary, 0.1);
         box-shadow: $element-shadow;
 
         &:hover,
         &:focus {
-            border-color: var(--#{$prefix}primary);
-            background-color: rgba(var(--#{$prefix}primary-rgb), 0.15);
+            border-color: $primary;
+            background-color: rgba($primary, 0.15);
             color: var(--#{$prefix}body-color);
         }
     }
@@ -607,10 +607,10 @@ span.flatpickr-weekday {
     &.selected.nextMonthDay,
     &.startRange.nextMonthDay,
     &.endRange.nextMonthDay {
-        background: var(--#{$prefix}primary);
+        background: $primary;
         box-shadow: $element-shadow;
         color: $white;
-        border-color: var(--#{$prefix}primary);
+        border-color: $primary;
     }
 
     &.selected,
@@ -619,7 +619,7 @@ span.flatpickr-weekday {
         &.startRange {
             border-radius: 50px 0 0 50px;
             + .endRange:not(:nth-child(7n+1)) {
-                box-shadow: -10px 0 0 var(--#{$prefix}primary);
+                box-shadow: -10px 0 0 $primary;
             }
 
             .endRange{
@@ -662,7 +662,7 @@ span.flatpickr-weekday {
 
     &.week.selected {
         border-radius: 0;
-        box-shadow: -5px 0 0 var(--#{$prefix}primary), 5px 0 0 var(--#{$prefix}primary);
+        box-shadow: -5px 0 0 $primary, 5px 0 0 $primary;
     }
 
     &.hidden {
@@ -808,7 +808,7 @@ span.flatpickr-weekday {
 
     input, .flatpickr-am-pm{
         &:hover, &:focus{
-            background: rgba(var(--#{$prefix}primary-rgb), 0.04);
+            background: rgba($primary, 0.04);
         }
     }
 }

@@ -1,14 +1,14 @@
-import React, {useCallback, useEffect} from 'react';
-import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import {Collapse} from 'reactstrap';
+import React, { useEffect, useCallback } from 'react';
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Collapse } from 'reactstrap';
 // Import Data
-import navdata from '../../Data/LayoutMenuData';
+import navdata from "../LayoutMenuData";
 //i18n
-import {withTranslation} from 'react-i18next';
-import withRouter from '../../Components/Common/withRouter';
-import {useSelector} from 'react-redux';
-import {createSelector} from 'reselect';
+import { withTranslation } from "react-i18next";
+import withRouter from "../../Components/Common/withRouter";
+import { useSelector } from "react-redux";
+import { createSelector } from 'reselect';
 
 const VerticalLayout = (props : any) => {
     const navData = navdata().props.children;
@@ -18,9 +18,8 @@ const VerticalLayout = (props : any) => {
  layout settings
  */
 
-    const selectLayoutState = (state : any) => state.Layout;
     const selectLayoutProperties = createSelector(
-        selectLayoutState,
+        (state : any) => state.Layout,
         (layout) => ({
             leftsidbarSizeType: layout.leftsidbarSizeType,
             sidebarVisibilitytype: layout.sidebarVisibilitytype,
@@ -96,9 +95,7 @@ const VerticalLayout = (props : any) => {
                 activateParentDropdown(matchingMenuItem);
             }
         };
-        if (props.layoutType === "vertical") {
-            initMenu();
-        }
+        initMenu();
     }, [path, props.layoutType]);
 
     function activateParentDropdown(item : any) {

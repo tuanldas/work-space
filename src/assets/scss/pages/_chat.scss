@@ -43,7 +43,7 @@
             padding: 7px 24px;
             color: var(--#{$prefix}body-color);
             transition: all 0.4s;
-            font-family: var(--#{$prefix}font-family-secondary);
+            font-family: $font-family-secondary;
             font-weight: $font-weight-medium;
             font-size: $font-size-base;
         }
@@ -89,13 +89,13 @@
 
     &.online {
         .user-status {
-            background-color: var(--#{$prefix}success);
+            background-color: $success;
         }
     }
 
     &.away {
         .user-status {
-            background-color: var(--#{$prefix}warning);
+            background-color: $warning;
         }
     }
 }
@@ -116,7 +116,7 @@
         padding: 8px 24px;
         transition: all 0.4s;
         color: var(--#{$prefix}body-color);
-        font-family: var(--#{$prefix}font-family-secondary);
+        font-family: $font-family-secondary;
         font-weight: $font-weight-medium;
         font-size: $font-size-base;
     }
@@ -124,7 +124,7 @@
 
 .contact-list-title{
     padding: 6px 24px;
-    color: var(--#{$prefix}primary);
+    color: $primary;
     font-weight: $font-weight-medium;
     position: relative;
     font-size: 12px;
@@ -147,7 +147,7 @@
     background: url("../../images/chat-bg-pattern.png");
     transition: all 0.4s;
     position: relative;
-    background-color: var(--#{$prefix}body-bg);
+    background-color: var(--#{$prefix}secondary-bg);
 
     @media (max-width: 991.98px) {
         position: absolute;
@@ -294,7 +294,7 @@
             height: 1px;
             left: 0;
             right: 0;
-            background-color: rgba(var(--#{$prefix}primary-rgb), 0.2);
+            background-color: rgba($primary, 0.2);
             top: 10px;
         }
 
@@ -441,11 +441,11 @@
 
                     .replymessage-block{
                         background-color: rgba($white,0.5);
-                        border-color: rgba(var(--#{$prefix}success-rgb), 1);
+                        border-color: rgba(var(--vz-success-rgb), 1);
                         color: $body-color;
         
                         .conversation-name{
-                            color: rgba(var(--#{$prefix}success-rgb), 1);
+                            color: rgba(var(--vz-success-rgb), 1);
                         }
                     }
                 }
@@ -490,7 +490,7 @@
         top: -20px;
         left: 4px;
         font-size: 12px;
-        color: var(--#{$prefix}danger);
+        color: $danger;
     }
     .show{
         display: block;
@@ -611,6 +611,27 @@
         height: calc(100vh - 343px);
         @media (max-width: 991.98px) {
             height: calc(100vh - 275px);
+        }
+    }
+}
+
+// contact list
+.contact-list {
+    li {
+        cursor: pointer;
+        padding: 8px 24px;
+        transition: all 0.4s;
+        color: var(--#{$prefix}body-color);
+        font-family: $font-family-secondary;
+        font-weight: $font-weight-medium;
+        font-size: $font-size-base;
+    }
+    & .active {
+        background-color: $chat-secondary-bg;
+        color: $chat-secondary-color;
+        .badge {
+            background-color: rgba(var(--#{$prefix}success-rgb), 0.15) !important;
+            color: $success !important;
         }
     }
 }

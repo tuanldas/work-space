@@ -40,7 +40,7 @@
         background: var(--#{$prefix}secondary-bg);
         border: 1px solid var(--#{$prefix}border-color);
         border-radius: 50px;
-        color: var(--#{$prefix}success);
+        color: $success;
         z-index: 1;
     }
 
@@ -188,7 +188,7 @@
             top: 26px;
             left: 45px;
             align-items: left;
-            background: var(--#{$prefix}success);
+            background: $success;
             border: 3px solid $timeline-color;
             border-radius: 50px;
             z-index: 1;
@@ -304,7 +304,7 @@
                 left: 0px;
                 right: 0px;
                 margin: 0px auto;
-                background: var(--#{$prefix}primary);
+                background: $primary;
                 width: 13px;
                 height: 13px;
                 top: -59px;
@@ -371,14 +371,14 @@
         width: 40px;
         line-height: 40px;
         border-radius: 50%;
-        background-color: var(--#{$prefix}primary);
+        background-color: lighten($primary, 2.5%);
 
         &::after {
             font-size: 24px;
             color: $white;
         }
         &.swiper-button-disabled {
-            background-color: rgba(var(--#{$prefix}primary-rgb), 0.5);
+            background-color: rgba($primary, 0.5);
             opacity: 1;
             cursor: auto;
             backdrop-filter: blur(25px);

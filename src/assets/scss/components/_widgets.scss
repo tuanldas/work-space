@@ -35,7 +35,7 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            border: 2px solid var(--#{$prefix}primary);
+            border: 2px solid $primary;
             background-color: var(--#{$prefix}secondary-bg);
         }
 
@@ -59,7 +59,7 @@
             position: absolute;
             width: 8px;
             height: 69px;
-            background-color: rgba(var(--#{$prefix}success-rgb), .1);
+            background-color: rgba($success, .1);
             left: 3px;
             transform: rotate(32deg);
             top: -8px;
@@ -91,7 +91,7 @@
 .card-wrapper{
     .jp-card{
         .jp-card-back, .jp-card-front{
-            background-color: var(--#{$prefix}success);
+            background-color: $success;
         }
     }
 }
@@ -124,12 +124,12 @@
             border: 1px solid var(--#{$prefix}border-color);
             text-transform: none;
             letter-spacing: 0;
-            color: var(--#{$prefix}primary);
+            color: $primary;
         }
 
         input[type="radio"]:checked+label {
-            background-color: var(--#{$prefix}primary);
-            border-color: var(--#{$prefix}primary);
+            background-color: $primary;
+            border-color: $primary;
             color: $white;
         }
     }

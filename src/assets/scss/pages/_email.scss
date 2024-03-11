@@ -58,7 +58,7 @@
         font-weight: $font-weight-medium;
 
         &:hover {
-            color: var(--#{$prefix}primary);
+            color: $primary;
         }
 
         i {
@@ -66,11 +66,11 @@
         }
 
         &.active {
-            color: var(--#{$prefix}success);
+            color: $success;
             font-weight: $font-weight-semibold;
 
             i {
-                color: var(--#{$prefix}success);
+                color: $success;
             }
         }
     }
@@ -89,7 +89,7 @@
         color: var(--#{$prefix}secondary-color);
 
         &:hover {
-            color: var(--#{$prefix}secondary);
+            color: $secondary;
         }
     }
 }
@@ -257,7 +257,7 @@
 
         &.active,
         &.active:hover {
-            box-shadow: inset 3px 0 0 var(--#{$prefix}primary);
+            box-shadow: inset 3px 0 0 $primary;
             background-color: var(--#{$prefix}light);
         }
 
@@ -364,7 +364,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: rgba(var(--#{$prefix}body-color-rgb), .075);
+        background-color: rgba(var(--#{$prefix}dark-rgb), .075);
         border-radius: 10px;
         border: 2px solid var(--#{$prefix}secondary-bg);
     }

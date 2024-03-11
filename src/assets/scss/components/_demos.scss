@@ -42,7 +42,7 @@
 
         &:hover {
             i, svg {
-                color: var(--#{$prefix}primary);
+                color: $primary;
                 transform: scale(1.5);
             }
         }
@@ -63,7 +63,7 @@
                     right: 0;
                     bottom: 0;
                     left: 0;
-                    background-color: rgba(var(--#{$prefix}primary-rgb), 0.5);
+                    background-color: rgba($primary, 0.5);
                 }
                 &::after{
                     content: '\eb80';
@@ -82,7 +82,7 @@
 
 [data-bs-target="#collapseBgGradient"]{
     &.active{
-        border-color: var(--#{$prefix}primary-rgb) !important;
+        border-color: $primary !important;
         &::before{
             content: "\eb80";
             font-family: remixicon;
@@ -90,7 +90,7 @@
             top: 2px;
             right: 6px;
             font-size: 16px;
-            color: var(--#{$prefix}primary-rgb);
+            color: $primary;
         }
     }
 }

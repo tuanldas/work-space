@@ -59,7 +59,7 @@
             color: $dropdown-color;
 
             mark {
-                color: var(--#{$prefix}danger);
+                color: $danger;
                 font-weight: $font-weight-semibold;
                 padding: 1px;
             }

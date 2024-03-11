@@ -4,11 +4,11 @@
 //
 
 .noUi-connect{
-  background: var(--#{$prefix}success);
+  background: $success;
 }
 
 .noUi-handle{
-  background: var(--#{$prefix}success);
+  background: $success;
   border: 2px solid var(--#{$prefix}card-bg);
   box-shadow: none;
 }
@@ -124,19 +124,19 @@
 
 #red {
     .noUi-connect {
-        background: var(--#{$prefix}danger);
+        background: $danger;
     }
 }
 
 #green {
     .noUi-connect {
-        background: var(--#{$prefix}success);
+        background: $success;
     }
 }
 
 #blue {
     .noUi-connect {
-        background: var(--#{$prefix}primary);
+        background: $primary;
     }
 }
 
@@ -148,7 +148,9 @@
     }
 }
 
+
 // Non linear slider
+
 .example-val{
     font-size: 12px;
     color: var(--#{$prefix}secondary-color);
@@ -172,10 +174,10 @@
 
 // Colored Connect Elements
 
-.c-1-color { background: var(--#{$prefix}danger); }
-.c-2-color { background: var(--#{$prefix}warning); }
-.c-3-color { background: var(--#{$prefix}success); }
-.c-4-color { background: var(--#{$prefix}primary); }
+.c-1-color { background: $danger; }
+.c-2-color { background: $warning; }
+.c-3-color { background: $success; }
+.c-4-color { background: $primary; }
 .c-5-color { background: $purple; }
 
 //  slider togle
@@ -184,7 +186,7 @@
     height: 50px;
     &.off{
         .noUi-handle{
-            border-color: var(--#{$prefix}danger);
+            border-color: $danger;
         }
     }
 }
@@ -198,19 +200,20 @@
 }
 
 // rangeslider color
-@each $state in map-keys($theme-colors) { 
-  [data-slider-color="#{$state}"] {
+
+@each $color, $value in $theme-colors {
+  [data-slider-color="#{$color}"] {
     .noUi-connect{
-      background: var(--#{$prefix}#{$state});
+      background: $value;
     }
-  
+
     .noUi-handle{
-      background: var(--#{$prefix}#{$state});
+      background: $value;
     }
-  
+
     &[data-slider-style="border"], &[data-slider-style="square"]{
       .noUi-handle{
-        border-color: var(--#{$prefix}#{$state});
+        border-color: $value;
       }
     }
   }
@@ -268,8 +271,8 @@
 
 [data-slider-style="border"]{
   .noUi-handle{
-    border-color: var(--#{$prefix}success);
-    background-color: var(--#{$prefix}card-bg);
+    border-color: $success;
+    background-color: $card-bg;
   }
 }
 
@@ -280,8 +283,8 @@
     height: 10px;
     width: 10px;
     top: -4px;
-    border-color: var(--#{$prefix}success);
-    background-color: var(--#{$prefix}card-bg);
+    border-color: $success;
+    background-color: $card-bg;
   }
 }
 

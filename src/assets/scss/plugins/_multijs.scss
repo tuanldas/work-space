@@ -65,7 +65,7 @@
   .item{
     color: $input-color;
     &:hover{
-      background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
+      background-color: rgba($primary, 0.1);
     }
   }
 

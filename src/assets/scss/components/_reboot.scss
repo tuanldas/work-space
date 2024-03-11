@@ -7,6 +7,21 @@ html {
     min-height: 100%;
 }
 
+:is(.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6) {
+    font-family: $headings-font-family;
+}
+
 label {
     font-weight: $font-weight-medium;
     margin-bottom: $form-label-margin-bottom;

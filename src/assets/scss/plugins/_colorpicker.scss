@@ -44,7 +44,7 @@
 
   .pcr-interaction{
     .pcr-type.active{
-      background: var(--#{$prefix}primary);
+      background: $primary;
     }
 
     .pcr-result{
@@ -64,11 +64,11 @@
     }
 
     .pcr-save{
-      background: var(--#{$prefix}success) !important;
+      background: $success !important;
     }
 
     .pcr-clear, .pcr-cancel{
-      background: var(--#{$prefix}danger) !important;
+      background: $danger !important;
     }
   }
 }

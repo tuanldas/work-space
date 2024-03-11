@@ -8,27 +8,87 @@
     --#{$prefix}vertical-menu-width:                                #{$vertical-menu-width};
     --#{$prefix}vertical-menu-width-md:                             #{$vertical-menu-width-md};
     --#{$prefix}vertical-menu-width-sm:                             #{$vertical-menu-width-sm};
-    --#{$prefix}vertical-menu-item-font-family:                     var(--#{$prefix}font-family-primary);
-    --#{$prefix}vertical-menu-sub-item-font-family:                 var(--#{$prefix}font-family-primary);
 
+    // Topbar - (Default Light)
+    --#{$prefix}header-bg:                                          #{$header-bg};
+    --#{$prefix}header-border:                                      #{$header-border};
+    --#{$prefix}header-item-color:                                  #{$header-item-color};
+    --#{$prefix}header-item-sub-color:                              #{$header-item-sub-color};
+    --#{$prefix}topbar-search-bg:                                   #{$topbar-search-bg};
+    --#{$prefix}topbar-search-color:                                #{$topbar-search-color};
+    --#{$prefix}topbar-user-bg:                                     #{$topbar-user-bg};
+    
+    //page title 
+    --#{$prefix}page-title-box-shadow:                              #{$page-title-box-shadow};
+    --#{$prefix}page-title-border:                                  #{$page-title-border};
+
+    // Topbar - Dark
+    &[data-topbar="dark"] {
+        --#{$prefix}header-bg:                                      #{$dark-header-bg};
+        --#{$prefix}header-item-color:                              #{$dark-header-item-color};
+        --#{$prefix}header-item-sub-color:                          #{$dark-header-item-sub-color};
+        --#{$prefix}topbar-user-bg:                                 #{$dark-topbar-user-bg};
+        --#{$prefix}topbar-search-bg:                               #{$dark-topbar-search-bg};
+        --#{$prefix}topbar-search-color:                            #{$dark-topbar-search-color};
+        --#{$prefix}header-border:                                  #{$dark-header-border};
+    }
+    
     // Horizontal nav
-    --#{$prefix}topnav-bg:                                          #{$topnav-bg};
+    --#{$prefix}topnav-bg:                                          #{$twocolumn-menu-iconview-bg};
     --#{$prefix}topnav-item-color:                                  #{$topnav-item-color};
     --#{$prefix}topnav-item-active-color:                           #{$topnav-item-active-color};
     
     // twocolumn menu
-    // --#{$prefix}twocolumn-menu-iconview-bg:                         #{$twocolumn-menu-iconview-bg};
+    --#{$prefix}twocolumn-menu-iconview-bg:                         #{$twocolumn-menu-iconview-bg};
     --#{$prefix}twocolumn-menu-box-shadow:                          #{$twocolumn-menu-box-shadow};
     
     // boxed 
     --#{$prefix}boxed-layout-width:                                 #{$boxed-layout-width};
+    --#{$prefix}boxed-body-bg:                                      #{$boxed-body-bg};
     
     //semibox layout
     --#{$prefix}semibox-width:                                      #{$semibox-width};
     
-    //form
-    --#{$prefix}input-bg-custom:                                #{$input-bg-custom};
-    --#{$prefix}input-border-custom:                            #{$input-border-custom};
+    //footer
+    --#{$prefix}footer-bg:                                          #{$footer-bg};
+    --#{$prefix}footer-color:                                       #{$footer-color};
+}
+
+//sidebar light theme
+@if $sidebar-mode {
+    :root {
+        --#{$prefix}vertical-menu-bg:                                   #{$vertical-menu-bg};
+        --#{$prefix}vertical-menu-border:                               #{$vertical-menu-border};
+        --#{$prefix}vertical-menu-item-color:                           #{$vertical-menu-item-color};
+        --#{$prefix}vertical-menu-item-bg:                              #{$vertical-menu-item-bg};
+        --#{$prefix}vertical-menu-item-hover-color:                     #{$vertical-menu-item-hover-color};
+        --#{$prefix}vertical-menu-item-active-color:                    #{$vertical-menu-item-active-color};
+        --#{$prefix}vertical-menu-item-active-bg:                       #{$vertical-menu-item-active-bg};
+        --#{$prefix}vertical-menu-sub-item-color:                       #{$vertical-menu-sub-item-color};
+        --#{$prefix}vertical-menu-sub-item-hover-color:                 #{$vertical-menu-sub-item-hover-color};
+        --#{$prefix}vertical-menu-sub-item-active-color:                #{$vertical-menu-sub-item-active-color};
+        --#{$prefix}vertical-menu-title-color:                          #{$vertical-menu-title-color};
+        --#{$prefix}vertical-menu-box-shadow:                           #{$vertical-menu-box-shadow};
+        --#{$prefix}vertical-menu-dropdown-box-shadow:                  #{$vertical-menu-dropdown-box-shadow};
+        
+        &[data-sidebar="dark"] {
+            //vertical dark
+            --#{$prefix}vertical-menu-bg:                               #{$dark-vertical-menu-bg};
+            --#{$prefix}vertical-menu-border:                           #{$dark-vertical-menu-border};
+            --#{$prefix}vertical-menu-item-color:                       #{$dark-vertical-menu-item-color};
+            --#{$prefix}vertical-menu-item-bg:                          #{$dark-vertical-menu-item-bg};
+            --#{$prefix}vertical-menu-item-hover-color:                 #{$dark-vertical-menu-item-hover-color};
+            --#{$prefix}vertical-menu-item-active-color:                #{$dark-vertical-menu-item-active-color};
+            --#{$prefix}vertical-menu-item-active-bg:                   #{$dark-vertical-menu-item-active-bg};
+            --#{$prefix}vertical-menu-sub-item-color:                   #{$dark-vertical-menu-sub-item-color};
+            --#{$prefix}vertical-menu-sub-item-hover-color:             #{$dark-vertical-menu-sub-item-hover-color};
+            --#{$prefix}vertical-menu-sub-item-active-color:            #{$dark-vertical-menu-sub-item-active-color};
+            --#{$prefix}vertical-menu-title-color:                      #{$dark-vertical-menu-title-color};
+            --#{$prefix}twocolumn-menu-iconview-bg:                     #{$dark-twocolumn-menu-iconview-bg};
+            --#{$prefix}vertical-menu-box-shadow:                       #{$dark-vertical-menu-box-shadow};
+            --#{$prefix}vertical-menu-dropdown-box-shadow:              #{$dark-vertical-menu-dropdown-box-shadow};
+        }
+    }
 }
 
 //sidebar gradient light theme
@@ -46,10 +106,32 @@
             --#{$prefix}vertical-menu-title-color:                      #{$vertical-menu-title-color-gradient};
             --#{$prefix}vertical-menu-box-shadow:                       #{$vertical-menu-box-shadow-gradient};
             --#{$prefix}vertical-menu-dropdown-box-shadow:              #{$vertical-menu-dropdown-box-shadow-gradient};
-            --#{$prefix}sidebar-user-bg:                                #{rgba($white, .08)};
-            --#{$prefix}sidebar-user-name-text:                         #{$vertical-menu-sub-item-active-color-gradient};
-            --#{$prefix}sidebar-user-name-sub-text:                     #{$vertical-menu-sub-item-color-gradient};
             
+        }
+        
+        &[data-sidebar="gradient"] {
+            --#{$prefix}vertical-menu-bg:                               #{$vertical-menu-bg-gradient};
+            --#{$prefix}vertical-menu-border:                           #{$vertical-menu-border-gradient};
+            --#{$prefix}twocolumn-menu-iconview-bg:                     #{$twocolumn-menu-iconview-bg-gradient};
+        }
+        
+        &[data-sidebar="gradient-2"] {
+            --#{$prefix}vertical-menu-bg:                               #{$vertical-menu-bg-gradient-2};
+            --#{$prefix}vertical-menu-border:                           #{$vertical-menu-border-gradient-2};
+            --#{$prefix}twocolumn-menu-iconview-bg:                     #{$twocolumn-menu-iconview-bg-gradient-2};
+        }
+        
+        &[data-sidebar="gradient-3"] {
+            --#{$prefix}vertical-menu-bg:                               #{$vertical-menu-bg-gradient-3};
+            --#{$prefix}vertical-menu-border:                           #{$vertical-menu-border-gradient-3};
+            --#{$prefix}twocolumn-menu-iconview-bg:                     #{$twocolumn-menu-iconview-bg-gradient-3};
+            
+        }
+        
+        &[data-sidebar="gradient-4"] {
+            --#{$prefix}vertical-menu-bg:                               #{$vertical-menu-bg-gradient-4};
+            --#{$prefix}vertical-menu-border:                           #{$vertical-menu-border-gradient-4};
+            --#{$prefix}twocolumn-menu-iconview-bg:                     #{$twocolumn-menu-iconview-bg-gradient-4};
         }
     }    
 }
@@ -57,24 +139,18 @@
 //theme dark
 @if $enable-dark-mode {
     @include color-mode(dark, true) {
-
-        &:is([data-theme="default"], [data-theme="minimal"], [data-theme="material"], [data-theme="modern"], [data-theme="creative"], [data-theme="saas"], [data-theme="interactive"], [data-theme="corporate"], [data-theme="classic"], [data-theme="vintage"]) {
-            --#{$prefix}light:                                          #{$light-dark};
-            --#{$prefix}light-rgb:                                      #{to-rgb($light-dark)};
-            --#{$prefix}light-text-emphasis:                            #{$light-text-emphasis-dark};
-            --#{$prefix}light-bg-subtle:                                #{$light-bg-subtle-dark};
-            --#{$prefix}light-border-subtle:                            #{$light-border-subtle-dark};
-            
-            --#{$prefix}dark:                                           #{$dark-color};
-            --#{$prefix}dark-rgb:                                       #{to-rgb($dark-color)};
-            --#{$prefix}dark-text-emphasis:                             #{$dark-text-emphasis-dark};
-            --#{$prefix}dark-bg-subtle:                                 #{$dark-bg-subtle-dark};
-            --#{$prefix}dark-border-subtle:                             #{$dark-border-subtle-dark};
-
-            // boxed 
-            --#{$prefix}body-bg:                                        #{$body-bg-dark};
-            --#{$prefix}boxed-body-bg:                                  #{$boxed-body-bg-dark};
-        }
+        --#{$prefix}light:                                          #{$light-dark};
+        --#{$prefix}light-rgb:                                      #{to-rgb($light-dark)};
+        --#{$prefix}light-text-emphasis:                            #{$light-text-emphasis-dark};
+        --#{$prefix}light-bg-subtle:                                #{$light-bg-subtle-dark};
+        --#{$prefix}light-border-subtle:                            #{$light-border-subtle-dark};
+        
+        --#{$prefix}dark:                                           #{$dark-color};
+        --#{$prefix}dark-rgb:                                       #{to-rgb($dark-color)};
+        --#{$prefix}dark-text-emphasis:                             #{$dark-text-emphasis-dark};
+        --#{$prefix}dark-bg-subtle:                                 #{$dark-bg-subtle-dark};
+        --#{$prefix}dark-border-subtle:                             #{$dark-border-subtle-dark};
+        
         // card
         --#{$prefix}card-logo-dark:                                 none;
         --#{$prefix}card-logo-light:                                block;
@@ -93,7 +169,10 @@
         
         //two columns
         --#{$prefix}twocolumn-menu-box-shadow:                      #{$twocolumn-menu-box-shadow-dark};
-    
+        
+        // boxed 
+        --#{$prefix}boxed-body-bg:                                  #{$boxed-body-bg-dark};
+        
         .table-light {
             --#{$prefix}table-color:                                #{lighten($light-dark, 100%)};
             --#{$prefix}table-bg:                                   var(--#{$prefix}light);
@@ -124,18 +203,8 @@
         }
         
         .dropdown-menu {
-            --#{$prefix}dropdown-bg:                                #{$dropdown-bg-dark};
-            --#{$prefix}dropdown-link-color:                        #{$dropdown-link-color-dark};
-            --#{$prefix}dropdown-link-hover-color:                  #{$dropdown-link-hover-color-dark};
-            --#{$prefix}dropdown-link-hover-bg:                     #{$dropdown-link-hover-bg-dark};
-            --#{$prefix}dropdown-border-width:                      #{$dropdown-border-width-dark};
-            --#{$prefix}dropdown-link-active-color:                 #{$dropdown-link-active-color-dark};
-            --#{$prefix}dropdown-link-active-bg:                    #{$dropdown-link-active-bg-dark};
+            --#{$prefix}dropdown-border-width:1px;
         }
-
-        //form
-        --#{$prefix}input-bg-custom:                                #{$input-bg-custom-dark};
-        --#{$prefix}input-border-custom:                            #{$input-border-custom-dark};
     }
 }
 
@@ -146,7 +215,6 @@
         --#{$prefix}header-bg:                                      #{$header-bg-dark};
         --#{$prefix}header-border:                                  #{$header-border-dark};
         --#{$prefix}header-item-color:                              #{$header-item-color-dark};
-        --#{$prefix}header-item-bg:                                 #{$header-item-bg-dark};
         --#{$prefix}header-item-sub-color:                          #{$header-item-sub-color-dark};
         --#{$prefix}topbar-user-bg:                                 #{$topbar-user-bg-dark};
         --#{$prefix}topbar-search-bg:                               #{$topbar-search-bg-dark};
@@ -157,7 +225,6 @@
             --#{$prefix}header-bg:                                  #{$dark-header-bg-dark};
             --#{$prefix}header-border:                              #{$dark-header-border-dark};
             --#{$prefix}header-item-color:                          #{$dark-header-item-color-dark};
-            --#{$prefix}header-item-bg:                             #{$dark-header-item-bg-dark};
             --#{$prefix}header-item-sub-color:                      #{$dark-header-item-sub-color-dark};
             --#{$prefix}topbar-user-bg:                             #{$dark-topbar-user-bg-dark};
             --#{$prefix}topbar-search-bg:                           #{$dark-topbar-search-bg-dark};

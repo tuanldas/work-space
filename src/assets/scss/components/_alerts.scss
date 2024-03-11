@@ -25,13 +25,12 @@
     // label arrow
     &.label-arrow {
         overflow: hidden;
-
         .label-icon {
             &:after {
                 content: "";
                 position: absolute;
                 border: 6px solid transparent;
-                border-left-color: var(--#{$prefix}primary);
+                border-left-color: $primary;
                 right: -12px;
             }
         }
@@ -56,13 +55,12 @@
 
 //alert additional example
 
-.alert-additional {
+.alert-additional { 
     padding: 0;
 
-    .alert-body {
+    .alert-body{
         padding: $alert-padding-y $alert-padding-x;
     }
-
     .alert-content {
         padding: $alert-padding-y $alert-padding-x;
         border-bottom-left-radius: $alert-border-radius;
@@ -85,82 +83,78 @@
 }
 
 // Alert example loop
-@each $state in map-keys($theme-colors) {
+
+@each $color, $value in $theme-colors {
 
     // alert border left
     .alert-border-left {
-        &.alert-#{$state} {
-            border-left-color: var(--#{$prefix}#{$state});
+        &.alert-#{$color} {
+            border-left-color: var(--#{$prefix}#{$color});
         }
     }
 
     // alert top border
     .alert-top-border {
-        &.alert-#{$state} {
-            border-top-color: var(--#{$prefix}#{$state});
+        &.alert-#{$color} {
+            border-top-color: var(--#{$prefix}#{$color});
         }
     }
+    
 
     // rounded label
+
     .rounded-label {
-        &.alert-#{$state} {
+        &.alert-#{$color} {
             .label-icon {
-                background-color: var(--#{$prefix}#{$state});
+                background-color: var(--#{$prefix}#{$color});
+                color: color-contrast($value);
             }
         }
     }
 
     // label arrow
-    .label-arrow {
-        &.alert-#{$state} {
-            .label-icon {
-                background-color: var(--#{$prefix}#{$state});
 
+    .label-arrow {
+        &.alert-#{$color} {
+            .label-icon {
+                color: color-contrast($value);
+                background-color: var(--#{$prefix}#{$color});
                 &:after {
-                    border-left-color: var(--#{$prefix}#{$state}) !important;
+                    border-left-color: var(--#{$prefix}#{$color}) !important;
                 }
             }
         }
     }
 
-    .alert {
-        &.alert-#{$state} {
-            .btn-close::after {
-                color: var(--#{$prefix}#{$state});
+    .alert{
+        &.alert-#{$color} {
+            .btn-close::after{
+                color: $value;
             }
         }
+        
     }
 
     //alert additional example
     .alert-additional {
-        &.alert-#{$state} {
+        &.alert-#{$color} {
             .alert-content {
-                background-color: var(--#{$prefix}#{$state});
+                background-color: var(--#{$prefix}#{$color});
+                color: color-contrast($value);
             }
         }
-    }
-
+    }   
 }
-
-
-@each $color, $value in $theme-colors {
-    .alert-#{$color} {
-        &:is(.rounded-label, .label-arrow, .alert-additional) :is(.label-icon, .alert-content) {
-            color: color-contrast($value);
-        }
-    }
-}
-
 .alert-dismissible {
     .btn-close {
         background: transparent !important;
-
         &::after {
             background: transparent !important;
             content: "\F0156" !important;
             font-size: 18px;
-            line-height: 15px;
+            line-height:15px;
             font-family: "Material Design Icons" !important;
         }
     }
 }
+   
