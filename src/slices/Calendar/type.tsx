@@ -10,3 +10,8 @@ export interface EventType {
     start_date: string,
     end_date: string,
 }
+
+export interface FetchEventsOptions {
+    start_date: string,
+    end_date: string,
+}

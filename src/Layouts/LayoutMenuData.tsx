@@ -16,7 +16,7 @@ const NavData = () => {
         {
             id: 'calendar',
             label: 'Calendar',
-            icon: 'ri-Calendar-2-line',
+            icon: 'ri-calendar-2-line',
             link: '/Calendar',
         }
     ];
