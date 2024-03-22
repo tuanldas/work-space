@@ -14,7 +14,7 @@ import LightDark from '../Components/Common/LightDark';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {createSelector} from 'reselect';
-import {changeSidebarVisibility} from '../slices/layouts/actions';
+import {changeSidebarVisibility} from '../slices/Layout/actions';
 
 const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }: any) => {
     const dispatch: any = useDispatch();

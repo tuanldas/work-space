@@ -43,7 +43,7 @@
     right: 0;
 }
 
-// Customizer 
+// Customizer
 .customizer-setting {
     left: 20px;
     right: auto;
@@ -92,7 +92,7 @@
     padding-right: 0;
 }
 
-//Horizontal 
+//Horizontal
 
 [data-layout=horizontal] {
     #page-topbar {
@@ -199,7 +199,7 @@
     }
 }
 
-// Two Column Layouts 
+// Two Column Layout
 [data-layout=twocolumn] {
 
     #page-topbar {
@@ -246,7 +246,7 @@
     }
 }
 
-// Footer 
+// Footer
 .footer {
     left: 0;
     right: $vertical-menu-width;
@@ -258,7 +258,7 @@
     }
 }
 
-// Vertical Layouts 
+// Vertical Layout
 :is([data-layout="vertical"], [data-layout="semibox"]) {
     &[data-sidebar-size=sm-hover] {
         .footer {
@@ -354,7 +354,7 @@
     }
 }
 
-// Boxed Layouts
+// Boxed Layout
 [data-layout-width=boxed] {
 
     #page-topbar {
@@ -781,7 +781,7 @@
 
 //semibox
 
-[data-layout="semibox"] { 
+[data-layout="semibox"] {
     @media (min-width: 768px) {
         &[data-sidebar-size="sm"], &[data-sidebar-size="sm-hover"] {
             .main-content {
@@ -889,7 +889,7 @@
 }
 
 
-//Semibox Sidebar Action 
+//Semibox Sidebar Action
 
 [data-layout="semibox"][data-sidebar-visibility="hidden"] {
 

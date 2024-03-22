@@ -7,7 +7,7 @@ const Calendar = lazy(() => import('../pages/Calendar'));
 
 const authProtectedRoutes = [
   { path: "/dashboard", component: <DashboardEcommerce /> },
-  {path: '/calendar', component: <Calendar/>},
+  {path: '/Calendar', component: <Calendar/>},
 
   {
     path: "/",

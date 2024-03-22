@@ -5,9 +5,9 @@
 @import"./shepherd.css";
 @import "./mermaid.min.css";
 
-//RTL 
+//RTL
 // @import "../scss/rtl/components-rtl";
-// @import "../scss/rtl/layouts-rtl";
+// @import "../scss/rtl/Layout-rtl";
 // @import "../scss/rtl/plugins-rtl";
 // @import "../scss/rtl/pages-rtl";
 
@@ -232,7 +232,7 @@ aside.EmojiPickerReact.epr-main {
       &:hover, &:focus {
           border-color: var(--#{$prefix}primary);
       }
-      
+
       .css-1p3m7a8-multiValue {
           color: var(--#{$prefix}white);
           background-color: var(--#{$prefix}primary);
