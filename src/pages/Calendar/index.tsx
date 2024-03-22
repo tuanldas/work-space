@@ -7,10 +7,18 @@ import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import timeGridPlugin from '@fullcalendar/timegrid';
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import '@fortawesome/fontawesome-free/css/all.css';
+import {useAppDispatch} from '../../slices/hooks';
+import {getEvents} from '../../slices/Calendar/actions';
 
 const Calendar = () => {
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(getEvents({start_date: '2024-02-01', end_date: '2024-03-31'}));
+    }, []);
+
     const date = new Date();
     const d = date.getDate();
     const m = date.getMonth();

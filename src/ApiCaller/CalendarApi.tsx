@@ -1,9 +1,9 @@
 import ApiCaller from './apiCaller';
-import {FetchEventsOptions} from '../slices/Calendar/type';
+import {GetEventsOptions} from '../slices/Calendar/type';
 
-export const callApiLogin = (option: FetchEventsOptions) => {
+export const callApiGetEvents = (option: GetEventsOptions) => {
     return new ApiCaller()
-        .setUrl('events')
+        .setUrl('/events')
         .setHeaders({
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('access_token')}`

@@ -11,7 +11,7 @@ export interface EventType {
     end_date: string,
 }
 
-export interface FetchEventsOptions {
+export interface GetEventsOptions {
     start_date: string,
     end_date: string,
 }
