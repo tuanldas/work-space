@@ -22,18 +22,18 @@
 
         .nav-sm {
             padding-right: 1.75rem;
-            padding-left: 0px;
+            padding-left: 0;
 
             .nav-link {
                 &:before {
                     right: 2px;
-                    left: 0px;
+                    left: 0;
                 }
             }
 
             .nav-sm {
                 padding-right: 15px;
-                padding-left: 0px;
+                padding-left: 0;
             }
         }
     }
@@ -204,12 +204,12 @@
 
     #page-topbar {
         right: calc(#{$twocolumn-menu-iconview-width} + #{$twocolumn-menu-width});
-        left: 0px;
+        left: 0;
     }
 
     .app-menu {
         right: 70px;
-        left: 0px;
+        left: 0;
 
         .navbar-nav {
             height: calc(100vh - 70px);
@@ -218,7 +218,7 @@
 
     .main-content {
         margin-right: calc(#{$twocolumn-menu-width} + #{$twocolumn-menu-iconview-width});
-        margin-left: 0px;
+        margin-left: 0;
     }
 
     .twocolumn-iconview {
@@ -228,20 +228,20 @@
     .twocolumn-panel {
         .main-content {
             margin-right: $twocolumn-menu-iconview-width;
-            margin-left: 0px;
+            margin-left: 0;
         }
 
         .footer,
         #page-topbar {
             right: $twocolumn-menu-iconview-width;
-            left: 0px;
+            left: 0;
         }
     }
 
     @media (min-width:768.1px) {
         .footer {
             right: calc(#{$twocolumn-menu-iconview-width} + #{$twocolumn-menu-width});
-            left: 0px;
+            left: 0;
         }
     }
 }
@@ -263,12 +263,12 @@
     &[data-sidebar-size=sm-hover] {
         .footer {
             right: 70px;
-            left: 0px;
+            left: 0;
         }
 
         .main-content {
             margin-right: $vertical-menu-width-sm;
-            margin-left: 0px;
+            margin-left: 0;
         }
 
         .navbar-menu {
@@ -306,7 +306,7 @@
     &[data-sidebar-size=sm] {
         .footer {
             right: 70px;
-            left: 0px;
+            left: 0;
         }
 
         .navbar-menu {
@@ -334,7 +334,7 @@
     &[data-sidebar-size=md] {
         .footer {
             right: 180px;
-            left: 0px;
+            left: 0;
         }
 
         .navbar-menu {
@@ -434,14 +434,14 @@
 @media (min-width:768px) {
     #page-topbar {
         right: 250px;
-        left: 0px;
+        left: 0;
     }
 
     [data-layout=vertical] {
         &[data-sidebar-size=sm-hover] {
             #page-topbar {
                 right: 70px;
-                left: 0px;
+                left: 0;
             }
         }
 
@@ -453,33 +453,33 @@
 
             .main-content {
                 margin-right: $vertical-menu-width-sm;
-                margin-left: 0px;
+                margin-left: 0;
             }
         }
 
         &[data-sidebar-size=md] {
             #page-topbar {
                 right: 180px;
-                left: 0px;
+                left: 0;
             }
 
             .main-content {
                 margin-right: 180px;
-                margin-left: 0px;
+                margin-left: 0;
             }
         }
     }
 
     .main-content {
         margin-right: 250px;
-        margin-left: 0px;
+        margin-left: 0;
     }
 
     [data-layout-width=boxed] {
         &[data-sidebar-size=sm-hover] {
             #page-topbar {
                 right: 70px !important;
-                left: 0px !important;
+                left: 0 !important;
             }
 
             .footer {
@@ -491,48 +491,48 @@
         &[data-sidebar-size=sm] {
             #page-topbar {
                 right: 70px !important;
-                left: 0px !important;
+                left: 0 !important;
             }
 
             .footer {
                 right: 70px !important;
-                left: 0px !important;
+                left: 0 !important;
             }
         }
 
         &[data-sidebar-size=lg] {
             #page-topbar {
                 right: 250px !important;
-                left: 0px !important;
+                left: 0 !important;
             }
 
             .footer {
                 right: 250px !important;
-                left: 0px !important;
+                left: 0 !important;
             }
         }
 
         &[data-sidebar-size=sm-hover-active] {
             #page-topbar {
                 right: 250px !important;
-                left: 0px !important;
+                left: 0 !important;
             }
 
             .footer {
                 right: 250px !important;
-                left: 0px !important;
+                left: 0 !important;
             }
         }
 
         &[data-sidebar-size=md] {
             #page-topbar {
                 right: 180px !important;
-                left: 0px !important;
+                left: 0 !important;
             }
 
             .footer {
                 right: 180px !important;
-                left: 0px !important;
+                left: 0 !important;
             }
         }
     }
@@ -635,7 +635,7 @@
 
             #layout-wrapper {
                 padding-right: $grid-gutter-width;
-                padding-left: 0px;
+                padding-left: 0;
             }
 
             .navbar-header {
@@ -830,7 +830,7 @@
             left: calc(#{$semibox-width} + #{$grid-gutter-width});
 
             &.topbar-shadow {
-                top: 0px;
+                top: 0;
             }
         }
 
@@ -907,7 +907,7 @@
 
         .main-content {
             margin-left: auto;
-            margin-right: 0px;
+            margin-right: 0;
         }
     }
 
@@ -925,7 +925,7 @@
 
         .main-content {
             margin-left: auto;
-            margin-right: 0px;
+            margin-right: 0;
         }
     }
 }
