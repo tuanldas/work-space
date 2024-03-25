@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
 
 //import images
-import avatar1 from '../../assets/images/users/avatar-1.jpg';
 import {useAppDispatch} from '../../slices/hooks';
 import {logoutAction} from '../../slices/Auth/actions';
 
@@ -21,7 +20,7 @@ const ProfileDropdown = () => {
     const [isProfileDropdown, setIsProfileDropdown] = useState(false);
     const toggleProfileDropdown = () => {
         setIsProfileDropdown(!isProfileDropdown);
-    };
+    };``
 
     const logout = () => {
         dispatch(logoutAction())
@@ -33,7 +32,7 @@ const ProfileDropdown = () => {
                       className="ms-sm-3 header-item topbar-user">
                 <DropdownToggle tag="button" type="button" className="btn">
                     <span className="d-flex align-items-center">
-                        <img className="rounded-circle header-profile-user" src={avatar1}
+                        <img className="rounded-circle header-profile-user"
                              alt="Header Avatar"/>
                         <span className="text-start ms-xl-2">
                             <span

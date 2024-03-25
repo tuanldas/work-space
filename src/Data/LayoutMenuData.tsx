@@ -20,8 +20,8 @@ const NavData = () => {
         {
             id: "calendar",
             label: "Calendar",
-            icon: " ri-calendar-2-line",
-            link: "/calendar",
+            icon: " ri-Calendar-2-line",
+            link: "/Calendar",
         },
     ];
     return <React.Fragment>{menuItems}</React.Fragment>;

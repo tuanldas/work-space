@@ -16,7 +16,7 @@ import {
     changeLeftsidebarSizeType,
     changeLeftsidebarViewType, changeSidebarImageType,
     changeSidebarTheme, changeSidebarVisibility, changeTopbarTheme
-} from '../slices/layouts/actions';
+} from '../slices/Layout/actions';
 
 const Layout = (props : any) => {
     const [headerClass, setHeaderClass] = useState<any>("");
