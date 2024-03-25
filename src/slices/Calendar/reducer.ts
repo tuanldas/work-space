@@ -14,7 +14,15 @@ export const CalendarSlice = createSlice({
     initialState,
     reducers: {
         getEventsSuccess: (state, action) => {
-            state.items = action.payload;
+            state.items = action.payload.map((event: any) => {
+                return {
+                    uuid: event.uuid,
+                    title: event.title,
+                    start: new Date(event.start_time),
+                    end_timee: new Date(event.start_time),
+                    className: 'bg-primary-subtle text-primary',
+                }
+            });
             state.isFetching = false;
         },
         getEventsError: (state) => {
