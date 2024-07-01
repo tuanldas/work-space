@@ -10,22 +10,32 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formatjs/intl-pluralrules": "^5.2.14",
+    "@formatjs/intl-relativetimeformat": "^11.2.14",
     "@fortawesome/fontawesome-free": "^6.5.2",
     "animate.css": "^4.1.1",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "chart.js": "^4.4.3",
+    "clsx": "^2.1.1",
+    "formik": "^2.4.6",
     "line-awesome": "^1.3.0",
     "nouislider": "^15.8.1",
+    "prism-react-renderer": "^2.3.1",
     "prism-themes": "^1.9.0",
+    "qs": "^6.12.1",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.3",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.3.1",
     "react-flatpickr": "^3.10.13",
+    "react-inlinesvg": "^4.1.3",
+    "react-intl": "^6.6.8",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.24.0",
-    "socicon": "^3.0.5"
+    "socicon": "^3.0.5",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
