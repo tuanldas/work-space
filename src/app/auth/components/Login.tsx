@@ -1,226 +1,141 @@
-import {useState} from 'react';
-import * as Yup from 'yup';
-import clsx from 'clsx';
-import {Link} from 'react-router-dom';
-import {useFormik} from 'formik';
-import {getUserByToken, login} from '../core/_requests';
-import {useAuth} from '../core/Auth';
 import {toAbsoluteUrl} from '../../../_metronic/helpers';
-
-const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  password: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Password is required'),
-})
-
-const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
-}
-
-/*
-  Formik+YUP+Typescript:
-  https://jaredpalmer.com/formik/docs/tutorial#getfieldprops
-  https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
-*/
-
+import './layout.css'
 export function Login() {
-  const [loading, setLoading] = useState(false)
-  const {saveAuth, setCurrentUser} = useAuth()
-
-  const formik = useFormik({
-    initialValues,
-    validationSchema: loginSchema,
-    onSubmit: async (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
-      try {
-        const {data: auth} = await login(values.email, values.password)
-        saveAuth(auth)
-        const {data: user} = await getUserByToken(auth.api_token)
-        setCurrentUser(user)
-      } catch (error) {
-        console.error(error)
-        saveAuth(undefined)
-        setStatus('The login details are incorrect')
-        setSubmitting(false)
-        setLoading(false)
-      }
-    },
-  })
-
   return (
-    <form
-      className='form w-100'
-      onSubmit={formik.handleSubmit}
-      noValidate
-      id='kt_login_signin_form'
-    >
-      {/* begin::Heading */}
-      <div className='text-center mb-11'>
-        <h1 className='text-gray-900 fw-bolder mb-3'>Sign In</h1>
-        <div className='text-gray-500 fw-semibold fs-6'>Your Social Campaigns</div>
-      </div>
-      {/* begin::Heading */}
-
-      {/* begin::Login options */}
-      <div className='row g-3 mb-9'>
-        {/* begin::Col */}
-        <div className='col-md-6'>
-          {/* begin::Google link */}
-          <a
-            href='#'
-            className='btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100'
-          >
-            <img
-              alt='Logo'
-              src={toAbsoluteUrl('media/svg/brand-logos/google-icon.svg')}
-              className='h-15px me-3'
-            />
-            Sign in with Google
-          </a>
-          {/* end::Google link */}
-        </div>
-        {/* end::Col */}
-
-        {/* begin::Col */}
-        <div className='col-md-6'>
-          {/* begin::Google link */}
-          <a
-            href='#'
-            className='btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100'
-          >
-            <img
-              alt='Logo'
-              src={toAbsoluteUrl('media/svg/brand-logos/apple-black.svg')}
-              className='theme-light-show h-15px me-3'
-            />
-            <img
-              alt='Logo'
-              src={toAbsoluteUrl('media/svg/brand-logos/apple-black-dark.svg')}
-              className='theme-dark-show h-15px me-3'
-            />
-            Sign in with Apple
-          </a>
-          {/* end::Google link */}
-        </div>
-        {/* end::Col */}
-      </div>
-      {/* end::Login options */}
-
-      {/* begin::Separator */}
-      <div className='separator separator-content my-14'>
-        <span className='w-125px text-gray-500 fw-semibold fs-7'>Or with email</span>
-      </div>
-      {/* end::Separator */}
-
-      {formik.status ? (
-        <div className='mb-lg-15 alert alert-danger'>
-          <div className='alert-text font-weight-bold'>{formik.status}</div>
-        </div>
-      ) : (
-        <div className='mb-10 bg-light-info p-8 rounded'>
-          <div className='text-info'>
-            Use account <strong>admin@demo.com</strong> and password <strong>demo</strong> to
-            continue.
+      <>
+        <div className="d-flex flex-lg-row-fluid">
+          <div className="d-flex flex-column flex-center pb-0 pb-lg-10 p-10 w-100">
+            <img className="theme-light-show mx-auto mw-100 w-150px w-lg-300px mb-10 mb-lg-20"
+                 src={toAbsoluteUrl('media/auth/agency.png')} alt=""/>
+            <img className="theme-dark-show mx-auto mw-100 w-150px w-lg-300px mb-10 mb-lg-20"
+                 src={toAbsoluteUrl('media/auth/agency-dark.png')} alt=""/>
+            <h1 className="text-gray-800 fs-2qx fw-bold text-center mb-7">Fast, Efficient and
+              Productive</h1>
           </div>
         </div>
-      )}
-
-      {/* begin::Form group */}
-      <div className='fv-row mb-8'>
-        <label className='form-label fs-6 fw-bolder text-gray-900'>Email</label>
-        <input
-          placeholder='Email'
-          {...formik.getFieldProps('email')}
-          className={clsx(
-            'form-control bg-transparent',
-            {'is-invalid': formik.touched.email && formik.errors.email},
-            {
-              'is-valid': formik.touched.email && !formik.errors.email,
-            }
-          )}
-          type='email'
-          name='email'
-          autoComplete='off'
-        />
-        {formik.touched.email && formik.errors.email && (
-          <div className='fv-plugins-message-container'>
-            <span role='alert'>{formik.errors.email}</span>
-          </div>
-        )}
-      </div>
-      {/* end::Form group */}
-
-      {/* begin::Form group */}
-      <div className='fv-row mb-3'>
-        <label className='form-label fw-bolder text-gray-900 fs-6 mb-0'>Password</label>
-        <input
-          type='password'
-          autoComplete='off'
-          {...formik.getFieldProps('password')}
-          className={clsx(
-            'form-control bg-transparent',
-            {
-              'is-invalid': formik.touched.password && formik.errors.password,
-            },
-            {
-              'is-valid': formik.touched.password && !formik.errors.password,
-            }
-          )}
-        />
-        {formik.touched.password && formik.errors.password && (
-          <div className='fv-plugins-message-container'>
-            <div className='fv-help-block'>
-              <span role='alert'>{formik.errors.password}</span>
+        <div
+            className="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12">
+          <div className="bg-body d-flex flex-column flex-center rounded-4 w-md-600px p-10">
+            <div className="d-flex flex-center flex-column align-items-stretch h-lg-100 w-md-400px">
+              <div className="d-flex flex-center flex-column flex-column-fluid pb-15 pb-lg-20">
+                <form className="form w-100" id="kt_sign_in_form"
+                      data-kt-redirect-url="index.html" action="#">
+                  <div className="text-center mb-11">
+                    <h1 className="text-gray-900 fw-bolder mb-3">Sign In</h1>
+                    <div className="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
+                  </div>
+                  <div className="row g-3 mb-9">
+                    <div className="col-md-6">
+                      <a href="#"
+                         className="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+                        <img alt="Logo"
+                             src={toAbsoluteUrl('media/svg/brand-logos/google-icon.svg')}
+                             className="h-15px me-3"/>Sign
+                        in with Google</a>
+                    </div>
+                    <div className="col-md-6">
+                      <a href="#"
+                         className="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+                        <img alt="Logo"
+                             src={toAbsoluteUrl('media/svg/brand-logos/apple-black.svg')}
+                             className="theme-light-show h-15px me-3"/>
+                        <img alt="Logo"
+                             src={toAbsoluteUrl('media/svg/brand-logos/apple-black-dark.svg')}
+                             className="theme-dark-show h-15px me-3"/>Sign in with Apple</a>
+                    </div>
+                  </div>
+                  <div className="separator separator-content my-14">
+                    <span className="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
+                  </div>
+                  <div className="fv-row mb-8">
+                    <input type="text" placeholder="Email" name="email" autoComplete="off"
+                           className="form-control bg-transparent"/>
+                  </div>
+                  <div className="fv-row mb-3">
+                    <input type="password" placeholder="Password" name="password" autoComplete="off"
+                           className="form-control bg-transparent"/>
+                  </div>
+                  <div className="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
+                    <div></div>
+                    <a href="#" className="link-primary">Forgot
+                      Password ?</a>
+                  </div>
+                  <div className="d-grid mb-10">
+                    <button type="submit" id="kt_sign_in_submit" className="btn btn-primary">
+                      <span className="indicator-label">Sign In</span>
+                      <span className="indicator-progress">Please wait...
+											<span className="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                  </div>
+                  <div className="text-gray-500 text-center fw-semibold fs-6">Not a Member yet?
+                    <a href="#" className="link-primary">Sign up</a></div>
+                </form>
+              </div>
+              <div className="d-flex flex-stack">
+                <div className="me-10">
+                  <button
+                      className="btn btn-flex btn-link btn-color-gray-700 btn-active-color-primary rotate fs-base"
+                      data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+                      data-kt-menu-offset="0px, 0px">
+                    <img data-kt-element="current-lang-flag" className="w-20px h-20px rounded me-3"
+                         src={toAbsoluteUrl('media/flags/united-states.svg')} alt=""/>
+                    <span data-kt-element="current-lang-name" className="me-1">English</span>
+                    <i className="ki-duotone ki-down fs-5 text-muted rotate-180 m-0"></i>
+                  </button>
+                  <div
+                      className="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-4 fs-7"
+                      data-kt-menu="true" id="kt_auth_lang_menu">
+                    <div className="menu-item px-3">
+                      <a href="#" className="menu-link d-flex px-5" data-kt-lang="English">
+												<span className="symbol symbol-20px me-4">
+													<img data-kt-element="lang-flag" className="rounded-1"
+                                                         src={toAbsoluteUrl('media/flags/united-states.svg')} alt=""/>
+												</span>
+                        <span data-kt-element="lang-name">English</span>
+                      </a>
+                    </div>
+                    <div className="menu-item px-3">
+                      <a href="#" className="menu-link d-flex px-5" data-kt-lang="Spanish">
+												<span className="symbol symbol-20px me-4">
+													<img data-kt-element="lang-flag" className="rounded-1"
+                                                         src={toAbsoluteUrl('media/flags/spain.svg')} alt=""/>
+												</span>
+                        <span data-kt-element="lang-name">Spanish</span>
+                      </a>
+                    </div>
+                    <div className="menu-item px-3">
+                      <a href="#" className="menu-link d-flex px-5" data-kt-lang="German">
+												<span className="symbol symbol-20px me-4">
+													<img data-kt-element="lang-flag" className="rounded-1"
+                                                         src={toAbsoluteUrl('media/flags/germany.svg')} alt=""/>
+												</span>
+                        <span data-kt-element="lang-name">German</span>
+                      </a>
+                    </div>
+                    <div className="menu-item px-3">
+                      <a href="#" className="menu-link d-flex px-5" data-kt-lang="Japanese">
+												<span className="symbol symbol-20px me-4">
+													<img data-kt-element="lang-flag" className="rounded-1"
+                                                         src={toAbsoluteUrl('media/flags/japan.svg')} alt=""/>
+												</span>
+                        <span data-kt-element="lang-name">Japanese</span>
+                      </a>
+                    </div>
+                    <div className="menu-item px-3">
+                      <a href="#" className="menu-link d-flex px-5" data-kt-lang="French">
+												<span className="symbol symbol-20px me-4">
+													<img data-kt-element="lang-flag" className="rounded-1"
+                                                         src={toAbsoluteUrl('media/flags/france.svg')} alt=""/>
+												</span>
+                        <span data-kt-element="lang-name">French</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        )}
-      </div>
-      {/* end::Form group */}
-
-      {/* begin::Wrapper */}
-      <div className='d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8'>
-        <div />
-
-        {/* begin::Link */}
-        <Link to='/auth/forgot-password' className='link-primary'>
-          Forgot Password ?
-        </Link>
-        {/* end::Link */}
-      </div>
-      {/* end::Wrapper */}
-
-      {/* begin::Action */}
-      <div className='d-grid mb-10'>
-        <button
-          type='submit'
-          id='kt_sign_in_submit'
-          className='btn btn-primary'
-          disabled={formik.isSubmitting || !formik.isValid}
-        >
-          {!loading && <span className='indicator-label'>Continue</span>}
-          {loading && (
-            <span className='indicator-progress' style={{display: 'block'}}>
-              Please wait...
-              <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-            </span>
-          )}
-        </button>
-      </div>
-      {/* end::Action */}
-
-      <div className='text-gray-500 text-center fw-semibold fs-6'>
-        Not a Member yet?{' '}
-        <Link to='/auth/registration' className='link-primary'>
-          Sign up
-        </Link>
-      </div>
-    </form>
-  )
+        </div>
+      </>
+  );
 }

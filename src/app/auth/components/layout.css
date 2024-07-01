@@ -1,0 +1,7 @@
+body {
+    background-image: url('media/auth/bg10.jpeg');
+}
+
+[data-bs-theme="dark"] body {
+    background-image: url('media/auth/bg10-dark.jpeg');
+}
