@@ -9,21 +9,21 @@ import {MasterInit} from './_metronic/layout/MasterInit.tsx';
 function App() {
 
   return (
-    <>
-      <Suspense fallback={<LayoutSplashScreen />}>
-        <I18nProvider>
-          <LayoutProvider>
-            <ThemeModeProvider>
-              <AuthInit>
-                <Outlet />
-                <MasterInit />
-              </AuthInit>
-            </ThemeModeProvider>
-          </LayoutProvider>
-        </I18nProvider>
-      </Suspense>
-    </>
-  )
+      <>
+        <Suspense fallback={<LayoutSplashScreen/>}>
+          <I18nProvider>
+            <LayoutProvider>
+              <ThemeModeProvider>
+                <AuthInit>
+                  <Outlet/>
+                  <MasterInit/>
+                </AuthInit>
+              </ThemeModeProvider>
+            </LayoutProvider>
+          </I18nProvider>
+        </Suspense>
+      </>
+  );
 }
 
-export default App
+export default App;

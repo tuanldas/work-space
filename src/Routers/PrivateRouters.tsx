@@ -6,7 +6,6 @@ const PrivateRouters = () => {
         <>
             <Routes>
                 <Route element={<MasterLayout/>}>
-
                     <Route path="*" element={<Navigate to="/error/404"/>}/>
                 </Route>
             </Routes>
