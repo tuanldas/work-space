@@ -8,7 +8,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package*.json ./
 
-FROM build AS devd
+FROM build AS dev
 
 # install and cache app dependencies
 COPY public /usr/src/app/public
