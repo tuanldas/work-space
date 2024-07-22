@@ -32,20 +32,19 @@ const AppRouters = () => {
     return (
         <BrowserRouter basename={BASE_URL}>
             <Routes>
-                <Route element={<App/>}>
-                    <Route path="error/*" element={<ErrorPages/>}/>
+                <Route path="error/*" element={<ErrorPages/>}/>
                     {
                         isAuthenticated
-                            ? <>
+                            ? <Route element={<App/>}>
                                 <Route path="/*" element={<PrivateRouters/>}/>
                                 <Route index element={<Navigate to="/dashboard"/>}/>
-                            </>
+                            </Route>
+
                             : <Route element={<AuthLayout/>}>
                                 <Route path="login" element={<Login/>}/>
+                                <Route path="*" element={<Navigate to="/login"/>}/>
                             </Route>
                     }
-                </Route>
-
             </Routes>
         </BrowserRouter>
     );
