@@ -7,6 +7,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistor, store} from './store';
 import AppRouters from './routing/AppRouters.tsx';
+import './i18n'
 
 const queryClient = new QueryClient();
 
