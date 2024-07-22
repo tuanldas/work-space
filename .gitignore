@@ -25,3 +25,4 @@ dist-ssr
 
 compose.override.yml
 .env
+package-lock.json
