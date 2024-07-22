@@ -1,22 +1,31 @@
 import {ReactNode} from 'react';
 import clsx from 'clsx';
+import {useLocation} from 'react-router-dom';
+import {checkIsActive} from '../../../helpers/RouterHelpers.ts';
 
 const SidebarMenuItemWithSub = ({
+                                    to,
                                     icon,
                                     title,
                                     children,
                                     hasBullet = false,
                                     hasSubMenu = false,
                                 }: {
+    to: string,
     icon?: string,
     title: string,
     children?: ReactNode,
     hasBullet?: boolean,
     hasSubMenu?: boolean
 }) => {
+    const {pathname} = useLocation();
+
     return (
         <>
-            <div className="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+            <div className={clsx(
+                'menu-item',
+                {'show': checkIsActive(pathname, to)}
+            )} data-menu-item-toggle="accordion" data-menu-item-trigger="click">
                 <div
                     className={
                         clsx(
