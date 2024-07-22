@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      target: production
+    restart: unless-stopped
+    volumes:
+      - '/app/node_modules'
+
+networks:
+  default:
+    external: true
+    name: ${PUBLISH_NETWORK}

@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      target: dev
+    volumes:
+      - '/app/node_modules'
+    ports:
+      - '${DOCKER_PORT}:3000'
+    restart: on-failure
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+        - action: rebuild
+          path: package.json
