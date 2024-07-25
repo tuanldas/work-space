@@ -14,8 +14,7 @@ const Project = () => {
     const pageParam = searchParams.get('page');
     const [page, setPage] = useState<number>(1);
     const [projects, setProjects] = useState<any>(null);
-    const isShowPrevious = projects !== null ? projects.meta.current_page == 1 : false;
-    const isShowNext = projects !== null ? projects.meta.last_page == projects.meta.current_page : 1;
+    const [pagination, setPagination] = useState<any>([]);
 
     const {data, isLoading} = useQuery({
         queryKey: ['projects', page],
@@ -26,6 +25,7 @@ const Project = () => {
     useEffect(() => {
         if (data) {
             setProjects(data.data);
+            setPagination(getPagination(data.data.meta.current_page, data.data.meta.last_page, 5));
         }
     }, [data]);
 
@@ -34,22 +34,132 @@ const Project = () => {
         setPage(initialPage);
     }, [pageParam]);
 
-    const renderUrlPreviousPagination = () => {
+    const renderUrlPreviousPagination = (current_page: number, isShowPrevious: boolean) => {
         if (isShowPrevious) {
-            return window.location.origin + location.pathname + '?page=' + (projects.meta.current_page);
+            return window.location.origin + location.pathname + '?page=' + (current_page);
         }
-        return window.location.origin + location.pathname + '?page=' + (projects.meta.current_page - 1);
+        return window.location.origin + location.pathname + '?page=' + (current_page - 1);
     };
-
-    const renderUrlNextPagination = () => {
+    const renderUrlNextPagination = (current_page: number, isShowNext: boolean) => {
         if (isShowNext) {
-            return window.location.origin + location.pathname + '?page=' + (projects.meta.current_page);
+            return window.location.origin + location.pathname + '?page=' + (current_page);
         }
-        return window.location.origin + location.pathname + '?page=' + (projects.meta.current_page + 1);
+        return window.location.origin + location.pathname + '?page=' + (current_page + 1);
     };
 
     const renderUrlPagination = (page: number) => {
         return window.location.origin + location.pathname + '?page=' + page;
+    };
+
+    const getPagination = (currentPage, totalPages, maxPagesToShow) => {
+        const pages = [];
+        const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
+
+        pages.push({
+            url: renderUrlPreviousPagination(currentPage, currentPage <= 1),
+            isDisabled: currentPage <= 1,
+            isActive: false,
+            content:
+                <i className="ki-outline ki-black-left"></i>
+        });
+
+        if (totalPages <= maxPagesToShow) {
+            for (let i = 1; i <= totalPages; i++) {
+                pages.push({
+                    url: renderUrlPagination(i),
+                    isDisabled: false,
+                    isActive: i == currentPage,
+                    content: i
+                });
+            }
+        } else {
+            if (currentPage <= halfMaxPagesToShow) {
+                for (let i = 1; i <= maxPagesToShow; i++) {
+                    pages.push({
+                        url: renderUrlPagination(i),
+                        isDisabled: false,
+                        isActive: i == currentPage,
+                        content: i
+                    });
+                }
+                if (currentPage + halfMaxPagesToShow < totalPages) {
+                    pages.push({
+                        url: '#',
+                        isDisabled: true,
+                        isActive: false,
+                        content: '...'
+                    });
+                    pages.push({
+                        url: renderUrlPagination(totalPages),
+                        isDisabled: false,
+                        isActive: totalPages == currentPage,
+                        content: totalPages
+                    });
+                }
+            } else if (currentPage + halfMaxPagesToShow >= totalPages) {
+                pages.push({
+                    url: renderUrlPagination(1),
+                    isDisabled: false,
+                    isActive: 1 == currentPage,
+                    content: 1
+                });
+                pages.push({
+                    url: '#',
+                    isDisabled: true,
+                    isActive: false,
+                    content: '...'
+                });
+                for (let i = totalPages - maxPagesToShow + 1; i <= totalPages; i++) {
+                    pages.push({
+                        url: renderUrlPagination(i),
+                        isDisabled: false,
+                        isActive: i == currentPage,
+                        content: i
+                    });
+                }
+            } else {
+                pages.push({
+                    url: renderUrlPagination(1),
+                    isDisabled: false,
+                    isActive: 1 == currentPage,
+                    content: 1
+                });
+                pages.push({
+                    url: '#',
+                    isDisabled: true,
+                    isActive: false,
+                    content: '...'
+                });
+                for (let i = currentPage - halfMaxPagesToShow; i <= currentPage + halfMaxPagesToShow; i++) {
+                    pages.push({
+                        url: renderUrlPagination(i),
+                        isDisabled: false,
+                        isActive: i == currentPage,
+                        content: i
+                    });
+                }
+                pages.push({
+                    url: '#',
+                    isDisabled: true,
+                    isActive: false,
+                    content: '...'
+                });
+                pages.push({
+                    url: renderUrlPagination(totalPages),
+                    isDisabled: false,
+                    isActive: totalPages == currentPage,
+                    content: totalPages
+                });
+            }
+        }
+        pages.push({
+            url: renderUrlNextPagination(currentPage, currentPage >= totalPages),
+            isDisabled: currentPage >= totalPages,
+            isActive: false,
+            content: <i className="ki-outline ki-black-right"></i>
+        });
+
+        return pages;
     };
 
     return (
@@ -70,33 +180,17 @@ const Project = () => {
                         <div className="flex flex-wrap items-center gap-5 justify-between">
                             <div></div>
                             <div className="pagination">
-                                <Link to={renderUrlPreviousPagination()}
-                                      className={clsx('btn', {'disabled': isShowPrevious})}>
-                                    <i className="ki-outline ki-black-left">
-                                    </i>
-                                </Link>
                                 {
-                                    Array.from({length: projects.meta.last_page}).map((_, index) => {
-                                        if (index + 1 <= 3) {
-                                            return <Link to={renderUrlPagination(index + 1)} key={index}
-                                                         className={clsx('btn', {'active': index + 1 == projects.meta.current_page})}>
-                                                {index + 1}
-                                            </Link>;
-                                        } else if (index + 1 == 4) {
-                                            return <span key={index} className="btn disabled">...</span>;
-
-                                        } else if ((projects.meta.last_page - (index + 1)) < 3) {
-                                            return <Link to={renderUrlPagination(index + 1)} key={index}
-                                                         className={clsx('btn', {'active': index + 1 == projects.meta.current_page})}>
-                                                {index + 1}
-                                            </Link>;
-                                        }
-                                    })
+                                    pagination.map((page, index) => (
+                                        <Link to={page.url} key={index}
+                                              className={clsx('btn',
+                                                  {'active': page.isActive},
+                                                  {'disabled': page.isDisabled}
+                                              )}>
+                                            {page.content}
+                                        </Link>
+                                    ))
                                 }
-                                <Link className="btn" to={renderUrlNextPagination()}>
-                                    <i className="ki-outline ki-black-right">
-                                    </i>
-                                </Link>
                             </div>
                         </div>
                     </>
