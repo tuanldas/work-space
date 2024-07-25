@@ -9,13 +9,13 @@ const Sidebar = () => {
             <div className="sidebar-header hidden lg:flex items-center relative justify-between px-3 lg:px-6 shrink-0"
                  id="sidebar_header">
                 <a className="dark:hidden" href="#">
-                    <img className="default-logo min-h-[22px] max-w-none" src="media/app/default-logo.svg" alt={''}/>
-                    <img className="small-logo min-h-[22px] max-w-none" src="media/app/mini-logo.svg" alt={''}/>
+                    <img className="default-logo min-h-[22px] max-w-none" src={'media/app/default-logo.svg'} alt={''}/>
+                    <img className="small-logo min-h-[22px] max-w-none" src={'media/app/mini-logo.svg'} alt={''}/>
                 </a>
                 <a className="hidden dark:block" href="#">
-                    <img className="default-logo min-h-[22px] max-w-none" src="media/app/default-logo-dark.svg"
+                    <img className="default-logo min-h-[22px] max-w-none" src={'media/app/default-logo-dark.svg'}
                          alt={''}/>
-                    <img className="small-logo min-h-[22px] max-w-none" src="media/app/mini-logo.svg" alt={''}/>
+                    <img className="small-logo min-h-[22px] max-w-none" src={'media/app/mini-logo.svg'} alt={''}/>
                 </a>
                 <button
                     className="btn btn-icon btn-icon-md size-[30px] rounded-lg border border-gray-200 dark:border-gray-300 bg-light text-gray-500 hover:text-gray-700 toggle absolute left-full top-2/4 -translate-x-2/4 -translate-y-2/4"

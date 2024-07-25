@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <PersistGate loading={null} persistor={persistor}>
                 <QueryClientProvider client={queryClient}>
                     <AppRouters/>
-                    <ReactQueryDevtools initialIsOpen={true}/>
+                    <ReactQueryDevtools initialIsOpen={false}/>
                 </QueryClientProvider>
             </PersistGate>
         </Provider>
