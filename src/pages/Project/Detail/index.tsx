@@ -1,13 +1,24 @@
 import {toAbsoluteUrl} from '../../../helpers/AssetHelpers.ts';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {KTTooltip} from '../../../metronic/core';
+import {useParams} from 'react-router-dom';
 
 const ProjectDetail = () => {
+    const param = useParams();
+    const [projectUUID, setProjectUUID] = useState<string>(param.uuid);
+    console.log(projectUUID);
 
 
     useEffect(() => {
         KTTooltip.init();
     }, []);
+
+    useEffect(() => {
+        if (param.uuid !== undefined) {
+            setProjectUUID(param.uuid);
+        }
+    }, [param]);
+
     return (
         <>
             <div className="card mb-6 xl:mb-9">
@@ -53,7 +64,9 @@ const ProjectDetail = () => {
                                         <img className="w-[35px] h-[35px] rounded-full" alt="Pic"
                                              src={toAbsoluteUrl('media/avatars/300-1.png')}/>
                                     </div>
-                                    <div className="tooltip transition-opacity duration-400 bg-light text-dark dark:text-gray-700" id="tooltip_user">
+                                    <div
+                                        className="tooltip transition-opacity duration-400 bg-light text-dark dark:text-gray-700"
+                                        id="tooltip_user">
                                         Alan
                                     </div>
                                 </div>

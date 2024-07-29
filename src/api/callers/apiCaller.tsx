@@ -1,4 +1,5 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
+import {RootState, store} from '../../store';
 
 interface ApiCallMethodGet {
     endpoint: string | null;
@@ -12,7 +13,7 @@ interface ApiCallMethodPost {
 export default class ApiCaller {
     private backendUrl = import.meta.env.VITE_APP_BACKEND_URL + '/api';
     private endpoint = '';
-    private requestOptions = {};
+    private requestOptions: AxiosRequestConfig = {};
 
     setUrl(endpoint: string) {
         this.endpoint += endpoint;
@@ -20,7 +21,22 @@ export default class ApiCaller {
     }
 
     setHeaders(options: AxiosRequestConfig) {
-        this.requestOptions = options;
+        this.requestOptions = {
+            ...this.requestOptions,
+            ...options
+        };
+        return this;
+    }
+
+    useAccessToken() {
+        const state: RootState = store.getState();
+        this.requestOptions = {
+            ...this.requestOptions,
+            headers: {
+                ...this.requestOptions.headers,
+                Authorization: `Bearer ${state.authSlice.accessToken}`
+            }
+        };
         return this;
     }
 
@@ -32,7 +48,6 @@ export default class ApiCaller {
                 throw new Error('URL is not set.');
             }
         }
-
         return await axios.get(this.backendUrl + this.endpoint, this.requestOptions)
             .catch((error) => {
                 if (error.response.status === 403 || error.response.status === 401) {
