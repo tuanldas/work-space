@@ -5,6 +5,7 @@ import TopBarProgress from 'react-topbar-progress-indicator';
 const PrivateRouters = () => {
     const DashboardPage = lazy(() => import('../pages/Dashboard'));
     const ProjectPage = lazy(() => import('../pages/Project'));
+    const ProjectDetailPage = lazy(() => import('../pages/Project/Detail'));
 
     return (
         <Routes>
@@ -17,6 +18,11 @@ const PrivateRouters = () => {
             <Route path="projects" element={
                 <SuspenseView>
                     <ProjectPage/>
+                </SuspenseView>
+            }/>
+            <Route path="projects/:uuid" element={
+                <SuspenseView>
+                    <ProjectDetailPage/>
                 </SuspenseView>
             }/>
         </Routes>

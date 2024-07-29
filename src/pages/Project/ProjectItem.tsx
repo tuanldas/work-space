@@ -1,3 +1,6 @@
+import {Link} from 'react-router-dom';
+import {toAbsoluteUrl} from '../../helpers/AssetHelpers.ts';
+
 const ProjectItem = ({
                          project
                      }) => {
@@ -12,9 +15,10 @@ const ProjectItem = ({
                     <span className="badge badge-primary badge-outline">In Progress</span>
                 </div>
                 <div className="flex flex-col mb-3 lg:mb-6">
-                    <a className="text-lg font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
+                    <Link className="text-lg font-semibold text-gray-900 hover:text-primary-active mb-px"
+                          to={`${project.uuid}`}>
                         {project.name}
-                    </a>
+                    </Link>
                     <span className="text-sm font-medium text-gray-600">{project.desc}</span>
                 </div>
                 <div className="flex items-center gap-5 mb-3.5 lg:mb-7">
@@ -33,7 +37,7 @@ const ProjectItem = ({
                                     : <img
                                         key={index}
                                         className="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                        src={'media/avatars/blank.png'} alt={'asdf'}/>
+                                        src={toAbsoluteUrl('media/avatars/blank.png')} alt={'asdf'}/>
                             ))
                         }
                     </div>
