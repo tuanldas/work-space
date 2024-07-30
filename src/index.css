@@ -6,12 +6,21 @@
 @import "./metronic/css/styles.css";
 
 #root {
-  display: contents;
+    display: contents;
 }
 
 .page-bg {
-  background-image: url("media/images/2600x1200/bg-10.png");
+    background-image: url("media/images/2600x1200/bg-10.png");
 }
+
 .dark .page-bg {
-  background-image: url('media/images/2600x1200/bg-10-dark.png');
+    background-image: url('media/images/2600x1200/bg-10-dark.png');
+}
+
+@layer components {
+    .separator {
+        display: block;
+        height: 0;
+        border-bottom: 1px solid theme('colors.gray.200');
+    }
 }
