@@ -1,12 +1,4 @@
-import {useEffect} from 'react';
-import {KTTabs} from '../../../../metronic/core';
-import TabOverview from './TabOverview.tsx';
-import TabTasks from './TabTasks.tsx';
-
 const ProjectDetailTabs = () => {
-    useEffect(() => {
-        KTTabs.init();
-    }, []);
 
     return (
         <>
@@ -21,10 +13,6 @@ const ProjectDetailTabs = () => {
                     Tasks
                 </button>
             </div>
-            <TabOverview tabId={'project-tab-overview'}
-                         isActive={true}/>
-            <TabTasks tabId={'project-tab-tasks'}
-                      isActive={false}/>
         </>
     );
 };
