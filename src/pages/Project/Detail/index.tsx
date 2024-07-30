@@ -6,6 +6,7 @@ import {keepPreviousData, useQuery} from '@tanstack/react-query';
 import {callApiGetProjectDetail} from '../../../api/callers/projectApi.tsx';
 import {ProjectStatus} from '../../../constants/ProjectStatusEnum.tsx';
 import PageLoading from '../../Components/PageLoading.tsx';
+import ProjectDetailTabs from './Tabs';
 
 const ProjectDetail = () => {
     const param = useParams();
@@ -17,7 +18,6 @@ const ProjectDetail = () => {
         queryFn: () => callApiGetProjectDetail({uuid: projectUUID}),
         placeholderData: keepPreviousData
     });
-    console.log(project);
 
     useEffect(() => {
         KTTooltip.init();
@@ -92,6 +92,8 @@ const ProjectDetail = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div className="separator"></div>
+                            <ProjectDetailTabs/>
                         </div>
                     </div>
                     : <PageLoading isLoading={true}/>
