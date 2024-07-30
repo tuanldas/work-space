@@ -8,7 +8,6 @@ export const callApiGetProjects = (page: number) => {
 }
 
 export const callApiGetProjectDetail = (data: {
-    accessToken: string,
     uuid: string,
 }) => {
     return new ApiCaller()

@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import {toAbsoluteUrl} from '../../helpers/AssetHelpers.ts';
+import {ProjectStatus} from '../../constants/ProjectStatusEnum.tsx';
 
 const ProjectItem = ({
                          project
@@ -10,9 +11,10 @@ const ProjectItem = ({
             <div className="card p-7.5">
                 <div className="flex items-center justify-between mb-3 lg:mb-6">
                     <div className="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                        <img alt="" className="" src={'media/brand-logos/plurk.svg'}/>
+                        <img alt="" className="" src={project.icon}/>
                     </div>
-                    <span className="badge badge-primary badge-outline">In Progress</span>
+                    <span
+                        className={`badge badge-primary badge-outline ${ProjectStatus.getClassname(project.status.value)}`}>{project.status.name}</span>
                 </div>
                 <div className="flex flex-col mb-3 lg:mb-6">
                     <Link className="text-lg font-semibold text-gray-900 hover:text-primary-active mb-px"
