@@ -6,7 +6,6 @@ const TabOverview = ({tabId, isActive}) => {
             <div id={tabId} className={clsx(
                 {'hidden': !isActive}
             )}>
-                <p>asdf</p>
             </div>
         </>
     );
