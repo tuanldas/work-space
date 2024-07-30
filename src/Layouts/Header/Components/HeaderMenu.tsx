@@ -1,3 +1,5 @@
+import {toAbsoluteUrl} from '../../../helpers/AssetHelpers.ts';
+
 const HeaderMenu = () => {
     return (
         <>
@@ -7,13 +9,13 @@ const HeaderMenu = () => {
                          data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
                         <div className="menu-toggle btn btn-icon rounded-full">
                             <img alt="" className="size-9 rounded-full border-2 border-success shrink-0"
-                                 src={'media/avatars/300-2.png'}/>
+                                 src={toAbsoluteUrl('media/avatars/300-2.png')}/>
                         </div>
                         <div className="menu-dropdown menu-default light:border-gray-300 w-full max-w-[250px]">
                             <div className="flex items-center justify-between px-5 py-1.5 gap-1.5">
                                 <div className="flex items-center gap-2">
                                     <img alt="" className="size-9 rounded-full border-2 border-success"
-                                         src={'media/avatars/300-2.png'}/>
+                                         src={toAbsoluteUrl('media/avatars/300-2.png')}/>
                                     <div className="flex flex-col gap-1.5">
                                         <span
                                             className="text-sm text-gray-800 font-semibold leading-none">Cody Fisher</span>

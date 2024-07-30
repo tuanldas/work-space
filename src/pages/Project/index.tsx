@@ -1,14 +1,12 @@
-import {useSelector} from 'react-redux';
-import {selectAuthSlice} from '../../store/authSlice/selector.tsx';
 import {Link, useLocation, useSearchParams} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import {keepPreviousData, useQuery} from '@tanstack/react-query';
 import {callApiGetProjects} from '../../api/callers/projectApi.tsx';
-import ProjectItem from './ProjectItem.tsx';
+import PageLoading from '../Components/PageLoading.tsx';
 import clsx from 'clsx';
+import ProjectItem from './ProjectItem.tsx';
 
 const Project = () => {
-    const authData = useSelector(selectAuthSlice);
     const [searchParams] = useSearchParams();
     const location = useLocation();
     const pageParam = searchParams.get('page');
@@ -18,7 +16,7 @@ const Project = () => {
 
     const {data, isLoading} = useQuery({
         queryKey: ['projects', page],
-        queryFn: () => callApiGetProjects(authData.accessToken, page),
+        queryFn: () => callApiGetProjects(page),
         placeholderData: keepPreviousData
     });
 
@@ -194,7 +192,7 @@ const Project = () => {
                             </div>
                         </div>
                     </>
-                    : null
+                    : <PageLoading isLoading={true}/>
             }
         </div>
     );
