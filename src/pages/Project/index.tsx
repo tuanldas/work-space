@@ -2,8 +2,9 @@ import {Link, useLocation, useSearchParams} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import {keepPreviousData, useQuery} from '@tanstack/react-query';
 import {callApiGetProjects} from '../../api/callers/projectApi.tsx';
-import ProjectItem from './ProjectItem.tsx';
+import PageLoading from '../Components/PageLoading.tsx';
 import clsx from 'clsx';
+import ProjectItem from './ProjectItem.tsx';
 
 const Project = () => {
     const [searchParams] = useSearchParams();
@@ -191,7 +192,7 @@ const Project = () => {
                             </div>
                         </div>
                     </>
-                    : null
+                    : <PageLoading isLoading={true}/>
             }
         </div>
     );

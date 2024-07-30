@@ -5,6 +5,7 @@ import {useParams} from 'react-router-dom';
 import {keepPreviousData, useQuery} from '@tanstack/react-query';
 import {callApiGetProjectDetail} from '../../../api/callers/projectApi.tsx';
 import {ProjectStatus} from '../../../constants/ProjectStatusEnum.tsx';
+import PageLoading from '../../Components/PageLoading.tsx';
 
 const ProjectDetail = () => {
     const param = useParams();
@@ -93,7 +94,7 @@ const ProjectDetail = () => {
                             </div>
                         </div>
                     </div>
-                    : null
+                    : <PageLoading isLoading={true}/>
             }
         </>
     );
