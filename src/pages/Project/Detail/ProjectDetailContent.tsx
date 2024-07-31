@@ -4,7 +4,7 @@ import {useEffect} from 'react';
 import {KTTabs, KTTooltip} from '../../../metronic/core';
 import ProjectDetailTabs from './Tabs';
 import TabOverview from './Tabs/TabOverview.tsx';
-import TabTasks from './Tabs/TabTasks.tsx';
+import TabTasks from './Tabs/TabTasks/TabTasks.tsx';
 
 const ProjectDetailContent = ({project}) => {
     useEffect(() => {
