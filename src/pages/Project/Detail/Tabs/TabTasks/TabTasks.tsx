@@ -1,37 +1,142 @@
 import clsx from 'clsx';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {KTTooltip} from '../../../../../metronic/core';
+import Column from './Column.tsx';
+import {closestCorners, DndContext, DragOverlay} from '@dnd-kit/core';
+import {arrayMove} from '@dnd-kit/sortable';
 import Task from './Task.tsx';
 
 const TabTasks = ({tabId, isActive}) => {
     useEffect(() => {
         KTTooltip.createInstances();
     }, []);
+    const [activeId, setActiveId] = useState();
+    const [items, setItems] = useState({
+        root: ['1', '2', '3'],
+        container1: ['4', '5', '6'],
+        container2: ['7', '8', '9'],
+        container3: ['10']
+    });
+
+    function handleDragStart(event) {
+        const {active} = event;
+        const {id} = active;
+
+        setActiveId(id);
+    }
+
+
+    function findContainer(id) {
+        if (id in items) {
+            return id;
+        }
+
+        return Object.keys(items).find((key) => items[key].includes(id));
+    }
+
+    function handleDragOver(event) {
+        const {active, over, draggingRect} = event;
+        const {id} = active;
+        const {id: overId} = over;
+
+        // Find the containers
+        const activeContainer = findContainer(id);
+        const overContainer = findContainer(overId);
+
+        if (
+            !activeContainer ||
+            !overContainer ||
+            activeContainer === overContainer
+        ) {
+            return;
+        }
+
+        setItems((prev) => {
+            const activeItems = prev[activeContainer];
+            const overItems = prev[overContainer];
+
+            // Find the indexes for the items
+            const activeIndex = activeItems.indexOf(id);
+            const overIndex = overItems.indexOf(overId);
+
+            let newIndex;
+            if (overId in prev) {
+                // We're at the root droppable of a container
+                newIndex = overItems.length + 1;
+            } else {
+                const isBelowLastItem =
+                    over &&
+                    overIndex === overItems.length - 1 &&
+                    draggingRect != undefined &&
+                    draggingRect.offsetTop > over.rect.offsetTop + over.rect.height;
+
+                const modifier = isBelowLastItem ? 1 : 0;
+
+                newIndex = overIndex >= 0 ? overIndex + modifier : overItems.length + 1;
+            }
+
+            return {
+                ...prev,
+                [activeContainer]: [
+                    ...prev[activeContainer].filter((item) => item !== active.id)
+                ],
+                [overContainer]: [
+                    ...prev[overContainer].slice(0, newIndex),
+                    items[activeContainer][activeIndex],
+                    ...prev[overContainer].slice(newIndex, prev[overContainer].length)
+                ]
+            };
+        });
+    }
+
+    function handleDragEnd(event) {
+        const {active, over} = event;
+        const {id} = active;
+        const {id: overId} = over;
+
+        const activeContainer = findContainer(id);
+        const overContainer = findContainer(overId);
+
+        if (
+            !activeContainer ||
+            !overContainer ||
+            activeContainer !== overContainer
+        ) {
+            return;
+        }
+
+        const activeIndex = items[activeContainer].indexOf(active.id);
+        const overIndex = items[overContainer].indexOf(overId);
+
+        if (activeIndex !== overIndex) {
+            setItems((items) => ({
+                ...items,
+                [overContainer]: arrayMove(items[overContainer], activeIndex, overIndex)
+            }));
+        }
+
+        setActiveId(null);
+    }
 
     return (
         <div id={tabId} className={clsx(
             {'hidden': !isActive}
         )}>
-            <div className="row gap-9">
-                <div className="w-[450px]">
-                    <div className="mb-9">
-                        <div className="flex justify-between items-center">
-                            <div className="font-semibold text-base text-gray-900">
-                                Yet to start
-                                <span className="text-sm text-gray-500 ms-2">2</span>
-                            </div>
-                            <div>
-                                <button type="button"
-                                        className="btn btn-sm btn-icon text-gray-700 border-gray-300 bg-light border-none hover:bg-primary-light group transition-colors duration-200">
-                                    <i className="text-gray-500 ki-duotone ki-element-plus text-sm group-hover:text-primary transition-colors duration-200"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div className="h-[3px] w-full bg-warning"></div>
-                    </div>
-                    <Task/>
+
+            <DndContext
+                collisionDetection={closestCorners}
+                onDragStart={handleDragStart}
+                onDragOver={handleDragOver}
+                onDragEnd={handleDragEnd}
+            >
+                <div className="row gap-9 flex">
+                    <Column id={'root'} items={items.root}/>
+                    <Column id={'container1'} items={items.container1}/>
+                    <Column id={'container2'} items={items.container2}/>
+                    <Column id={'container3'} items={items.container3}/>
+                    <DragOverlay>{activeId ? <Task taskId={activeId}/> : null}</DragOverlay>
                 </div>
-            </div>
+            </DndContext>
         </div>
     );
 };

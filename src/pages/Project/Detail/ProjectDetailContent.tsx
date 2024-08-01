@@ -69,8 +69,8 @@ const ProjectDetailContent = ({project}) => {
                     <ProjectDetailTabs/>
                 </div>
             </div>
-            <TabOverview tabId="project-tab-overview" isActive={true}/>
-            <TabTasks tabId="project-tab-tasks" isActive={false}/>
+            <TabOverview tabId="project-tab-overview" isActive={false}/>
+            <TabTasks tabId="project-tab-tasks" isActive={true}/>
         </>
     );
 };

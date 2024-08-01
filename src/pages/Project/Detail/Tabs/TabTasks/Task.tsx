@@ -1,10 +1,25 @@
 import {Link} from 'react-router-dom';
 import {toAbsoluteUrl} from '../../../../../helpers/AssetHelpers.ts';
+import {useSortable} from '@dnd-kit/sortable';
+import {CSS} from '@dnd-kit/utilities';
 
-const Task = () => {
+const Task = ({taskId}) => {
+    const {
+        attributes,
+        listeners,
+        setNodeRef,
+        transform,
+        transition
+    } = useSortable({id: taskId});
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition
+    };
+
     return (
         <>
-            <div className="card mb-6 xl:mb-9">
+            <div className="card mb-6 xl:mb-9" ref={setNodeRef}  {...attributes} {...listeners} style={style}>
                 <div className="card-body">
                     <div className="flex justify-between items-center mb-3">
                         <div className="badge px-1.5">UI Design</div>
