@@ -2,9 +2,8 @@
 /* eslint-disable require-jsdoc */
 
 import KTData from '../../helpers/data';
-import KTDom from '../../helpers/dom';
 import KTComponent from '../component';
-import { KTTogglePasswordConfigInterface, KTTogglePasswordInterface } from './types';
+import {KTTogglePasswordConfigInterface, KTTogglePasswordInterface} from './types';
 
 export class KTTogglePassword extends KTComponent implements KTTogglePasswordInterface {
   protected override _name: string = 'toggle-password';
@@ -17,7 +16,7 @@ export class KTTogglePassword extends KTComponent implements KTTogglePasswordInt
 
   constructor(element: HTMLElement, config: KTTogglePasswordConfigInterface | null = null) {
     super();
-    
+
     if (KTData.has(element as HTMLElement, this._name)) return;
 
     this._init(element);
@@ -25,7 +24,7 @@ export class KTTogglePassword extends KTComponent implements KTTogglePasswordInt
 
     this._triggerElement = this._element.querySelector('[data-toggle-password-trigger]');
     this._inputElement = this._element.querySelector('input[type="password"]');
-    
+
     if (!this._triggerElement || !this._inputElement) {
       return;
     }

@@ -402,7 +402,7 @@ export class KTDropdown extends KTComponent implements KTDropdownInterface {
 			document.body,
 			'.dropdown-toggle',
 			'mouseover',
-			(event: Event, target: HTMLElement) => {
+			(_event: Event, target: HTMLElement) => {
 				const dropdown = KTDropdown.getInstance(target);
 
 				if (dropdown !== null && dropdown.getOption('trigger') === 'hover') {
@@ -417,7 +417,7 @@ export class KTDropdown extends KTComponent implements KTDropdownInterface {
 			document.body,
 			'.dropdown-toggle',
 			'mouseout',
-			(event: Event, target: HTMLElement) => {
+			(_event: Event, target: HTMLElement) => {
 				const dropdown = KTDropdown.getInstance(target);
 
 				if (dropdown !== null && dropdown.getOption('trigger') === 'hover') {
@@ -446,7 +446,7 @@ export class KTDropdown extends KTComponent implements KTDropdownInterface {
 			document.body,
 			'[data-dropdown-dismiss]',
 			'click',
-			(event: Event, target: HTMLElement) => {
+			(_event: Event, target: HTMLElement) => {
 				const dropdown = KTDropdown.getInstance(target);
 				if (dropdown) {
 					return dropdown.hide();

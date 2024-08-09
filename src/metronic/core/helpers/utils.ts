@@ -60,7 +60,7 @@ const KTUtils = {
 	parseSelector(selector: string): string {
 		if (selector && window.CSS && window.CSS.escape) {
 			// Escape any IDs in the selector using CSS.escape
-			selector = selector.replace(/#([^\s"#']+)/g, (match, id) => `#${window.CSS.escape(id)}`);
+			selector = selector.replace(/#([^\s"#']+)/g, (_match, id) => `#${window.CSS.escape(id)}`);
 		}
 
 		return selector;
@@ -75,7 +75,7 @@ const KTUtils = {
 	},
 
 	camelCase(value: string): string {
-		return value.replace(/-([a-z])/g, (match, letter) => {
+		return value.replace(/-([a-z])/g, (_match, letter) => {
 			return letter.toUpperCase();
 		});
 	},

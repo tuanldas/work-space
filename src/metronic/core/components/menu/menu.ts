@@ -1100,7 +1100,7 @@ export class KTMenu extends KTComponent implements KTMenuInterface {
 			document.body,
 			'[data-menu-item-trigger], .menu-dropdown',
 			'mouseover',
-			(event: Event, target: HTMLElement) => {
+			(_event: Event, target: HTMLElement) => {
 				const menu = KTMenu.getInstance(target);
 
 				if (menu !== null && menu.getItemToggleMode(target) === 'dropdown') {
@@ -1115,7 +1115,7 @@ export class KTMenu extends KTComponent implements KTMenuInterface {
 			document.body,
 			'[data-menu-item-trigger], .menu-dropdown',
 			'mouseout',
-			(event: Event, target: HTMLElement) => {
+			(_event: Event, target: HTMLElement) => {
 				const menu = KTMenu.getInstance(target);
 
 				if (menu !== null && menu.getItemToggleMode(target) === 'dropdown') {
@@ -1158,7 +1158,7 @@ export class KTMenu extends KTComponent implements KTMenuInterface {
 			document.body,
 			'[data-menu-dismiss="true"]',
 			'click',
-			(event: Event, target: HTMLElement) => {
+			(_event: Event, target: HTMLElement) => {
 				const menu = KTMenu.getInstance(target);
 
 				if (menu !== null) {
